@@ -1,0 +1,229 @@
+═══════════════════════════════════════════════════════
+  COPIÁ TODO ESTO Y PEGALO EN EL CHAT NUEVO
+  (es el primer mensaje que le mandás)
+═══════════════════════════════════════════════════════
+
+
+Hola. Soy Pablo, de San Justo, Buenos Aires.
+
+Vengo trabajando en un proyecto y el chat anterior se
+trabó. Leé el archivo README_TODO.txt del workspace,
+ahí está todo el contexto técnico.
+
+Te resumo cómo trabajamos:
+
+
+═══ CÓMO HABLARME ═══
+
+· Español rioplatense, de vos, tono de socio.
+· Pasos numerados, cortos, UNO POR VEZ.
+  Me pierdo con explicaciones largas.
+· Si digo "no entendí" o "me perdí": simplificá,
+  NO agregues más opciones.
+· Si digo "sos inteligente" o "evolucioná socio":
+  modo evolución, hacé todo lo que puedas.
+· Si digo "me voy, seguí mejorando": trabajá solo.
+  Cuando vuelva escribo "hola" y me das el resumen.
+· LA REGLA DE ORO: NO PARES. Cuando termines algo,
+  seguí con otra cosa sin preguntarme.
+· No me preguntes "¿sigo?" — dá por hecho que sí.
+
+
+═══ REGLAS TÉCNICAS QUE NO SE ROMPEN ═══
+
+1. REGLA §30: toda función nueva tiene opción A (la
+   mejor), opción B (respaldo) y opción local (nunca
+   falla). Si algo solo se puede hacer de una manera
+   y depende de terceros, NO ENTRA.
+
+2. 0$ real. Sin API keys pagas. Sin tarjeta.
+
+3. Todo tocable en celular (botones de 48px o más).
+
+4. /home/user/ es Arena (la nube). NO existe en mi Mac.
+   Mis archivos van a /Users/mac/Desktop/MULTICUENTAS_ENGINE/
+
+5. NO PUEDO DESCARGAR .py NI .command. Solo bajan .html
+   Si me hacés algo en Python, tiene que ser para correr
+   desde Terminal con un comando que vos me pases.
+
+6. Adjuntos múltiples traban el chat. Pedime de a 1.
+
+7. AL MODELO SE LE PIDEN IDEAS, NO DATOS.
+   Lo medible lo mide la máquina, no la IA.
+
+8. EL MAPA NO SE TOCA. El de MAPA_REAL está bien así.
+
+9. Antes de decirme que algo funciona, MEDILO.
+   Nada de "debería andar". Corré el test.
+
+
+═══ MI MÁQUINA ═══
+
+MacBook Pro Intel (sin Metal), 8 GB de RAM, 1 TB disco.
+Chrome. macOS Ventura.
+
+Instalado y funcionando:
+   ffmpeg · yt-dlp · whisper-cpp
+   python3.13 · cv2 5.0.0 · scenedetect · numpy
+   pillow · imagehash · pytesseract
+   ollama: llama3.2:3b, qwen2.5:3b, llama3.2:1b
+
+NO instalado:
+   librosa (falta, es para los módulos de audio)
+   torch, whisper-python, mediapipe (no hacen falta)
+
+Ojo con los 8 GB de RAM: nada que consuma mucho.
+
+
+═══ QUÉ ESTOY HACIENDO ═══
+
+Videos verticales de geografía para TikTok.
+Múltiples cuentas, múltiples nichos.
+NECESITO MONETIZAR. Estoy sin plata y esto es urgente.
+
+Imito el estilo de estos canales:
+   @chris_torr9 · @yellow.geo · @mundo_xplora
+   @mundo.mapas · @talesdelglobo · @maplogue · @geopianet
+
+
+═══ MIS ARCHIVOS ═══
+
+Los 4 que uso:
+   ABRIR_ESTO.html        el menú "¿qué querés hacer?"
+   MAPA_REAL_V120.html    hace el video de geografía
+   CHAT.html              25 tops + 17 curiosidades + medir videos
+   32_VIDEOS_LISTOS.txt   los guiones escritos
+
+De antes:
+   ENGINE.html            muchas apps, cualquier nicho
+   IMAGE_BRIDGE_V3.html   las imágenes
+
+Y en GitHub:
+   github.com/luvianoaguilar-ops/viral_inteligencia
+   (79 módulos Python para analizar TikToks)
+
+
+═══ LO QUE YA ESTÁ MEDIDO (no lo vuelvas a adivinar) ═══
+
+Medimos 42 videos de 7 canales con ffmpeg.
+
+LAS 6 REGLAS DEL GÉNERO (iguales en los 7 canales):
+   duración      72,1 segundos
+   brillo        35,2%
+   saturación    58,4%
+   contraste     40,5
+   verde         13,0%
+   cámara cv      0,90
+
+Esa última es LA LEY: de 42 videos, CERO tienen la
+cámara pareja. Todos tiemblan. Si el movimiento es
+parejito se nota que está hecho con código.
+
+LO QUE NO ES REGLA (cada canal hace lo suyo):
+   temperatura (va de -14,8 a +27,9 entre canales)
+   viñeta · cortes por minuto · subtítulos
+
+COLORES MEDIDOS CON PIPETA de frames reales:
+   borde del país    RGB(240,240,237) núcleo 4px halo 1px
+   cartel del nombre fondo RGB(11,26,56) azul oscuro
+   amarillo          RGB(214,188,58) el nuestro
+                     RGB(216,197,82) el del canal
+                     (el color estaba bien, faltaba brillo)
+
+LAS 4 CAPAS DEL VIDEO, en este orden:
+   0,00s  el mapa lejos y quieto
+   0,12s  CAE hacia el país (se ve 3x más territorio)
+   0,90s  la línea blanca se dibuja sola, como birome
+   1,55s  la bandera BARRE el país de izquierda a derecha
+   2,30s  aparece el cartel con el nombre
+   2,50s  el contorno cerró
+
+Nada aparece de golpe. Eso es lo que hacen los canales.
+
+
+═══ BUGS QUE YA ARREGLAMOS (no los repitas) ═══
+
+· Las keys de Google que empiezan con AQ. van por
+  header x-goog-api-key, NO con ?key= en la URL.
+
+· Google apagó gemini-2.0 y gemini-1.5. Ahora hay que
+  usar gemini-3.6-flash y el chat pregunta solo cuáles
+  existen.
+
+· Los Gemini 3 "piensan" y ese pensamiento sale del
+  mismo maxOutputTokens. Hay que poner 8000 y
+  thinkingLevel low, si no contestan cortado.
+
+· El patrón "pintar como el canal" apagaba el país en
+  10 de 12 bloques de un top. En un ranking el país ES
+  el contenido: ahora detecta si es top y pinta todos.
+
+· Los tops traían países que el mapa NO puede pintar
+  (Mónaco, Palaos, Singapur, Malta). Salían negros.
+  Ahora cruza por código ISO contra los 172 del mapa.
+
+· La línea del contorno aparecía en 6 de 48 frames
+  porque la cámara mueve el mapa y yo la dibujaba en
+  coordenadas fijas.
+
+· El neón no se veía porque pintaba el glow ANTES del
+  país y el relleno lo tapaba.
+
+· La caída de cámara no caía porque el freno multiplica
+  el zoom por 0,30.
+
+
+═══ LO QUE FALTA HACER ═══
+
+A) TERMINAR UN VIDEO Y SUBIRLO  ← LO MÁS IMPORTANTE
+   Tengo todo listo y nunca terminé uno.
+
+B) CONECTAR MI PROYECTO DE GITHUB
+   Quiero UN comando que corra los 9 módulos livianos
+   sobre un video de TikTok y escupa un .json que yo
+   arrastro al CHAT.html.
+   Los 9 que andan con solo cv2+numpy son:
+     tiktok_hook_analyzer · movimiento_camara
+     detector_subtitulos · salient_maps · linea_tiempo
+     detector_duplicados · control_continuidad
+     auto_crop_vertical · tiktok_retention_curve
+
+C) ARREGLAR EL ENGINE
+   El Topic PRO tiene el guion de Malvinas QUEMADO
+   adentro. Si escribo "Sahara" me da el mismo guion
+   con otro título. Habría que hacer que use el tema
+   de verdad.
+
+D) MÁS CONTENIDO
+   Tengo 25 tops y 17 curiosidades. Quiero más, y de
+   otros nichos además de geografía.
+
+
+═══ CÓMO TRABAJAMOS ═══
+
+El ciclo es este:
+   1. Vos construís o arreglás algo
+   2. Yo bajo el .html y hago un video
+   3. Le doy a 📦 PAQUETE y 📸 RADIOGRAFÍA
+   4. Te mando las imágenes
+   5. Vos las MEDÍS con Python (píxeles, no a ojo)
+   6. Encontrás los bugs y los arreglás
+
+La radiografía son 48 momentos del video.
+El paquete es la ficha técnica.
+Mandámelos de a uno o se traba el chat.
+
+Cada cosa que hacés tiene que tener un test en
+tests/. Hoy hay 32 tests con 1473 asserts en verde.
+Corrélos siempre antes de decirme que algo anda:
+
+   for f in tests/T*.js; do node "$f"; done
+
+
+═══ EMPEZÁ POR ACÁ ═══
+
+Leé README_TODO.txt y decime en una frase qué
+entendiste que hay que hacer.
+
+Después arrancamos.

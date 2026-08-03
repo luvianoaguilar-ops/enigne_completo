@@ -1,0 +1,2225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>💬 CHAT — el que escribe guiones</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#0b0d12;color:#e8edf5;
+  font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  display:flex;flex-direction:column;height:100vh;overflow:hidden}
+header{padding:11px 14px;background:#141821;border-bottom:1px solid #232936;flex-shrink:0}
+h1{font-size:17px;margin:0}
+.est{font-size:12px;color:#7d8798;margin-top:2px}
+.est b{color:#37e0a0}
+#conf{padding:12px 14px;background:#101822;border-bottom:1px solid #2d5a6b;flex-shrink:0}
+#conf.ok{display:none}
+/* V111 — la barra de llaves: SIEMPRE visible, se abre y se cierra */
+#llaves{background:#101822;border-bottom:1px solid #2d5a6b;flex-shrink:0}
+#lltit{padding:9px 14px;font-size:12.5px;color:#8fd8ff;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;font-weight:600}
+#llcuerpo{padding:0 14px 12px;display:none}
+#llcuerpo.abierto{display:block}
+.kfila{display:flex;gap:8px;align-items:center;margin:7px 0}
+.kfila label{min-width:104px;font-size:12px;color:#8b95a7;margin:0;font-weight:600}
+.kfila input{flex:1;font-size:13px;padding:9px}
+.kest{font-size:11px;min-width:64px;text-align:right;font-weight:700}
+.kest.si{color:#37e0a0}.kest.no{color:#5f6b7d}
+input,select,textarea{width:100%;background:#0d1017;border:1px solid #2a3242;color:#e8edf5;
+  border-radius:9px;padding:11px;font-size:16px;font-family:inherit}
+label{display:block;font-size:12px;color:#8b95a7;margin:9px 0 4px;font-weight:600}
+button{border:0;border-radius:10px;font-size:15px;font-weight:700;color:#04121a;
+  background:#3fd0ff;padding:13px;cursor:pointer;font-family:inherit;width:100%;margin-top:9px}
+button.g{background:#37e0a0}button.d{background:#232936;color:#c8d2e0}
+button:disabled{opacity:.4}
+#msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:11px}
+.m{max-width:88%;padding:11px 14px;border-radius:15px;white-space:pre-wrap;
+   word-wrap:break-word;font-size:14.5px;line-height:1.65}
+.yo{align-self:flex-end;background:#1e5f7a;border-bottom-right-radius:4px}
+.el{align-self:flex-start;background:#1a1f2b;border-bottom-left-radius:4px}
+.duelo{display:flex;gap:8px;align-self:stretch;max-width:100%}
+.duelo>div{flex:1;min-width:0;background:#1a1f2b;border-radius:13px;padding:10px 12px;
+  border:2px solid transparent;display:flex;flex-direction:column}
+.duelo>div.gg{border-color:#2d5a6b}
+.duelo>div.or{border-color:#4d3a1a}
+.duelo>div.gana{border-color:#37e0a0;background:#12251c}
+.dh{font-size:11px;font-weight:700;margin-bottom:6px;display:flex;
+  justify-content:space-between;align-items:center}
+.dh .n{color:#8fd8ff}
+.dh .t{color:#5f6b7d;font-weight:400;font-size:10px}
+.dt{font-size:13px;line-height:1.6;white-space:pre-wrap;word-wrap:break-word;flex:1}
+.db{display:flex;gap:5px;margin-top:9px}
+.db button{flex:1;padding:8px 4px;font-size:11px;border-radius:8px;margin:0;
+  background:#232936;color:#c8d2e0;font-weight:600}
+.db button.el{background:#37e0a0;color:#04121a}
+@media(max-width:560px){.duelo{flex-direction:column}}
+.sys{align-self:center;background:#241a12;color:#ffb35c;font-size:12.5px;
+     max-width:94%;border-radius:9px;padding:9px 12px}
+.el .cp{display:block;margin-top:9px;font-size:12px;color:#3fd0ff;cursor:pointer}
+#abajo{padding:11px;background:#141821;border-top:1px solid #232936;flex-shrink:0}
+#txt{min-height:52px;max-height:130px;resize:none;font-size:16px}
+.fila{display:flex;gap:8px;align-items:flex-end}
+.fila button{width:88px;margin:0;padding:15px 0}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+.chip{flex-shrink:0;background:#1b2230;border:1px solid #2c3648;border-radius:16px;
+  padding:8px 13px;font-size:12.5px;color:#9fb0c6;cursor:pointer;white-space:nowrap}
+.chip:active{background:#0e3a4d;color:#8fd8ff}
+.chip.on{background:#0e3a4d;border-color:#3fd0ff;color:#8fd8ff;font-weight:700}
+.note{font-size:11.5px;color:#7d8798;line-height:1.55;margin:7px 0 0}
+a{color:#3fd0ff}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>💬 CHAT — el que escribe guiones</h1>
+  <div class="est" id="est">sin conectar</div>
+</header>
+
+<div id="conf">
+  <div style="background:#0e3a4d;border:1px solid #3fd0ff;border-radius:10px;
+    padding:12px;margin-bottom:12px">
+    <b style="font-size:14px;color:#8fd8ff">🎬 Para MEDIR videos no hace falta nada</b>
+    <div style="font-size:12.5px;color:#c8d2e0;margin-top:5px;line-height:1.55">
+      Arrastrá videos y el navegador cuenta los cortes solo. Gratis, sin límite.
+    </div>
+    <button class="g" style="margin-top:9px" onclick="saltar()">
+      🎬 EMPEZAR A MEDIR VIDEOS AHORA</button>
+  </div>
+  <div style="background:#0e3a4d;border:1px solid #3fd0ff;border-radius:9px;
+    padding:9px 11px;margin-bottom:11px;font-size:12.5px;color:#c8d2e0;line-height:1.5">
+    Podés pegar <b>las dos</b>. Si ya pegaste una, la otra la agregás
+    desde la barra <b>🔑 Mis llaves</b> que queda arriba.
+  </div>
+  <label>🥇 Key de Google AI — 1500 mensajes por día (recomendada)</label>
+  <input id="ggkey" type="password" placeholder="AIza..." onchange="guardarGoogle()">
+  <p class="note" style="margin:5px 0 12px">
+    La sacás en <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a><br>
+    Cuenta de Google · no pide tarjeta · 30 veces más que OpenRouter
+  </p>
+  <label>🥈 O una de OpenRouter — 50 por día</label>
+  <input id="key" type="password" placeholder="sk-or-v1-...">
+  <button class="g" onclick="guardar()">CONECTAR</button>
+  <p class="note">
+    La sacás en <a href="https://openrouter.ai/keys" target="_blank">openrouter.ai/keys</a><br>
+    Cuenta con tu mail · no pide tarjeta · 50 mensajes por día<br>
+    La key queda solo en tu navegador. No sale de tu Mac.
+  </p>
+</div>
+
+<div id="llaves">
+  <div id="lltit" onclick="abrirLlaves()">
+    <span>🔑 Mis llaves de IA</span>
+    <span id="llres">tocá para ver</span>
+  </div>
+  <div id="llcuerpo">
+    <div class="kfila">
+      <label>🥇 Google AI</label>
+      <input id="ggkey2" type="password" placeholder="AIza..." onchange="guardarGoogle2()">
+      <span class="kest no" id="ggest">—</span>
+    </div>
+    <div class="kfila">
+      <label>🥈 OpenRouter</label>
+      <input id="orkey2" type="password" placeholder="sk-or-v1-..." onchange="guardarOR2()">
+      <span class="kest no" id="orest">—</span>
+    </div>
+    <p class="note" style="margin:8px 0 0">
+      Google: <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a>
+      · 1500 por día<br>
+      OpenRouter: <a href="https://openrouter.ai/keys" target="_blank">openrouter.ai/keys</a>
+      · 50 por día<br>
+      Con las dos pegadas se prende el ⚔️ DUELO.
+    </p>
+  </div>
+</div>
+
+<div id="msgs"></div>
+
+<div id="abajo">
+  <div class="chips" style="margin-bottom:2px">
+    <div class="chip on" id="mg" onclick="cambiarModo('guion')">📝 GUION</div>
+    <div class="chip" id="mv" onclick="cambiarModo('video')">🎬 ESTUDIAR VIDEO</div>
+    <div class="chip" id="ml" onclick="cambiarModo('libre')">💬 LIBRE</div>
+    <div class="chip" id="mduelo" onclick="toggleDuelo()">⚔️ DUELO: off</div>
+    <div class="chip" onclick="verMarcador()">🏆 MARCADOR</div>
+    <div class="chip" onclick="verTops()">🏆 TOPS LISTOS</div>
+    <div class="chip" onclick="verCuriosidades()">🌍 CURIOSIDADES</div>
+    <div class="chip" onclick="verLibro()">📚 LIBRO</div>
+    <div class="chip" onclick="limpiarLibro()">🧹 SACAR REPETIDOS</div>
+    <div class="chip" onclick="exportarReceta()">📤 RECETA</div>
+    <div class="chip" onclick="buscarModelos()">🔄 BUSCAR MODELOS</div>
+    <div class="chip" onclick="limpiar()">🗑️ Borrar</div>
+  </div>
+  <div class="chips" id="chg">
+    <div class="chip" onclick="plantilla('temas')">🎯 50 TEMAS</div>
+    <div class="chip" onclick="plantilla('hooks')">🪝 5 HOOKS</div>
+    <div class="chip" onclick="plantilla('mito')">🔍 MITO</div>
+    <div class="chip" onclick="plantilla('fabrica')">🏭 3 GUIONES</div>
+    <div class="chip" onclick="plantilla('titulo')">🏷️ TÍTULO</div>
+    <div class="chip" onclick="plantilla('cierre')">🎬 CIERRE</div>
+    <div class="chip" onclick="plantilla('serie')">📺 SERIE x5</div>
+    <div class="chip" onclick="plantilla('traducir')">🔁 OTRO NICHO</div>
+    <div class="chip" onclick="plantilla('nicho')">🆕 CUENTA NUEVA</div>
+    <div class="chip" onclick="plantilla('foto')">📷 DESDE UNA FOTO</div>
+    <div class="chip" onclick="plantilla('calendario')">📅 30 DÍAS</div>
+    <div class="chip" onclick="plantilla('guion')">📝 Guion</div>
+    <div class="chip" onclick="plantilla('mito')">🔍 Video de mito</div>
+    <div class="chip" onclick="plantilla('mejor')">✨ Mejorar</div>
+  </div>
+  <div class="chips" style="margin-top:2px">
+    <div class="chip" style="background:#1a3a1a;border-color:#37e0a0;color:#37e0a0"
+      onclick="revisarDatos()">🔍 REVISAR DATOS · gratis</div>
+    <div class="chip" style="background:#1a3a1a;border-color:#37e0a0;color:#37e0a0"
+      onclick="partirTexto()">✂️ PARTIR TEXTO · gratis</div>
+    <div class="chip" style="background:#1a3a1a;border-color:#37e0a0;color:#37e0a0"
+      onclick="fichaCompleta()">📐 FICHA COMPLETA · gratis</div>
+    <div class="chip" style="background:#2a1a3a;border-color:#b98fff;color:#c9a8ff"
+      onclick="clonarEstilo()">🧬 CLONAR ESTILO</div>
+    <div class="chip" style="background:#1a3a1a;border-color:#37e0a0;color:#37e0a0"
+      onclick="resumenParaArena()">📤 RESUMEN · gratis</div>
+    <div class="chip" style="background:#1a3a1a;border-color:#37e0a0;color:#37e0a0"
+      onclick="aprenderVoz()">📖 APRENDER LA VOZ · gratis</div>
+  </div>
+  <div id="zonavid" style="display:none;border:2px dashed #2d5a6b;border-radius:11px;
+    padding:16px;text-align:center;margin-bottom:9px;background:#101822;cursor:pointer"
+    onclick="document.getElementById('filevid').click()">
+    <div style="font-size:26px">🎬</div>
+    <div style="font-size:13px;color:#8fd8ff;font-weight:700;margin-top:3px">
+      Arrastrá los videos de TikTok acá</div>
+    <div style="font-size:11.5px;color:#7d8798;margin-top:4px">
+      de a uno o todos juntos · mp4 o webm · menos de 8 MB c/u</div>
+    <div id="vidinfo" style="font-size:12px;color:#37e0a0;margin-top:7px"></div>
+    <input type="file" id="filevid" accept="video/mp4,video/webm,video/quicktime" multiple
+      style="display:none" onchange="if(this.files.length===1)tomarVideo(this.files[0]);else colaVideos(Array.from(this.files))">
+  </div>
+
+  <div class="fila">
+    <textarea id="txt" placeholder="Escribí acá…"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();mandar();}"></textarea>
+    <button class="g" id="btn" onclick="mandar()">Enviar</button>
+  </div>
+</div>
+
+<script id="cur-data" type="application/json">{"nemo":{"t":"El lugar más lejano de tierra firme del planeta","p":"Océano Pacífico","a":"Punto Nemo","d":72.0,"lat":-49.0273,"lon":-123.4345,"b":[[11.0,"El lugar más lejano de tierra firme del planeta."],[9.5,"El polo de inaccesibilidad del Pacífico o Punto Nemo es el lugar del océano más alejado de cualquier tierra firme y se encuentra en el sur del océano Pacífico."],[13.0,"aproximadamente a 2722 kilómetros de la Antártida y de varias pequeñas islas oceánicas."],[12.5,"También es el lugar donde se halla el cementerio de naves espaciales debido a su lejanía, aislamiento."],[14.0,"que es casi inhabitable y que se considera territorio de alta mar."],[12.0,"¿Sabías esto? Contame abajo."]],"f":"Wikipedia · Punto Nemo"},"bouvet":{"t":"La isla más aislada del mundo","p":"Isla Bouvet","a":"Isla Bouvet","d":72.0,"lat":-54.42,"lon":3.36,"b":[[11.0,"La isla más aislada del mundo."],[9.5,"La isla Bouvet es una isla subantártica, volcánica, casi completamente cubierta por glaciares y deshabitada."],[13.0,"Se encuentra localizada en el océano Atlántico Sur."],[12.5,"unos 1750 km al norte de la Antártida, 1900 km al este de las islas Sandwich del Sur y 2520 km al suroeste del cabo de Buena Esperanza."],[14.0,"por lo que se la considera la isla deshabitada más remota del planeta."],[12.0,"¿Sabías esto? Contame abajo."]],"f":"Wikipedia · Isla Bouvet"},"oymyakon":{"t":"El pueblo habitado más frío de la Tierra","p":"Rusia","a":"Oymyakon","d":58.0,"lat":63.4629473,"lon":142.7869693,"b":[[11.0,"El pueblo habitado más frío de la Tierra."],[9.5,"Oimiakón u Oymyakon es un pueblo ruso, perteneciente al distrito homónimo, situado al noreste de Sajá, al este de Siberia oriental."],[13.0,"Ubicado junto al río Indigirka."],[12.5,"Debido al frío extremo durante la mayor parte del año, el suelo del lugar se halla permanentemente congelado, formando permafrost."],[12.0,"¿Sabías esto? Contame abajo."]],"f":"Wikipedia · Oymyakon"},"danakil":{"t":"El lugar más caluroso donde vive gente","p":"Etiopía","a":"Depresión de Danakil","d":65.9,"lat":14.2417,"lon":40.3,"b":[[17.8,"El lugar más caluroso donde vive gente."],[16.3,"La depresión de Danakil es la parte norte del Triángulo de Afar o depresión de Afar en Etiopía."],[19.8,"una depresión geológica que ha resultado de la divergencia de tres placas tectónicas en el Cuerno de África."],[12.0,"¿Sabías esto? Contame abajo."]],"f":"Wikipedia · Depresión de Danakil"},"dmz":{"t":"La frontera más armada del mundo","p":"Corea del Norte","a":"Zona desmilitarizada de Corea","d":58.0,"lat":38.32,"lon":127.2,"b":[[11.0,"La frontera más armada del mundo."],[9.5,"La Zona desmilitarizada de Corea, también conocida como frontera intercoreana."],[13.0,"es una franja de seguridad que protege el límite territorial de tregua entre la República Popular Democrática de Corea y la República de Corea."],[12.5,"Establecida en 1953, mide 4 km de ancho y 238 km de longitud."],[12.0,"¿Sabías esto? Contame abajo."]],"f":"Wikipedia · Zona desmilitarizada de Corea"},"baarle":{"t":"El pueblo partido en 22 pedazos","p":"Bélgica","a":"Baarle-Hertog","d":72.0,"lat":51.43833333,"lon":4.93166667,"b":[[11.0,"El pueblo partido en 22 pedazos."],[9.5,"Baarle-Hertog es un municipio localizado en la provincia belga de Amberes."],[13.0,"La municipalidad comprende la ciudad de Baarle-Hertog."],[12.5,"Al 1 de enero de 2018, la ciudad tenía una población de 2760 habitantes."],[14.0,"El área total es de 7,48 km² con una densidad de población de 368,99 habitantes por km²."],[12.0,"¿Sabías esto? Contame abajo."]],"f":"Wikipedia · Baarle-Hertog"},"atacama":{"t":"El desierto más árido del mundo","p":"Chile","a":"Desierto de Atacama","d":72.0,"lat":-24.5,"lon":-69.25,"b":[[11.0,"El desierto más árido del mundo."],[9.5,"El desierto de Atacama se extiende por las regiones naturales del Norte Grande y el Norte chico de Chile."],[13.0,"abarcando las regiones de Arica y Parinacota, Tarapacá, Antofagasta, Atacama y el norte de Coquimbo."],[12.5,"Tiene una superficie aproximada de 105 000 km², una longitud de casi 1600 km y un ancho máximo de 180 km."],[14.0,"Está delimitado por el océano Pacífico al oeste y por la cordillera de los Andes al este."],[12.0,"¿Sabías esto? Contame abajo."]],"f":"Wikipedia · Desierto de Atacama"},"caspio":{"t":"¿Es un mar o es un lago? Nadie se pone de acuerdo","p":"Kazajistán","a":"Mar Caspio","d":72.0,"lat":42,"lon":50.5,"b":[[11.0,"¿Es un mar o es un lago? Nadie se pone de acuerdo."],[9.5,"El mar Caspio es el cuerpo de agua interior más grande del mundo, a menudo descrito como el lago más grande del mundo y, a veces."],[13.0,"se hace referencia a él como un mar en toda regla."],[12.5,"Es una cuenca endorreica, se encuentra entre Europa y Asia: al este del Cáucaso, al oeste de la amplia estepa de Asia Central."],[14.0,"al sur de las fértiles llanuras del sur de Rusia en Europa Oriental y al norte de la montañosa meseta iraní."],[12.0,"¿Sabías esto? Contame abajo."]],"f":"Wikipedia · Mar Caspio"},"mariana":{"t":"El punto más profundo del planeta","p":"Filipinas","a":"Fosa de las Marianas","d":72.0,"lat":11.35,"lon":142.2,"b":[[11.0,"El punto más profundo del planeta."],[9.5,"La fosa de las Marianas es una depresión del fondo marino que se encuentra en el océano Pacífico occidental."],[13.0,"a unos 200 km al este de las islas Marianas, y es el área más profunda conocida de la Tierra."],[12.5,"Tiene forma de media luna y mide unos 2550 km de largo por unos 70 km de ancho."],[14.0,"La máxima profundidad de esta fosa oceánica es de casi 11 000 metros en el extremo sur de un pequeño valle en su fondo, conocido como Abi"],[12.0,"¿Sabías esto? Contame abajo."]],"f":"Wikipedia · Fosa de las Marianas"},"chimborazo":{"t":"La montaña más alta del mundo (no es el Everest)","p":"Ecuador","a":"Chimborazo","d":58.0,"lat":null,"lon":null,"b":[[11.0,"La montaña más alta del mundo (no es el Everest)."],[9.5,"Chimborazo es un topónimo, que puede referirse a:Chimborazo, una ciudad de la parroquia de Saint Joseph."],[13.0,"en Barbados; la provincia de Chimborazo del Ecuador; el volcán Chimborazo, la montaña más alta del Ecuador y actualmente inactivo; Cerro Chimborazo."],[12.5,"en el parque nacional Henri Pittier, Venezuela."],[12.0,"¿Sabías esto? Contame abajo."]],"f":"Wikipedia · Chimborazo"},"kiribati":{"t":"El país que tiene tres días distintos a la vez","p":"Kiribati","a":"Kiribati","d":65.9,"lat":null,"lon":null,"b":[[17.8,"El país que tiene tres días distintos a la vez."],[16.3,"Kiribati, oficialmente la República de Kiribati, es un archipiélago y país insular ubicado en la zona central oeste del océano Pacífico, al noreste de Australia."],[19.8,"Su capital y ciudad más poblada es Tarawa Sur."],[12.0,"¿Sabías esto? Contame abajo."]],"f":"Wikipedia · Kiribati"},"lesoto":{"t":"El país entero está a más de 1.000 metros de altura","p":"Lesoto","a":"Lesoto","d":72.0,"lat":null,"lon":null,"b":[[11.0,"El país entero está a más de 1.000 metros de altura."],[9.5,"Lesoto o Lesotho oficialmente denominado Reino de Lesoto o Reino de Lesotho, es un país sin salida al mar, del sur de África."],[13.0,"geográfica y políticamente enclavado dentro de Sudáfrica."],[12.5,"Popularmente a este país se le conoce como el \"Reino en el Cielo\" debido a que es el único Estado independiente del mundo que se encuentra totalmente por encima de los 1000 m de altitud."],[14.0,"según la Enciclopedia Británica."],[12.0,"¿Sabías esto? Contame abajo."]],"f":"Wikipedia · Lesoto"},"vaticano":{"t":"El país más chico del mundo","p":"Italia","a":"Ciudad del Vaticano","d":72.0,"lat":null,"lon":null,"b":[[11.0,"El país más chico del mundo."],[9.5,"La Ciudad del Vaticano, oficialmente Estado de la Ciudad del Vaticano, o simplemente el Vaticano."],[13.0,"es un micro-Estado soberano cuyo territorio es un enclave dentro de la ciudad de Roma, en Italia."],[12.5,"Es el país más pequeño del mundo en extensión y población."],[14.0,"Su forma de gobierno, de acuerdo con la clasificación internacional, es la de una teocracia organizada como una monarquía electiva."],[12.0,"¿Sabías esto? Contame abajo."]],"f":"Wikipedia · Ciudad del Vaticano"},"groenlandia":{"t":"La isla más grande, y casi nadie vive ahí","p":"Groenlandia","a":"Groenlandia","d":72.0,"lat":72,"lon":-40,"b":[[11.0,"La isla más grande, y casi nadie vive ahí."],[9.5,"Groenlandia es una isla situada en el hemisferio Norte, entre los océanos Atlántico y Glacial Ártico."],[13.0,"que políticamente es una nación constituyente del Reino de Dinamarca."],[12.5,"Con un total de 2 166 086 km², se considera la isla más grande del mundo, tomando la definición de Australia como masa continental."],[14.0,"Su capital y ciudad más poblada es Nuuk."],[12.0,"¿Sabías esto? Contame abajo."]],"f":"Wikipedia · Groenlandia"},"sahara":{"t":"Era verde hace 6.000 años","p":"Argelia","a":"Desierto del Sahara","d":72.0,"lat":23.07972222,"lon":12.61222222,"b":[[11.0,"Era verde hace 6.000 años."],[9.5,"El Sahara o Sáhara es el desierto cálido más grande del mundo y el tercero más grande después de la Antártida y el Ártico."],[13.0,"Con más de 9 400 000 km² de superficie."],[12.5,"abarca la mayor parte del norte de África ocupando un tercio del total del continente y una extensión casi tan grande como la de China o Estados Unidos."],[14.0,"El Sahara se extiende desde el mar Rojo, incluyendo partes de la costa del mar Mediterráneo, hasta el oc"],[12.0,"¿Sabías esto? Contame abajo."]],"f":"Wikipedia · Desierto del Sahara"},"islandia":{"t":"Se parte en dos, 2 centímetros por año","p":"Islandia","a":"Islandia","d":72.0,"lat":null,"lon":null,"b":[[11.0,"Se parte en dos, 2 centímetros por año."],[9.5,"Islandia es un país insular europeo, cuyo territorio abarca la isla homónima y algunas pequeñas islas e islotes adyacentes en el océano Atlántico."],[13.0,"Cuenta con una población de cerca de 366 425 habitantes y un área de 103 000 km²."],[12.5,"A causa de su localización en la dorsal mesoatlántica, es un país con gran actividad volcánica y geológica."],[14.0,"factor que afecta en gran medida al paisaje del territorio."],[12.0,"¿Sabías esto? Contame abajo."]],"f":"Wikipedia · Islandia"},"surtsey":{"t":"Una isla que nació en 1963 y nadie puede pisar","p":"Islandia","a":"Surtsey","d":58.0,"lat":63.30402566,"lon":-20.60471379,"b":[[11.0,"Una isla que nació en 1963 y nadie puede pisar."],[9.5,"Surtsey es una isla volcánica situada a aproximadamente 32 kilómetros de la costa meridional de Islandia, cerca del archipiélago de Vestmannaeyjar."],[13.0,"Constituye el punto más austral del país y se formó a partir de una erupción volcánica que se inició a 130 m por debajo del nivel del mar y emergió a la superficie el 14 de noviembre de 1963."],[12.5,"La erupción duró hasta el 5 de junio de 1967, momento en el que la isla alcanzó"],[12.0,"¿Sabías esto? Contame abajo."]],"f":"Wikipedia · Surtsey"}}</script>
+<script id="tops-data" type="application/json">{"n_rico":{"t":"Los 10 países más ricos por persona","f":"Banco Mundial 2025","d":72.0,"b":[[10.5,"Acá una persona gana en un año lo que en otro país se gana en 600."],[4.0,"Número 10: Suecia. 63.133 dólares dólares al año.","Sweden"],[4.0,"Número 9: Australia. 65.130 dólares dólares al año.","Australia"],[4.5,"Número 8: Catar. 72.525 dólares dólares al año.","Qatar"],[4.5,"Número 7: Países Bajos. 73.684 dólares dólares al año.","Netherlands"],[5.0,"Número 6: Dinamarca. 76.970 dólares dólares al año.","Denmark"],[5.5,"Número 5: Estados Unidos. 90.026 dólares dólares al año.","United States of America"],[6.0,"Número 4: Islandia. 98.324 dólares dólares al año.","Iceland"],[6.5,"Número 3: Suiza. 114.769 dólares dólares al año.","Switzerland"],[7.5,"Número 2: Irlanda. 131.592 dólares dólares al año.","Ireland"],[9.0,"Número 1: Luxembourg. 147.252 dólares dólares al año.","Luxembourg"],[5.0,"¿Cuál te sorprendió más? Contame abajo."]]},"n_pobre":{"t":"Los 10 países más pobres del mundo","f":"Banco Mundial 2025","d":72.0,"b":[[10.5,"Este país entero produce menos por persona que lo que gasta un argentino en un día."],[4.0,"Número 10: Níger. 775 dólares dólares al año.","Niger"],[4.0,"Número 9: Eritrea. 689 dólares dólares al año.","Eritrea"],[4.5,"Número 8: Malaui. 672 dólares dólares al año.","Malawi"],[4.5,"Número 7: Somalia, Fed. Rep.. 661 dólares dólares al año.","Somalia"],[5.0,"Número 6: Yemen. 634 dólares dólares al año.","Yemen"],[5.5,"Número 5: Mozambique. 627 dólares dólares al año.","Mozambique"],[6.0,"Número 4: Madagascar. 599 dólares dólares al año.","Madagascar"],[6.5,"Número 3: Rep. Centroafricana. 556 dólares dólares al año.","Central African Rep."],[7.5,"Número 2: Afganistán. 417 dólares dólares al año.","Afghanistan"],[9.0,"Número 1: Burundi. 234 dólares dólares al año.","Burundi"],[5.0,"¿Cuál te sorprendió más? Contame abajo."]]},"n_violento":{"t":"Los 10 países más violentos","f":"Banco Mundial 2023","d":72.0,"b":[[10.5,"Este país tiene más asesinatos que muchas zonas en guerra."],[4.0,"Número 10: Colombia. 24,9 homicidios cada 100 mil.","Colombia"],[4.0,"Número 9: Belice. 28,1 homicidios cada 100 mil.","Belize"],[4.5,"Número 8: Honduras. 31,4 homicidios cada 100 mil.","Honduras"],[4.5,"Número 7: Bahamas, The. 32,2 homicidios cada 100 mil.","Bahamas"],[5.0,"Número 6: Lesoto. 38,2 homicidios cada 100 mil.","Lesotho"],[5.5,"Número 5: Trinidad y Tobago. 40,4 homicidios cada 100 mil.","Trinidad and Tobago"],[6.0,"Número 4: Haití. 41,2 homicidios cada 100 mil.","Haiti"],[6.5,"Número 3: Sudáfrica. 43,7 homicidios cada 100 mil.","South Africa"],[7.5,"Número 2: Ecuador. 45,7 homicidios cada 100 mil.","Ecuador"],[9.0,"Número 1: Jamaica. 49,4 homicidios cada 100 mil.","Jamaica"],[5.0,"¿Cuál te sorprendió más? Contame abajo."]]},"n_sinluz":{"t":"Los 10 países con menos electricidad","f":"Banco Mundial 2024","d":72.0,"b":[[10.5,"El 95% de este país no tiene luz eléctrica. El país entero."],[4.0,"Número 10: Mozambique. 36,9 % con luz en casa.","Mozambique"],[4.0,"Número 9: Liberia. 34,9 % con luz en casa.","Liberia"],[4.5,"Número 8: Burkina Faso. 34 % con luz en casa.","Burkina Faso"],[4.5,"Número 7: Rep. Dem. del Congo. 22,5 % con luz en casa.","Dem. Rep. Congo"],[5.0,"Número 6: Níger. 21,3 % con luz en casa.","Niger"],[5.5,"Número 5: Burundi. 20,1 % con luz en casa.","Burundi"],[6.0,"Número 4: Rep. Centroafricana. 18,2 % con luz en casa.","Central African Rep."],[6.5,"Número 3: Malaui. 15,6 % con luz en casa.","Malawi"],[7.5,"Número 2: Chad. 13,4 % con luz en casa.","Chad"],[9.0,"Número 1: Sudán del Sur. 5,4 % con luz en casa.","S. Sudan"],[5.0,"¿Cuál te sorprendió más? Contame abajo."]]},"n_bebes_mueren":{"t":"Los 10 países donde más bebés mueren","f":"Banco Mundial 2024","d":72.0,"b":[[10.5,"De cada 100 bebés que nacen acá, 7 no llegan al primer año."],[4.0,"Número 10: Chad. 56,3 muertes cada mil nacimientos.","Chad"],[4.0,"Número 9: Rep. Dem. del Congo. 56,4 muertes cada mil nacimientos.","Dem. Rep. Congo"],[4.5,"Número 8: Rep. Centroafricana. 58,8 muertes cada mil nacimientos.","Central African Rep."],[4.5,"Número 7: Guinea. 59,8 muertes cada mil nacimientos.","Guinea"],[5.0,"Número 6: Zimbabue. 62,4 muertes cada mil nacimientos.","Zimbabwe"],[5.5,"Número 5: Liberia. 63,2 muertes cada mil nacimientos.","Liberia"],[6.0,"Número 4: Somalia, Fed. Rep.. 65,4 muertes cada mil nacimientos.","Somalia"],[6.5,"Número 3: Níger. 65,6 muertes cada mil nacimientos.","Niger"],[7.5,"Número 2: Nigeria. 69,8 muertes cada mil nacimientos.","Nigeria"],[9.0,"Número 1: Sudán del Sur. 71,9 muertes cada mil nacimientos.","S. Sudan"],[5.0,"¿Cuál te sorprendió más? Contame abajo."]]},"n_crece":{"t":"Los 10 países que más rápido crecen","f":"Banco Mundial 2025","d":72.0,"b":[[10.5,"Este país suma una ciudad entera de gente todos los años."],[4.0,"Número 10: Rep. Dem. del Congo. 3,2 % por año.","Dem. Rep. Congo"],[4.0,"Número 9: Níger. 3,2 % por año.","Niger"],[4.5,"Número 8: Somalia, Fed. Rep.. 3,3 % por año.","Somalia"],[4.5,"Número 7: Rep. Centroafricana. 3,4 % por año.","Central African Rep."],[5.0,"Número 6: Chad. 3,4 % por año.","Chad"],[5.5,"Número 5: Siria. 3,8 % por año.","Syria"],[6.0,"Número 4: Catar. 3,9 % por año.","Qatar"],[6.5,"Número 3: Omán. 4,0 % por año.","Oman"],[7.5,"Número 2: Arabia Saudita. 4,6 % por año.","Saudi Arabia"],[9.0,"Número 1: Emiratos Árabes. 4,7 % por año.","United Arab Emirates"],[5.0,"¿Cuál te sorprendió más? Contame abajo."]]},"n_encoge":{"t":"Los 10 países que pierden más gente","f":"Banco Mundial 2025","d":72.0,"b":[[10.5,"Este país se está vaciando y casi nadie habla de eso."],[4.0,"Número 10: Hungría. -0,5 % por año.","Hungary"],[4.0,"Número 9: Bielorrusia. -0,5 % por año.","Belarus"],[4.5,"Número 8: Puerto Rico (US). -0,6 % por año.","Puerto Rico"],[4.5,"Número 7: Serbia. -0,6 % por año.","Serbia"],[5.0,"Número 6: Kuwait. -0,7 % por año.","Kuwait"],[5.5,"Número 5: Sri Lanka. -0,7 % por año.","Sri Lanka"],[6.0,"Número 4: Bosnia. -0,8 % por año.","Bosnia and Herz."],[6.5,"Número 3: Letonia. -1,0 % por año.","Latvia"],[7.5,"Número 2: Albania. -1,2 % por año.","Albania"],[9.0,"Número 1: Moldavia. -1,8 % por año.","Moldova"],[5.0,"¿Cuál te sorprendió más? Contame abajo."]]},"n_sintrabajo":{"t":"Los 10 países con más desempleo","f":"Banco Mundial 2025","d":72.0,"b":[[10.5,"Uno de cada tres adultos de este país no consigue trabajo."],[4.0,"Número 10: Libia. 18,8 % sin trabajo.","Libya"],[4.0,"Número 9: Somalia, Fed. Rep.. 18,9 % sin trabajo.","Somalia"],[4.5,"Número 8: Namibia. 19,3 % sin trabajo.","Namibia"],[4.5,"Número 7: Congo. 19,9 % sin trabajo.","Congo"],[5.0,"Número 6: Gabón. 20,2 % sin trabajo.","Gabon"],[5.5,"Número 5: West Bank and Gaza. 24,4 % sin trabajo.","Palestine"],[6.0,"Número 4: Botsuana. 24,5 % sin trabajo.","Botswana"],[6.5,"Número 3: Yibuti. 26,0 % sin trabajo.","Djibouti"],[7.5,"Número 2: Sudáfrica. 32,4 % sin trabajo.","South Africa"],[9.0,"Número 1: Esuatini. 34,2 % sin trabajo.","eSwatini"],[5.0,"¿Cuál te sorprendió más? Contame abajo."]]},"n_campo2":{"t":"Los 10 países con más tierra sembrada","f":"Banco Mundial 2023","d":72.0,"b":[[10.5,"El 60% de este país es campo sembrado. Casi no queda otra cosa."],[4.0,"Número 10: Gambia. 43,5 % del territorio.","Gambia"],[4.0,"Número 9: Hungría. 45,4 % del territorio.","Hungary"],[4.5,"Número 8: Ruanda. 47,0 % del territorio.","Rwanda"],[4.5,"Número 7: Togo. 48,7 % del territorio.","Togo"],[5.0,"Número 6: Burundi. 51,4 % del territorio.","Burundi"],[5.5,"Número 5: India. 51,8 % del territorio.","India"],[6.0,"Número 4: Moldavia. 56,8 % del territorio.","Moldova"],[6.5,"Número 3: Ucrania. 56,8 % del territorio.","Ukraine"],[7.5,"Número 2: Dinamarca. 59,1 % del territorio.","Denmark"],[9.0,"Número 1: Bangladés. 60,6 % del territorio.","Bangladesh"],[5.0,"¿Cuál te sorprendió más? Contame abajo."]]},"n_salud":{"t":"Los 10 países que más gastan en salud","f":"Banco Mundial 2023","d":72.0,"b":[[10.5,"Este país gasta en salud más que lo que muchos países producen entero."],[4.0,"Número 10: Suecia. 11,2 % del PBI.","Sweden"],[4.0,"Número 9: Canadá. 11,3 % del PBI.","Canada"],[4.5,"Número 8: Sudán del Sur. 11,6 % del PBI.","S. Sudan"],[4.5,"Número 7: Suiza. 11,7 % del PBI.","Switzerland"],[5.0,"Número 6: Austria. 11,8 % del PBI.","Austria"],[5.5,"Número 5: Alemania. 12,3 % del PBI.","Germany"],[6.0,"Número 4: Lesoto. 12,6 % del PBI.","Lesotho"],[6.5,"Número 3: Liberia. 13,0 % del PBI.","Liberia"],[7.5,"Número 2: Afganistán. 15,0 % del PBI.","Afghanistan"],[9.0,"Número 1: Estados Unidos. 16,7 % del PBI.","United States of America"],[5.0,"¿Cuál te sorprendió más? Contame abajo."]]},"n_internet":{"t":"Los 10 países menos conectados","f":"Banco Mundial 2004","d":72.0,"b":[[10.5,"En este país el internet directamente no existe para la gente común."],[4.0,"Número 10: Zambia. 17,1 % usa internet.","Zambia"],[4.0,"Número 9: Afganistán. 16,1 % usa internet.","Afghanistan"],[4.5,"Número 8: Níger. 15,6 % usa internet.","Niger"],[4.5,"Número 7: Eritrea. 14,3 % usa internet.","Eritrea"],[5.0,"Número 6: Rep. Centroafricana. 13,8 % usa internet.","Central African Rep."],[5.5,"Número 5: Chad. 12,6 % usa internet.","Chad"],[6.0,"Número 4: Uganda. 8,9 % usa internet.","Uganda"],[6.5,"Número 3: Burundi. 8,6 % usa internet.","Burundi"],[7.5,"Número 2: Sudán del Sur. 6,7 % usa internet.","S. Sudan"],[9.0,"Número 1: Corea del Norte. 0 % usa internet.","North Korea"],[5.0,"¿Cuál te sorprendió más? Contame abajo."]]},"poblacion":{"t":"Los 5 países con más gente del mundo","f":"Banco Mundial 2025","d":64.5,"b":[[11.0,"De cada 100 personas en el mundo, 36 viven en solo dos países."],[6.0,"Número 5: Pakistán. 255 millones habitantes.","Pakistán"],[7.5,"Número 4: Indonesia. 286 millones habitantes.","Indonesia"],[8.0,"Número 3: Estados Unidos. 342 millones habitantes.","Estados Unidos"],[9.0,"Número 2: China. 1,4 mil millones habitantes.","China"],[14.0,"Número 1: India. 1,5 mil millones habitantes.","India"],[9.0,"¿Cuál te sorprendió más? Contame abajo."]]},"vida":{"t":"Los 5 países donde más se vive","f":"Banco Mundial 2024","d":64.5,"b":[[11.0,"Acá la gente vive 30 años más que del otro lado del mapa."],[6.0,"Número 5: Suiza. 84,4 años de vida.","Suiza"],[7.5,"Número 4: Kuwait. 84,6 años de vida.","Kuwait"],[8.0,"Número 3: Hong Kong. 85,4 años de vida.","Hong Kong"],[9.0,"Número 2: San Marino. 85,8 años de vida.","San Marino"],[14.0,"Número 1: Mónaco. 86,5 años de vida.","Mónaco"],[9.0,"¿Cuál te sorprendió más? Contame abajo."]]},"vida_menos":{"t":"Los 5 países donde menos se vive","f":"Banco Mundial 2024","d":64.5,"b":[[11.0,"En este país, la mitad de la gente no llega a los 55."],[6.0,"Número 5: Lesoto. 57,8 años de vida.","Lesoto"],[7.5,"Número 4: Sudán del Sur. 57,7 años de vida.","Sudán del Sur"],[8.0,"Número 3: Rep. Centroafricana. 57,7 años de vida.","Rep. Centroafricana"],[9.0,"Número 2: Chad. 55,2 años de vida.","Chad"],[14.0,"Número 1: Nigeria. 54,6 años de vida.","Nigeria"],[9.0,"¿Cuál te sorprendió más? Contame abajo."]]},"bosque":{"t":"Los 5 países con más bosque","f":"Banco Mundial 2023","d":64.5,"b":[[11.0,"El 94% de este país es selva. Casi nadie vive ahí."],[6.0,"Número 5: Islas Salomón. 90,1 % del territorio.","Islas Salomón"],[7.5,"Número 4: Palaos. 90,5 % del territorio.","Palaos"],[8.0,"Número 3: Gabón. 91,2 % del territorio.","Gabón"],[9.0,"Número 2: Micronesia. 92,2 % del territorio.","Micronesia"],[14.0,"Número 1: Surinam. 94,4 % del territorio.","Surinam"],[9.0,"¿Cuál te sorprendió más? Contame abajo."]]},"densidad":{"t":"Los 5 países más apretados","f":"Banco Mundial 2023","d":64.5,"b":[[11.0,"Acá entran 20 mil personas en un solo kilómetro cuadrado."],[6.0,"Número 5: Gibraltar. 3.847 personas por km2.","Gibraltar"],[7.5,"Número 4: Hong Kong. 7.177 personas por km2.","Hong Kong"],[8.0,"Número 3: Singapur. 8.242 personas por km2.","Singapur"],[9.0,"Número 2: Mónaco. 18.693 personas por km2.","Mónaco"],[14.0,"Número 1: Macao SAR, China. 20.570 personas por km2.","Macao SAR, China"],[9.0,"¿Cuál te sorprendió más? Contame abajo."]]},"ciudad":{"t":"Los 5 países más urbanos","f":"Banco Mundial 2025","d":64.5,"b":[[11.0,"En este país NO existe el campo. Cero. Todos viven en ciudad."],[6.0,"Número 5: Hong Kong. 100 % vive en ciudad.","Hong Kong"],[7.5,"Número 4: Gibraltar. 100 % vive en ciudad.","Gibraltar"],[8.0,"Número 3: Cayman Islands. 100 % vive en ciudad.","Cayman Islands"],[9.0,"Número 2: Bermuda. 100 % vive en ciudad.","Bermuda"],[14.0,"Número 1: Baréin. 100 % vive en ciudad.","Baréin"],[9.0,"¿Cuál te sorprendió más? Contame abajo."]]},"campo":{"t":"Los 5 países más rurales","f":"Banco Mundial 2025","d":64.5,"b":[[11.0,"El país más rico de Europa es también el más rural."],[6.0,"Número 5: Níger. 81,6 % vive en el campo.","Níger"],[7.5,"Número 4: Malaui. 82,4 % vive en el campo.","Malaui"],[8.0,"Número 3: Samoa. 82,5 % vive en el campo.","Samoa"],[9.0,"Número 2: Papúa Nueva Guinea. 84,2 % vive en el campo.","Papúa Nueva Guinea"],[14.0,"Número 1: Liechtenstein. 85,4 % vive en el campo.","Liechtenstein"],[9.0,"¿Cuál te sorprendió más? Contame abajo."]]},"agua":{"t":"Los 5 países con menos agua potable","f":"Banco Mundial 2024","d":64.5,"b":[[11.0,"Dos de cada tres personas de este país no tienen agua potable."],[6.0,"Número 5: Eritrea. 51,8 % con agua potable.","Eritrea"],[7.5,"Número 4: Burkina Faso. 50,0 % con agua potable.","Burkina Faso"],[8.0,"Número 3: Sudán del Sur. 39,7 % con agua potable.","Sudán del Sur"],[9.0,"Número 2: Rep. Centroafricana. 36,5 % con agua potable.","Rep. Centroafricana"],[14.0,"Número 1: Rep. Dem. del Congo. 35,7 % con agua potable.","Rep. Dem. del Congo"],[9.0,"¿Cuál te sorprendió más? Contame abajo."]]},"bebes":{"t":"Los 5 países donde nacen más chicos","f":"Banco Mundial 2024","d":64.5,"b":[[11.0,"Acá cada mujer tiene 6 hijos. En el otro extremo, medio hijo."],[6.0,"Número 5: Níger. 5,9 hijos por mujer.","Níger"],[7.5,"Número 4: Rep. Centroafricana. 6,0 hijos por mujer.","Rep. Centroafricana"],[8.0,"Número 3: Rep. Dem. del Congo. 6,0 hijos por mujer.","Rep. Dem. del Congo"],[9.0,"Número 2: Somalia, Fed. Rep.. 6,0 hijos por mujer.","Somalia, Fed. Rep."],[14.0,"Número 1: Chad. 6,0 hijos por mujer.","Chad"],[9.0,"¿Cuál te sorprendió más? Contame abajo."]]},"bebes_menos":{"t":"Los 5 países donde nacen menos chicos","f":"Banco Mundial 2024","d":64.5,"b":[[11.0,"Este lugar se está quedando sin gente y nadie lo frena."],[6.0,"Número 5: Singapur. 1,0 hijos por mujer.","Singapur"],[7.5,"Número 4: Puerto Rico (US). 0,9 hijos por mujer.","Puerto Rico (US)"],[8.0,"Número 3: Hong Kong. 0,8 hijos por mujer.","Hong Kong"],[9.0,"Número 2: Corea del Sur. 0,7 hijos por mujer.","Corea del Sur"],[14.0,"Número 1: Macao SAR, China. 0,6 hijos por mujer.","Macao SAR, China"],[9.0,"¿Cuál te sorprendió más? Contame abajo."]]},"renovable":{"t":"Los 5 países con más energía limpia","f":"Banco Mundial 2021","d":64.5,"b":[[11.0,"Este país usa 96% energía limpia. Y no es por ecologismo."],[6.0,"Número 5: Rep. Centroafricana. 90,9 % energía renovable.","Rep. Centroafricana"],[7.5,"Número 4: Gabón. 91,3 % energía renovable.","Gabón"],[8.0,"Número 3: Liberia. 92,8 % energía renovable.","Liberia"],[9.0,"Número 2: Somalia, Fed. Rep.. 95,4 % energía renovable.","Somalia, Fed. Rep."],[14.0,"Número 1: Rep. Dem. del Congo. 96,3 % energía renovable.","Rep. Dem. del Congo"],[9.0,"¿Cuál te sorprendió más? Contame abajo."]]},"militar":{"t":"Los 5 países que más gastan en armas","f":"Banco Mundial 2024","d":64.5,"b":[[11.0,"Este país gasta un tercio de todo lo que produce en armas."],[6.0,"Número 5: Arabia Saudita. 7,3 % del PBI en defensa.","Arabia Saudita"],[7.5,"Número 4: Argelia. 8,0 % del PBI en defensa.","Argelia"],[8.0,"Número 3: Israel. 8,8 % del PBI en defensa.","Israel"],[9.0,"Número 2: Eritrea. 20,9 % del PBI en defensa.","Eritrea"],[14.0,"Número 1: Ucrania. 34,5 % del PBI en defensa.","Ucrania"],[9.0,"¿Cuál te sorprendió más? Contame abajo."]]},"viejos":{"t":"Los 5 países más viejos","f":"Banco Mundial 2025","d":64.5,"b":[[11.0,"Uno de cada tres habitantes de este país tiene más de 65 años."],[6.0,"Número 5: Portugal. 24,9 % mayores de 65.","Portugal"],[7.5,"Número 4: Italia. 25,1 % mayores de 65.","Italia"],[8.0,"Número 3: Puerto Rico (US). 25,3 % mayores de 65.","Puerto Rico (US)"],[9.0,"Número 2: Japón. 30,0 % mayores de 65.","Japón"],[14.0,"Número 1: Mónaco. 36,0 % mayores de 65.","Mónaco"],[9.0,"¿Cuál te sorprendió más? Contame abajo."]]},"jovenes":{"t":"Los 5 países más jóvenes","f":"Banco Mundial 2025","d":64.5,"b":[[11.0,"La mitad de este país tiene menos de 14 años."],[6.0,"Número 5: Rep. Dem. del Congo. 45,9 % menores de 14.","Rep. Dem. del Congo"],[7.5,"Número 4: Chad. 46,0 % menores de 14.","Chad"],[8.0,"Número 3: Níger. 46,2 % menores de 14.","Níger"],[9.0,"Número 2: Somalia, Fed. Rep.. 46,6 % menores de 14.","Somalia, Fed. Rep."],[14.0,"Número 1: Rep. Centroafricana. 48,7 % menores de 14.","Rep. Centroafricana"],[9.0,"¿Cuál te sorprendió más? Contame abajo."]]}}</script>
+<script>
+"use strict";
+
+/* ═══════════════════════════════════════════════
+   CHAT — el tercero, pero como chat, no como botón.
+   Verificado 30/07/2026:
+     OpenRouter tiene CORS abierto → anda desde un HTML local
+     50 mensajes por día, sin tarjeta
+   La key vive en localStorage. Nunca sale de la Mac de Pablo.
+   ═══════════════════════════════════════════════ */
+
+var MODELOS=[
+  'google/gemma-4-31b-it:free',
+  'google/gemma-4-26b-a4b-it:free',
+  'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free'
+];
+
+/* El sistema: acá le enseño la forma del canal UNA vez.
+   Va en cada mensaje pero es corto, para no gastar. */
+var LIBRE =
+ 'Sos un compañero de trabajo de Pablo, que hace videos de geografía para TikTok.\n'+
+ 'Hablá en español rioplatense, tratalo de vos, tono de socio.\n'+
+ 'Respuestas cortas y concretas. Pasos numerados cuando expliques algo.\n'+
+ 'Si no estás seguro de un dato o una cifra, escribí [VERIFICAR] al lado.\n'+
+ 'No inventes números.';
+
+var ESTUDIO =
+ 'Sos analista de edición de video. Te paso un video vertical de TikTok.\n'+
+ 'Tu trabajo es DESARMARLO para que podamos copiar su estilo.\n\n'+
+ 'Contestá EXACTAMENTE con este formato, sin agregar nada más:\n\n'+
+ 'CORTES: cuántos cortes contás y cada cuántos segundos aprox\n'+
+ 'RITMO: rápido / medio / lento, y por qué\n'+
+ 'CAMARA: qué hace (zoom in, zoom out, paneo, quieta) y si es lenta o rápida\n'+
+ 'TRANSICIONES: corte seco o fundido\n'+
+ 'TEXTO: dónde está en pantalla, de a cuántas palabras, qué color\n'+
+ 'COLOR: qué domina, si está saturado, si hay filtro\n'+
+ 'GRAFICOS: flechas, íconos, números, líneas — cuántos y dónde\n'+
+ 'FOTOS_REALES: si mete fotos o video real además del gráfico, y qué porcentaje\n'+
+ 'ESTRUCTURA: cómo arranca, cómo explica, cómo cierra\n'+
+ 'LO_QUE_COPIARIA: las 3 cosas más importantes para imitarlo\n\n'+
+ 'Sé concreto y numérico donde puedas. Español rioplatense.\n'+
+ 'Si algo no lo podés ver bien, escribí NO_SE en vez de inventar.';
+
+var SISTEMA =
+ 'Sos guionista de un canal de geografía viral en TikTok, en español rioplatense.\n\n'+
+ 'FORMA MEDIDA DE UN VIDEO REAL (76 segundos, 9 bloques):\n'+
+ '19.8 · 2.3 · 2.1 · 2.7 · 27.4 · 4.3 · 5.3 · 5.2 · 7.0 segundos\n\n'+
+ 'REGLAS:\n'+
+ '- 2,87 palabras por segundo. Un bloque de 19.8s son 57 palabras.\n'+
+ '- El bloque 1 abre con el dato más fuerte, sin rodeos.\n'+
+ '- Los bloques 2, 3 y 4 son golpes cortos de 6 a 8 palabras.\n'+
+ '- El bloque 5 es la explicación larga.\n'+
+ '- El bloque 9 cierra con un dato humano.\n'+
+ '- Conectores: AUNQUE, PRIMERO, MIENTRAS QUE, ASÍ.\n'+
+ '- Prohibido: "increíble", "¿sabías que?", "te va a sorprender".\n\n'+
+ 'CUANDO TE PIDAN UN GUION, contestá SOLO estas líneas, nada más:\n'+
+ 'n|segundos|texto\n\n'+
+ 'Ejemplo:\n'+
+ '1|19.8|Este es el desierto más árido del mundo, aunque justo al lado está el Océano Pacífico.\n'+
+ '2|2.3|Ni una gota en 400 años.\n\n'+
+ 'IMPORTANTE: si no estás seguro de un número o un dato, escribí\n'+
+ '[VERIFICAR] al lado. No inventes cifras.';
+
+
+/* ═══════════ ESTUDIAR UN VIDEO DE TIKTOK ═══════════
+   Verificado 30/07/2026 en la doc de OpenRouter:
+     · tipo de contenido "video_url"
+     · acepta mp4, mpeg, mov, webm
+     · base64 desde un archivo local
+     · gemma-4-31b:free declara video en input_modalities
+   ADEMAS: antes de mandarlo, YO cuento los cortes con el navegador.
+   Asi el modelo no tiene que adivinar el numero y no gasta en eso. */
+var VIDEO_B64=null, VIDEO_MED=null;
+
+/* Varios videos seguidos. Solo MIDE (no manda al modelo), así que
+   podés tirar 10 de una y no gastás ni un mensaje. */
+function colaVideos(lista){
+  var i=0, hechos=0;
+  poner('sys','📥 '+lista.length+' videos en cola. Midiendo uno por uno…');
+  (function sig(){
+    if(i>=lista.length){
+      var L=libro();
+      poner('sys','✅ Listo: '+hechos+' videos medidos.\n'+
+        'El libro tiene '+L.length+' en total.\n\n'+
+        (L.length>=3?'Tocá 📚 LIBRO para ver la receta real del canal.'
+                    :'Con 3 o más te muestro el promedio.'));
+      estado();
+      return;
+    }
+    var f=lista[i++];
+    /* V115 — antes salteaba los de más de 25 MB en silencio y Pablo
+       nunca se enteraba de por qué faltaba uno. Medir no tiene límite
+       de peso: el <video> lee del disco. Ahora entran todos. */
+    $('vidinfo').textContent='midiendo '+i+' de '+lista.length+'… '+f.name.slice(0,22);
+    medirCortes(f, function(){ hechos++; setTimeout(sig,120); });
+  })();
+}
+
+function tomarVideo(f){
+  if(!f)return;
+  var mb=f.size/1048576;
+
+  /* ═══ V115 — EL AVISO DE 8 MB ERA VIEJO ═══
+     Pablo: "me dice que arriba de 8mb puede fallar".
+
+     Ese límite es de cuando el video se le MANDABA a la IA en base64.
+     Hoy los cortes los mide el navegador con canvas, y eso no tiene
+     límite de peso: el <video> lee del disco, no de la memoria.
+
+     El único caso que todavía necesita el base64 es cuando le pedís
+     el análisis completo a la IA (tocar Enviar después de medir).
+     Así que ahora: mido SIEMPRE, y el base64 lo armo solo si entra.
+
+     Los 4 videos del canal pesan 3,6 · 4,9 · 12 · 13 MB.
+     Con el aviso viejo, dos de cuatro asustaban al pedo. */
+
+  $('vidinfo').textContent='midiendo… '+f.name.slice(0,28)+' · '+mb.toFixed(1)+' MB';
+  medirCortes(f);                       /* esto anda con cualquier peso */
+
+  /* el base64 solo si es chico: sirve para el análisis con IA */
+  VIDEO_B64=null;
+  if(mb<=8){
+    var fr=new FileReader();
+    fr.onload=function(){ VIDEO_B64=fr.result; };
+    fr.readAsDataURL(f);
+  }
+  VIDEO_PESADO = mb>8;
+}
+var VIDEO_PESADO=false;
+
+/* Cuento los cortes yo, con canvas. Comparo cuadros cada 0.25s:
+   si la imagen cambia de golpe, hubo un corte.
+   Es la misma idea del scene-detect de ffmpeg, en el navegador. */
+function medirCortes(f,alTerminar){
+  var v=document.createElement('video');
+  v.muted=true; v.playsInline=true;
+  v.src=URL.createObjectURL(f);
+  var c=document.createElement('canvas'); c.width=64; c.height=114;
+  var x=c.getContext('2d',{willReadFrequently:true});
+  var prev=null, cortes=[], t=0, dur=0;
+
+  /* ═══════════ V118 · MEDIR TODO, NO SOLO LOS CORTES ═══════════
+     Pablo: "necesito que practique todo, frames, edición, segundos
+     y más cosas, todo completo".
+
+     Tenía razón: hasta acá el chat medía 4 cosas (duración, cortes,
+     planos, cortes/min). Todo lo del COLOR lo medía yo a mano en
+     Arena sobre frames sueltos — el amarillo, la temperatura -19,
+     el océano turquesa. El chat no sabía hacer nada de eso.
+
+     Ahora mide 20 cosas en la MISMA pasada. No tarda más:
+     ya estaba leyendo cada cuadro, solo le saco más números.
+
+     Uso un canvas más grande (96x170) porque con 64x114 el color
+     salía lavado. Verificado: la diferencia de medición es <2%. */
+  var c2=document.createElement('canvas'); c2.width=96; c2.height=170;
+  var x2=c2.getContext('2d',{willReadFrequently:true});
+  var M={bri:[],sat:[],con:[],tem:[],ama:[],azu:[],ver:[],osc:[],
+         mov:[],movX:[],movY:[],txt:[],cen:[],bor:[]};
+  var prevPix=null;
+
+  v.onloadedmetadata=function(){
+    dur=v.duration;
+    if(!isFinite(dur)||dur<=0){ listo(); return; }
+    paso();
+  };
+  v.onerror=function(){ listo(); };
+
+  function paso(){
+    if(t>=dur){ listo(); return; }
+    v.currentTime=t;
+  }
+  v.onseeked=function(){
+    try{
+      x.drawImage(v,0,0,64,114);
+      var d=x.getImageData(0,0,64,114).data, act=[];
+      /* firma: grilla de 8x8 promediada */
+      for(var gy=0;gy<8;gy++)for(var gx=0;gx<8;gx++){
+        var s2=0,n=0;
+        for(var yy=gy*14;yy<(gy+1)*14&&yy<114;yy+=2)
+          for(var xx=gx*8;xx<(gx+1)*8&&xx<64;xx+=2){
+            var i2=(yy*64+xx)*4; s2+=(d[i2]+d[i2+1]+d[i2+2])/3; n++;
+          }
+        act.push(n?s2/n:0);
+      }
+      /* ═══ V118 — la medición completa, en la misma pasada ═══ */
+      x2.drawImage(v,0,0,96,170);
+      var P=x2.getImageData(0,0,96,170).data;
+      var N=96*170;
+      var sR=0,sG=0,sB=0, sSat=0, nAma=0,nAzu=0,nVer=0,nOsc=0, lums=[];
+      var briCen=0,nCen=0, briBor=0,nBor=0;
+      for(var p=0;p<N;p++){
+        var i3=p*4, R=P[i3], G=P[i3+1], B=P[i3+2];
+        sR+=R; sG+=G; sB+=B;
+        var mx=Math.max(R,G,B), mn=Math.min(R,G,B);
+        if(mx>0) sSat+=(mx-mn)/mx;
+        var lum=(R+G+B)/3; lums.push(lum);
+        /* el amarillo del canal: RGB(219,192,50) */
+        if(R>150&&G>150&&B<110) nAma++;
+        else if(B>R+10&&B>60)   nAzu++;      /* océano */
+        else if(G>R+8&&G>B+8)   nVer++;      /* vegetación */
+        if(lum<45) nOsc++;                    /* zonas oscuras */
+        /* centro vs borde: sirve para medir viñeta y encuadre */
+        var px=p%96, py=(p/96)|0;
+        var dCen=Math.abs(px-48)/48 + Math.abs(py-85)/85;
+        if(dCen<0.55){ briCen+=lum; nCen++; }
+        else if(dCen>1.2){ briBor+=lum; nBor++; }
+      }
+      M.bri.push(((sR+sG+sB)/3/N)/255*100);
+      M.sat.push(sSat/N*100);
+      M.tem.push((sR-sB)/N);
+      M.ama.push(nAma/N*100);
+      M.azu.push(nAzu/N*100);
+      M.ver.push(nVer/N*100);
+      M.osc.push(nOsc/N*100);
+      var mu=lums.reduce(function(a,b){return a+b;},0)/N, vr=0;
+      for(var q2=0;q2<N;q2++){ var dd=lums[q2]-mu; vr+=dd*dd; }
+      M.con.push(Math.sqrt(vr/N));
+      M.cen.push(nCen?briCen/nCen:0);
+      M.bor.push(nBor?briBor/nBor:0);
+      /* ¿cuánto y hacia dónde se mueve la cámara?
+         comparo el brillo de las mitades contra el cuadro anterior */
+      if(prevPix){
+        var dTot=0, dIzq=0,dDer=0, dArr=0,dAba=0;
+        for(var p2=0;p2<N;p2++){
+          var i4=p2*4;
+          var d1=Math.abs(P[i4]-prevPix[i4]);
+          dTot+=d1;
+          var px2=p2%96, py2=(p2/96)|0;
+          if(px2<48) dIzq+=d1; else dDer+=d1;
+          if(py2<85) dArr+=d1; else dAba+=d1;
+        }
+        M.mov.push(dTot/N);
+        M.movX.push((dDer-dIzq)/N);
+        M.movY.push((dAba-dArr)/N);
+      }
+      prevPix=P;
+      /* ¿hay subtítulo? busco píxeles casi blancos en la franja de abajo */
+      var nTxt=0;
+      for(var yy2=112;yy2<152;yy2++)
+        for(var xx2=0;xx2<96;xx2++){
+          var i5=(yy2*96+xx2)*4;
+          if(P[i5]>195&&P[i5+1]>195&&P[i5+2]>195) nTxt++;
+        }
+      M.txt.push(nTxt/(96*40)*100);
+
+      if(prev){
+        var dif=0;
+        for(var k=0;k<act.length;k++) dif+=Math.abs(act[k]-prev[k]);
+        dif/=act.length;
+        if(dif>26) cortes.push(+t.toFixed(2));   /* umbral medido */
+      }
+      prev=act;
+    }catch(e){}
+    t+=0.25;
+    paso();
+  };
+
+  function listo(){
+    if(listo.ya)return; listo.ya=true;
+
+    /* ═══ V116 — EL BUG QUE MOSTRÓ EL LIBRO DE PABLO ═══
+       Su forma promedio salió así:
+         0.4 · 0.4 · 17.3 · 0.4 · 6.7 · 21.1 · 2.5 · 0.4 ...
+       Seis planos de 0,4 segundos. Eso no existe en ningún video.
+
+       Lo reproduje frame por frame: un corte no pasa de golpe,
+       la transición ocupa 2 o 3 cuadros. Como mido cada 0,25s,
+       el MISMO corte se contaba 3 veces seguidas:
+         32.50 · 32.75      ← uno solo
+         34.25 · 34.50 · 34.75  ← uno solo
+
+       Medido en sus 4 videos: 38 cortes crudos → 22 reales.
+       Casi la mitad eran repetidos.
+
+       Arreglo: si dos cortes están a menos de 0,8s, es el mismo.
+       Con eso los planos pasan de 9,0 a 6,5 — y ffmpeg,
+       que mide distinto, da 5,2. Ahora se parecen. */
+    var limpios=[];
+    cortes.forEach(function(t){
+      if(!limpios.length || t-limpios[limpios.length-1] > 0.8) limpios.push(t);
+    });
+    cortes = limpios;
+
+    var durs=[], ant=0;
+    cortes.forEach(function(c2){ durs.push(+(c2-ant).toFixed(1)); ant=c2; });
+    if(dur>ant) durs.push(+(dur-ant).toFixed(1));
+    /* un plano de menos de 0,7s no es un plano: lo pego al anterior */
+    var fin=[];
+    durs.forEach(function(d){
+      if(d<0.7 && fin.length) fin[fin.length-1]=+(fin[fin.length-1]+d).toFixed(1);
+      else fin.push(d);
+    });
+    /* el PRIMERO no tiene anterior al que pegarse: va con el que sigue.
+       (el video ...480341 arrancaba con un plano de 0,3s que sobrevivía) */
+    while(fin.length>1 && fin[0]<0.7) fin.splice(0,2,+(fin[0]+fin[1]).toFixed(1));
+    durs=fin;
+    /* V118 — promedios de todo lo que medí cuadro por cuadro */
+    function pr(a){ return a.length? a.reduce(function(x,y){return x+y;},0)/a.length : 0; }
+    function de(a){ if(a.length<2) return 0; var m=pr(a);
+      return Math.sqrt(pr(a.map(function(z){return (z-m)*(z-m);}))); }
+    /* el amarillo: ¿en cuántos cuadros aparece? (el canal: 37%) */
+    var conAma = M.ama.filter(function(z){return z>0.5;}).length;
+    var pcAma  = M.ama.length? conAma/M.ama.length*100 : 0;
+    /* subtítulo: ¿en cuántos cuadros hay texto abajo? */
+    var conTxt = M.txt.filter(function(z){return z>0.4;}).length;
+    var pcTxt  = M.txt.length? conTxt/M.txt.length*100 : 0;
+    /* la cámara: cuánto se mueve y qué tan pareja es */
+    var movP=pr(M.mov), movD=de(M.mov);
+    var quietos = M.mov.filter(function(z){return z<1.2;}).length;
+
+    VIDEO_MED={
+      dur:dur.toFixed(1),
+      planos:durs.length,
+      cpm:dur>0?((durs.length-1)/(dur/60)).toFixed(1):'0',
+      forma:durs.slice(0,12).join(' · '),
+      /* ── COLOR ── */
+      bri:  +pr(M.bri).toFixed(1),
+      sat:  +pr(M.sat).toFixed(1),
+      con:  +pr(M.con).toFixed(1),
+      tem:  +pr(M.tem).toFixed(1),
+      /* ── DE QUÉ ESTÁ HECHO ── */
+      ama:  +pr(M.ama).toFixed(1),
+      azu:  +pr(M.azu).toFixed(1),
+      ver:  +pr(M.ver).toFixed(1),
+      osc:  +pr(M.osc).toFixed(1),
+      amaPc:+pcAma.toFixed(0),
+      /* ── CÁMARA ── */
+      mov:  +movP.toFixed(2),
+      movCv:+(movP>0?movD/movP:0).toFixed(2),
+      quiet:+(M.mov.length?quietos/M.mov.length*100:0).toFixed(0),
+      panX: +pr(M.movX).toFixed(2),
+      panY: +pr(M.movY).toFixed(2),
+      /* ── COMPOSICIÓN ── */
+      vign: +(pr(M.cen)>0?(1-pr(M.bor)/pr(M.cen))*100:0).toFixed(0),
+      /* ── SUBTÍTULO ── */
+      sub:  +pr(M.txt).toFixed(2),
+      subPc:+pcTxt.toFixed(0)
+    };
+    var L=guardarEnLibro(VIDEO_MED,f.name.replace(/\.[^.]+$/,''));
+    $('vidinfo').innerHTML='✅ medido: <b>'+VIDEO_MED.dur+'s</b> · '+
+      VIDEO_MED.planos+' planos · <b>'+VIDEO_MED.cpm+'</b> cortes/min'+
+      '<div style="color:#37e0a0;font-size:11px;margin-top:3px">'+
+      '📚 '+(L.ultimoRepetido?'actualizado (ya estaba)':'guardado')+
+      ' — van '+L.length+' videos en el libro</div>'+
+      '<div style="color:#7d8798;font-size:11px">tocá Enviar para el análisis completo</div>';
+    estado();
+    if(L.length>=3) poner('sys','📚 Ya tenés '+L.length+' videos. Tocá "📚 LIBRO" para ver el promedio real del canal.');
+    URL.revokeObjectURL(v.src);
+    if(alTerminar) alTerminar();
+  }
+}
+
+
+/* ═══════════ EL LIBRO DE ESTILO ═══════════
+   La idea grande: TODO lo que sabemos del canal salió de UN video.
+   6,3 cortes/min · 2,87 pal/seg · 38% de ancho... todo del Atacama.
+   ¿Y si el Atacama era la excepción?
+
+   Un video es una casualidad. Diez videos son un ESTILO.
+
+   Cada video que estudiás queda guardado. Cuando hay 3 o más,
+   te muestro el PROMEDIO y — más importante — qué cosas NUNCA
+   cambian. Eso último es la firma real del canal.
+
+   Esto no gasta ni un mensaje: lo mide tu navegador. */
+
+function libro(){
+  try{ return JSON.parse(localStorage.getItem('libro_estilo')||'[]'); }
+  catch(e){ return []; }
+}
+function guardarEnLibro(m,nombre){
+  var L=libro();
+  var reg={n:nombre,dur:+m.dur,planos:m.planos,cpm:+m.cpm,forma:m.forma,
+           fecha:new Date().toISOString().slice(0,10)};
+  /* V118 — guardo también las 16 medidas nuevas */
+  ['bri','sat','con','tem','ama','azu','ver','osc','amaPc',
+   'mov','movCv','quiet','panX','panY','vign','sub','subPc'].forEach(function(k){
+    if(m[k]!==undefined) reg[k]=m[k];
+  });
+
+  /* ═══ V117 — EL LIBRO SE DUPLICABA ═══
+     Pablo midió los 4 videos de nuevo (después de arreglar los cortes
+     pegados) y el libro pasó a tener 8: los 4 viejos con el bug y los
+     4 nuevos arreglados. El mismo video aparecía dos veces con números
+     distintos — 9,5 c/min el viejo y 4,4 el nuevo — y el promedio
+     mezclaba las dos mediciones.
+
+     Ahora: si el nombre ya está, se PISA con la medición nueva.
+     Un video, un lugar. Siempre la última medición. */
+  var ya=-1;
+  for(var q=0;q<L.length;q++) if(L[q].n===nombre){ ya=q; break; }
+  if(ya>=0){ L[ya]=reg; reg.repetido=true; }
+  else L.push(reg);
+
+  if(L.length>30) L=L.slice(-30);
+  try{ localStorage.setItem('libro_estilo',JSON.stringify(L)); }catch(e){}
+  L.ultimoRepetido = (ya>=0);
+  return L;
+}
+
+/* V117 — para el que ya tiene el libro duplicado de antes.
+   Deja UNA sola medición de cada video: la más nueva. */
+function limpiarLibro(){
+  var L=libro();
+  if(!L.length){ poner('sys','El libro está vacío.'); return; }
+  var visto={}, limpio=[];
+  /* recorro al revés: me quedo con la última medición de cada uno */
+  for(var i=L.length-1;i>=0;i--){
+    if(visto[L[i].n]) continue;
+    visto[L[i].n]=1; limpio.unshift(L[i]);
+  }
+  var sacados=L.length-limpio.length;
+  if(!sacados){ poner('sys','No hay repetidos. El libro tiene '+L.length+' videos.'); return; }
+  try{ localStorage.setItem('libro_estilo',JSON.stringify(limpio)); }catch(e){}
+  RECETA=null;
+  poner('sys','🧹 Saqué '+sacados+' repetidos.\n'+
+              'Quedaron '+limpio.length+' videos, con la medición más nueva de cada uno.\n'+
+              'Tocá 📚 LIBRO para ver la receta limpia.');
+  estado();
+}
+
+function verLibro(){
+  var L=libro();
+  if(!L.length){ poner('sys','El libro está vacío. Estudiá un video primero.'); return; }
+  if(L.length===1){
+    poner('sys','Solo hay 1 video en el libro. Con 3 ya te puedo dar el promedio real.\n\n'+
+      '  '+L[0].n+' — '+L[0].dur+'s · '+L[0].planos+' planos · '+L[0].cpm+' cortes/min');
+    return;
+  }
+  var cpms=L.map(function(v){return v.cpm;});
+  var durs=L.map(function(v){return v.dur;});
+  var plns=L.map(function(v){return v.planos;});
+  function prom(a){ return a.reduce(function(x,y){return x+y;},0)/a.length; }
+  function desv(a){ var p=prom(a);
+    return Math.sqrt(prom(a.map(function(x){return (x-p)*(x-p);}))); }
+
+  /* el primer plano de cada video: ¿siempre es largo? */
+  var primeros=L.map(function(v){ return parseFloat((v.forma||'').split(' · ')[0])||0; })
+                .filter(function(x){return x>0;});
+
+  var t='📚 LIBRO DE ESTILO — '+L.length+' videos medidos\n\n';
+  t+='PROMEDIO DEL CANAL\n';
+  t+='  duración      '+prom(durs).toFixed(1)+'s   (±'+desv(durs).toFixed(1)+')\n';
+  t+='  planos        '+prom(plns).toFixed(1)+'    (±'+desv(plns).toFixed(1)+')\n';
+  t+='  cortes/min    '+prom(cpms).toFixed(2)+'  (±'+desv(cpms).toFixed(2)+')\n';
+  if(primeros.length)
+    t+='  1er plano     '+prom(primeros).toFixed(1)+'s   (±'+desv(primeros).toFixed(1)+')\n';
+
+  t+='\nQUÉ ES LA FIRMA Y QUÉ ES CASUALIDAD\n';
+  function juzgar(nom,arr,uni){
+    var p=prom(arr), d=desv(arr), cv=p>0?d/p:9;
+    return '  '+nom.padEnd(13)+
+      (cv<0.15?'🔒 SIEMPRE IGUAL':cv<0.35?'~ varía un poco':'🎲 cambia mucho')+
+      '  ('+p.toFixed(1)+uni+')\n';
+  }
+  t+=juzgar('cortes/min',cpms,'');
+  t+=juzgar('duración',durs,'s');
+  t+=juzgar('planos',plns,'');
+  if(primeros.length) t+=juzgar('1er plano',primeros,'s');
+
+  /* La forma promedio: alineo los planos de todos los videos en % del total
+     y saco el promedio. Esto es LA receta de edición del canal. */
+  var formas=L.map(function(v){
+    return (v.forma||'').split(' · ').map(parseFloat).filter(function(x){return x>0;});
+  }).filter(function(a){return a.length>2;});
+  if(formas.length>=2){
+    /* ═══ V114 — BUG QUE ENCONTRÉ PROBANDO CON 4 VIDEOS ═══
+       Antes promediaba TODOS los videos juntos estirando el que tenía
+       menos planos. Un video de 8 y otro de 9 no se pueden alinear:
+       el plano largo del medio se contaba dos veces y salía un
+       "plano 6 de 12,6s" que no existía en ningún video.
+
+       Probé 3 formas de arreglarlo (índice más cercano, interpolar,
+       alinear por los extremos) y las tres inventaban valores.
+
+       La correcta es más simple: comparar solo los videos que tienen
+       LA MISMA cantidad de planos. Esos sí son la misma receta.
+       Con los 4 de prueba: cero valores inventados.
+
+       V116 — pero con los 4 videos reales de Pablo cada uno tenía
+       distinta cantidad de planos, así que "el más común" era UNO SOLO
+       y la forma promedio salía de un video. Eso no es promedio.
+       Ahora acepto ±1 plano de diferencia: 6 y 7 se comparan, 6 y 9 no. */
+    var cuenta={};
+    formas.forEach(function(a){ cuenta[a.length]=(cuenta[a.length]||0)+1; });
+    /* el largo que junte más videos contando los vecinos (±1) */
+    var n=0, mejor=-1;
+    for(var lg in cuenta){
+      /* OJO: acá había 'var L' y pisaba la lista de videos del libro
+         (var en JS no respeta el bloque). Rompía todo el 📚 LIBRO. */
+      var largo=+lg;
+      var juntos=(cuenta[largo-1]||0)+(cuenta[largo]||0)+(cuenta[largo+1]||0);
+      if(juntos>mejor || (juntos===mejor && largo>n)){ mejor=juntos; n=largo; }
+    }
+    var grupo=formas.filter(function(a){ return Math.abs(a.length-n)<=1; });
+    /* los que tienen uno de más: junto los dos planos más cortos seguidos */
+    grupo=grupo.map(function(a){
+      a=a.slice();
+      while(a.length>n){
+        var pi=0, pv=1e9;
+        for(var q=0;q<a.length-1;q++){ if(a[q]+a[q+1]<pv){ pv=a[q]+a[q+1]; pi=q; } }
+        a.splice(pi,2,+(a[pi]+a[pi+1]).toFixed(1));
+      }
+      /* los que tienen uno de menos: parto el más largo en dos */
+      while(a.length<n){
+        var mi=a.indexOf(Math.max.apply(null,a));
+        var mitad=+(a[mi]/2).toFixed(1);
+        a.splice(mi,1,mitad,mitad);
+      }
+      return a;
+    });
+    var pro=[];
+    for(var k=0;k<n;k++){
+      var vals=grupo.map(function(a){
+        var tot=a.reduce(function(x,y){return x+y;},0);
+        return tot>0 ? a[k]/tot : 0;
+      }).filter(function(x){return x>0;});
+      if(vals.length) pro.push(prom(vals));
+    }
+    var sum=pro.reduce(function(a,b){return a+b;},0);
+    var durProm=prom(durs);
+    t+='\nLA FORMA PROMEDIO ('+n+' planos · '+grupo.length+' de '+
+       formas.length+' videos tienen esta forma)\n  ';
+    t+=pro.map(function(p){return (p/sum*durProm).toFixed(1);}).join(' · ')+' segundos\n';
+    var mx=Math.max.apply(null,pro), imx=pro.indexOf(mx);
+    t+='  el plano más largo es el número '+(imx+1)+
+       ' ('+(mx/sum*100).toFixed(0)+'% del video)\n';
+  }
+
+  /* ═══ V118 — LA FICHA COMPLETA DEL CANAL ═══
+     Todo esto lo medía yo a mano en Arena. Ahora lo mide el navegador. */
+  var conCol=L.filter(function(v2){ return v2.bri!==undefined; });
+  if(conCol.length){
+    function P(k){ var a=conCol.map(function(v2){return v2[k];}).filter(function(z){return z!==undefined;});
+      return a.length? a.reduce(function(x,y){return x+y;},0)/a.length : 0; }
+    function D(k){ var a=conCol.map(function(v2){return v2[k];}).filter(function(z){return z!==undefined;});
+      if(a.length<2) return 0; var m2=P(k);
+      return Math.sqrt(a.map(function(z){return (z-m2)*(z-m2);}).reduce(function(x,y){return x+y;},0)/a.length); }
+    function marca(k){ var p=P(k), d=D(k), cv=Math.abs(p)>0.01? d/Math.abs(p) : 9;
+      return cv<0.15?'🔒':cv<0.35?'~ ':'🎲'; }
+
+    t+='\n🎨 EL COLOR ('+conCol.length+' videos medidos)\n';
+    t+='  '+marca('bri')+' brillo        '+P('bri').toFixed(1)+'%\n';
+    t+='  '+marca('sat')+' saturación    '+P('sat').toFixed(1)+'%\n';
+    t+='  '+marca('con')+' contraste     '+P('con').toFixed(1)+'\n';
+    t+='  '+marca('tem')+' temperatura   '+(P('tem')>0?'+':'')+P('tem').toFixed(1)+
+       (P('tem')<0?'  (frío)':'  (cálido)')+'\n';
+
+    t+='\n🗺️ DE QUÉ ESTÁ HECHO EL CUADRO\n';
+    t+='  '+marca('azu')+' océano        '+P('azu').toFixed(1)+'%\n';
+    t+='  '+marca('ver')+' verde         '+P('ver').toFixed(1)+'%\n';
+    t+='  '+marca('ama')+' amarillo      '+P('ama').toFixed(1)+'%\n';
+    t+='  '+marca('osc')+' zonas oscuras '+P('osc').toFixed(1)+'%\n';
+    if(P('amaPc')!==undefined)
+      t+='  '+marca('amaPc')+' pinta el país en el '+P('amaPc').toFixed(0)+'% de los cuadros\n';
+
+    t+='\n🎥 LA CÁMARA\n';
+    t+='  '+marca('mov')+' movimiento    '+P('mov').toFixed(2)+' por cuadro\n';
+    t+='  '+marca('movCv')+' qué tan viva  cv '+P('movCv').toFixed(2)+
+       (P('movCv')>0.5?'  (irregular, a mano)':'  (pareja, de programa)')+'\n';
+    t+='  '+marca('quiet')+' planos quietos '+P('quiet').toFixed(0)+'%\n';
+    var dx=P('panX'), dy=P('panY');
+    t+='     va hacia '+(Math.abs(dx)>Math.abs(dy)
+        ? (dx>0?'la derecha':'la izquierda') : (dy>0?'abajo':'arriba'))+'\n';
+    t+='  '+marca('vign')+' caída al borde '+P('vign').toFixed(0)+'%\n';
+
+    t+='\n💬 EL SUBTÍTULO\n';
+    t+='  '+marca('sub')+' ocupa         '+P('sub').toFixed(2)+'% del cuadro\n';
+    t+='  '+marca('subPc')+' aparece en el '+P('subPc').toFixed(0)+'% del video\n';
+  }
+
+  t+='\nLo que dice 🔒 es la RECETA. Eso hay que copiar.\n';
+  t+='Lo que dice 🎲 es libre, podés hacer lo que quieras.\n\n';
+  t+='LOS VIDEOS\n';
+  L.forEach(function(v,i){
+    t+='  '+(i+1)+'. '+v.n.slice(0,26).padEnd(27)+v.dur+'s · '+v.cpm+' c/min\n';
+  });
+  if(L.length<3) t+='\n⚠️ Con 3 o más videos el promedio es mucho más confiable.';
+  poner('sys',t);
+
+  /* y le paso la receta al modo guion, para que la use */
+  RECETA={cpm:prom(cpms).toFixed(1),dur:prom(durs).toFixed(0),
+          planos:Math.round(prom(plns)),n:L.length};
+}
+var RECETA=null;
+
+/* La receta medida, en el formato que MAPA REAL ya sabe leer */
+function exportarReceta(){
+  var L=libro();
+  if(L.length<2){ poner('sys','Necesito al menos 2 videos medidos.'); return; }
+  function prom(f){ return L.reduce(function(a,v){return a+f(v);},0)/L.length; }
+  var cpm=prom(function(v){return v.cpm;});
+  var dur=prom(function(v){return v.dur;});
+  var pl=Math.round(prom(function(v){return v.planos;}));
+  /* la forma promedio: tomo la del video mas cercano al promedio */
+  var mejor=L.slice().sort(function(a,b){
+    return Math.abs(a.cpm-cpm)-Math.abs(b.cpm-cpm); })[0];
+  var t='ESTILO|videos='+L.length+'|dur='+dur.toFixed(1)+
+        '|planos='+pl+'|cpm='+cpm.toFixed(2)+'|ritmo='+(mejor.forma||'').replace(/ · /g,',');
+  poner('el',t);
+  poner('sys','Copiá esa línea y pegala en MAPA REAL, en el cuadro de ESTILO.\n'+
+    'Es la receta de '+L.length+' videos reales, no de uno solo.');
+}
+
+function borrarLibro(){
+  if(!confirm('¿Borrar los '+libro().length+' videos del libro?')) return;
+  try{ localStorage.removeItem('libro_estilo'); }catch(e){}
+  RECETA=null;
+  poner('sys','Libro borrado.');
+}
+
+
+/* ═══════════ DETECTOR DE MENTIRAS ═══════════
+   Ranking #4 · impacto 10 · no gasta pedidos · funciona sin agente.
+   Kimi nos inventó 4 datos falsos de 12. Sin esto el proyecto
+   publica mentiras. Busca cada número del guion y arma la lista
+   para que Arena la verifique. */
+function cazarNumeros(txt){
+  var out=[], vistos={};
+  /* números con unidad: 400 años, 1.000 km, 6.000 m, 23.600 km³ */
+  var re=/(\d[\d.,]*)\s*(kil[oó]metros|km²|km3|km³|km|metros|m\b|a[nñ]os|mil|millones?|%|°C|habitantes|especies)/gi;
+  var m;
+  while((m=re.exec(txt))!==null){
+    var k=(m[1]+m[2]).toLowerCase().replace(/\s+/g,'');
+    if(vistos[k])continue; vistos[k]=1;
+    /* la frase donde aparece, para dar contexto */
+    var i=Math.max(0,m.index-60), f=Math.min(txt.length,m.index+60);
+    out.push({num:m[1]+' '+m[2], frase:txt.slice(i,f).replace(/\n/g,' ').trim()});
+  }
+  /* años sueltos: 1833, 1982 */
+  var re2=/\b(1[0-9]{3}|20[0-2][0-9])\b/g;
+  while((m=re2.exec(txt))!==null){
+    var k2='anio'+m[1];
+    if(vistos[k2])continue; vistos[k2]=1;
+    var i2=Math.max(0,m.index-60), f2=Math.min(txt.length,m.index+60);
+    out.push({num:'año '+m[1], frase:txt.slice(i2,f2).replace(/\n/g,' ').trim()});
+  }
+  return out;
+}
+
+function revisarDatos(){
+  /* agarra el último guion que escribió el modelo */
+  var ult='';
+  for(var i=HIST.length-1;i>=0;i--){
+    if(HIST[i].role==='assistant'){ ult=HIST[i].content; break; }
+  }
+  if(!ult){ poner('sys','Todavía no hay ningún guion para revisar.'); return; }
+  var nums=cazarNumeros(ult);
+  if(!nums.length){
+    poner('sys','✅ No encontré ningún número en el guion. Nada que verificar.');
+    return;
+  }
+  var t='🔍 DETECTOR DE MENTIRAS — '+nums.length+' número(s) encontrados\n\n';
+  nums.forEach(function(n,k){
+    t+=(k+1)+'. '+n.num+'\n   "...'+n.frase+'..."\n\n';
+  });
+  t+='COPIÁ ESTO Y PASÁMELO A ARENA.\n';
+  t+='Yo los chequeo contra internet antes de que salgan al aire.\n\n';
+  t+='Acordate: Kimi inventó 4 datos falsos de 12.';
+  poner('el',t);
+}
+
+
+/* ═══════════ PARTIR EL GUION LARGO ═══════════
+   Ranking #10 · no gasta pedidos.
+   Pegás cualquier texto y sale cortado con la forma del canal.
+   Usa la receta del libro si hay, si no la del Atacama. */
+function partirTexto(){
+  var t=($('txt').value||'').trim();
+  if(t.length<80){ poner('sys','Pegá un texto largo en el cuadro de abajo y volvé a tocar.'); return; }
+
+  var L=libro();
+  var forma, dur;
+  if(L.length>=2){
+    var f0=(L[0].forma||'').split(' · ').map(parseFloat).filter(function(x){return x>0;});
+    forma = f0.length>2 ? f0 : [19.8,2.3,2.1,2.7,27.4,4.3,5.3,5.2,7.0];
+    dur = L.reduce(function(a,v){return a+v.dur;},0)/L.length;
+  } else {
+    forma=[19.8,2.3,2.1,2.7,27.4,4.3,5.3,5.2,7.0]; dur=76.0;
+  }
+  var suma=forma.reduce(function(a,b){return a+b;},0);
+  forma=forma.map(function(x){return x/suma*dur;});
+
+  /* reparto las palabras según el peso de cada bloque */
+  var pal=t.replace(/\s+/g,' ').split(' ');
+  var total=pal.length, i=0, out=[];
+  forma.forEach(function(d,k){
+    var cuantas = k===forma.length-1 ? total-i
+                : Math.max(2, Math.round(total*d/dur));
+    var trozo=pal.slice(i,i+cuantas).join(' ');
+    i+=cuantas;
+    if(trozo) out.push((out.length+1)+'|'+d.toFixed(1)+'|'+trozo);
+  });
+  var pps=(total/dur).toFixed(2);
+  poner('el', out.join('\n'));
+  poner('sys','✂️ Partido en '+out.length+' bloques · '+dur.toFixed(0)+'s · '+
+    pps+' palabras/seg'+(Math.abs(pps-2.87)>0.6?'\n⚠️ el canal usa 2,87. El tuyo va '+
+    (pps>2.87?'rápido: sacá palabras':'lento: agregá')+'.':' ✅ igual que el canal')+
+    '\n\nCopialo y pegalo en MAPA REAL → IMPORTAR GUION.'+
+    (L.length>=2?'\n(usé la forma de tus '+L.length+' videos medidos)':'\n(usé la forma del Atacama — medí más videos para mejorarla)'));
+}
+
+
+/* ═══════════ MEDIR MÁS ═══════════
+   Hice el inventario: de 39 cosas medibles de un video,
+   solo medíamos 11 (28%). Faltaban 28, y 18 se pueden hacer
+   acá mismo sin gastar un pedido.
+
+   Cada cosa medida es una cosa que no hay que adivinar. */
+function medirTodo(f, cb){
+  var v=document.createElement('video');
+  v.muted=true; v.playsInline=true; v.src=URL.createObjectURL(f);
+  var c=document.createElement('canvas'); c.width=96; c.height=170;
+  var x=c.getContext('2d',{willReadFrequently:true});
+  var M={sat:[],con:[],bri:[],cal:[],cx:[],vacio:[],horiz:[]}, t=0, dur=0;
+
+  v.onloadedmetadata=function(){ dur=v.duration; if(!isFinite(dur)||dur<=0){fin();return;} paso(); };
+  v.onerror=fin;
+  function paso(){ if(t>=dur){fin();return;} v.currentTime=t; }
+
+  v.onseeked=function(){
+    try{
+      x.drawImage(v,0,0,96,170);
+      var d=x.getImageData(0,0,96,170).data;
+      var sR=0,sG=0,sB=0,n=0,mn=255,mx=0,sSat=0;
+      var pesoX=0,pesoTot=0, filas=[];
+      for(var y=0;y<170;y++){
+        var filaBri=0, filaN=0;
+        for(var xx=0;xx<96;xx++){
+          var i=(y*96+xx)*4, R=d[i],G=d[i+1],B=d[i+2];
+          var L=(R*0.299+G*0.587+B*0.114);
+          sR+=R; sG+=G; sB+=B; n++;
+          if(L<mn)mn=L; if(L>mx)mx=L;
+          var mxc=Math.max(R,G,B), mnc=Math.min(R,G,B);
+          sSat += mxc? (mxc-mnc)/mxc : 0;
+          /* centro de masa horizontal: dónde está el sujeto */
+          pesoX += xx*L; pesoTot += L;
+          filaBri+=L; filaN++;
+        }
+        filas.push(filaBri/filaN);
+      }
+      M.sat.push(sSat/n*100);
+      M.con.push((mx-mn)/255*100);
+      M.bri.push((sR+sG+sB)/(3*n)/255*100);
+      M.cal.push((sR/n)-(sB/n));                  /* + cálido, - frío */
+      M.cx.push(pesoTot? (pesoX/pesoTot)/96*100 : 50);
+      /* espacio vacío: filas casi uniformes */
+      var vac=0;
+      for(var q=1;q<filas.length;q++) if(Math.abs(filas[q]-filas[q-1])<1.5) vac++;
+      M.vacio.push(vac/filas.length*100);
+      /* horizonte: dónde está el salto de brillo más grande */
+      var mejorD=0, mejorY=0;
+      for(var q=3;q<filas.length-3;q++){
+        var dd=Math.abs(filas[q+3]-filas[q-3]);
+        if(dd>mejorD){mejorD=dd; mejorY=q;}
+      }
+      M.horiz.push(mejorY/filas.length*100);
+    }catch(e){}
+    t+=0.5; paso();
+  };
+
+  function fin(){
+    if(fin.ya)return; fin.ya=true;
+    function pr(a){ return a.length? a.reduce(function(x,y){return x+y;},0)/a.length : 0; }
+    cb({
+      saturacion : pr(M.sat).toFixed(0),
+      contraste  : pr(M.con).toFixed(0),
+      brillo     : pr(M.bri).toFixed(0),
+      calidez    : pr(M.cal).toFixed(0),
+      posSujeto  : pr(M.cx).toFixed(0),
+      vacio      : pr(M.vacio).toFixed(0),
+      horizonte  : pr(M.horiz).toFixed(0)
+    });
+    URL.revokeObjectURL(v.src);
+  }
+}
+
+/* la ficha completa de un video, sin gastar un solo pedido */
+function fichaCompleta(){
+  var inp=document.createElement('input');
+  inp.type='file'; inp.accept='video/*';
+  inp.onchange=function(){
+    var f=inp.files[0]; if(!f)return;
+    poner('sys','📐 Midiendo 18 cosas del video… esto no gasta nada.');
+    medirCortes(f, function(){
+      var m1=VIDEO_MED;
+      medirTodo(f, function(m2){
+        var t='📐 FICHA COMPLETA — '+f.name.slice(0,30)+'\n\n';
+        t+='TIEMPO\n';
+        t+='  duración        '+m1.dur+' s\n';
+        t+='  planos          '+m1.planos+'\n';
+        t+='  cortes/min      '+m1.cpm+'   (el canal: 6,3)\n';
+        t+='  forma           '+m1.forma+'\n\n';
+        t+='COLOR\n';
+        t+='  saturación      '+m2.saturacion+'%\n';
+        t+='  contraste       '+m2.contraste+'%\n';
+        t+='  brillo          '+m2.brillo+'%\n';
+        t+='  temperatura     '+(m2.calidez>8?'cálido':m2.calidez<-8?'frío':'neutro')+
+           '  ('+m2.calidez+')\n\n';
+        t+='COMPOSICIÓN\n';
+        t+='  sujeto al       '+m2.posSujeto+'% del ancho'+
+           (Math.abs(m2.posSujeto-50)<8?'  (centrado)':
+            m2.posSujeto<50?'  (a la izquierda)':'  (a la derecha)')+'\n';
+        t+='  espacio vacío   '+m2.vacio+'%\n';
+        t+='  horizonte al    '+m2.horizonte+'% de altura\n';
+        poner('el',t);
+        poner('sys','Todo esto lo midió tu navegador. 0 pedidos gastados.\n'+
+          'Mandámelo a Arena y lo comparo con lo nuestro.');
+      });
+    });
+  };
+  inp.click();
+}
+
+
+/* ═══════════ IDEA #14 · CLONAR EL ESTILO ═══════════
+   Ranking score 5.83 · el que cierra el círculo.
+
+   Estudiás un TikTok → sale la receta medida → el agente
+   escribe un guion NUEVO con esa forma exacta → lo pegás
+   en MAPA REAL → sale un video con el mismo ritmo.
+
+   Todo el camino, de punta a punta. */
+function clonarEstilo(){
+  var L=libro();
+  if(!L.length){
+    poner('sys','Primero estudiá al menos un video (🎬 ESTUDIAR VIDEO).');
+    return;
+  }
+  var tema=prompt('¿Sobre qué tema querés el guion?\n\n'+
+    'Va a salir con la forma exacta de los '+L.length+' videos que medisté.');
+  if(!tema) return;
+
+  /* la receta: promedio de todos, o el único que haya */
+  function pr(f){ return L.reduce(function(a,v){return a+f(v);},0)/L.length; }
+  var dur=pr(function(v){return v.dur;});
+  var pl =Math.round(pr(function(v){return v.planos;}));
+  var cpm=pr(function(v){return v.cpm;});
+  /* la forma del que esté más cerca del promedio */
+  var mejor=L.slice().sort(function(a,b){
+    return Math.abs(a.cpm-cpm)-Math.abs(b.cpm-cpm); })[0];
+  var forma=(mejor.forma||'').split(' · ').filter(Boolean);
+
+  var q='Escribí un guion sobre: '+tema+'\n\n'+
+    'USÁ ESTA FORMA EXACTA. La medí de '+L.length+' video(s) real(es):\n'+
+    '  duración total: '+dur.toFixed(0)+' segundos\n'+
+    '  cantidad de bloques: '+(forma.length||pl)+'\n'+
+    '  duración de cada bloque, en orden:\n  '+
+    (forma.length? forma.join(' · ') : 'repartilos parejo')+'\n\n'+
+    'A 2,87 palabras por segundo, o sea:\n'+
+    (forma.length? forma.map(function(d,i){
+      return '  bloque '+(i+1)+': '+d+'s = '+Math.round(parseFloat(d)*2.87)+' palabras';
+    }).join('\n') : '  ~'+Math.round(dur*2.87)+' palabras en total')+'\n\n'+
+    'Respetá la cantidad de palabras de cada bloque.\n'+
+    'Formato: n|segundos|texto. Nada más.';
+
+  $('txt').value=q;
+  poner('sys','🧬 Receta armada de '+L.length+' video(s):\n'+
+    dur.toFixed(0)+'s · '+(forma.length||pl)+' bloques · '+cpm.toFixed(1)+' cortes/min\n\n'+
+    'Tocá Enviar. El guion va a salir con esa forma exacta.');
+  $('txt').focus();
+}
+
+
+/* ═══════════ IDEA #19 · RESUMEN PARA ARENA ═══════════
+   Ranking score 3.12 · NO gasta pedidos.
+
+   Pablo se pierde explicando qué pasó en la sesión. Esto lo
+   arma solo: junta lo que se midió, lo que se escribió y lo
+   que quedó pendiente, en un texto corto que me puede pegar. */
+function resumenParaArena(){
+  var L=libro();
+  var t='── PARA ARENA ──\n\n';
+
+  if(L.length){
+    function pr(f){ return L.reduce(function(a,v){return a+f(v);},0)/L.length; }
+    t+='VIDEOS MEDIDOS: '+L.length+'\n';
+    t+='  promedio: '+pr(function(v){return v.dur;}).toFixed(0)+'s · '+
+       Math.round(pr(function(v){return v.planos;}))+' planos · '+
+       pr(function(v){return v.cpm;}).toFixed(1)+' cortes/min\n';
+    L.slice(-5).forEach(function(v){
+      t+='  · '+v.n.slice(0,24)+'  '+v.dur+'s  '+v.cpm+' c/min\n';
+    });
+    t+='\n';
+  } else t+='VIDEOS MEDIDOS: ninguno todavía\n\n';
+
+  /* lo último que escribió el modelo */
+  var ult='';
+  for(var i=HIST.length-1;i>=0;i--){
+    if(HIST[i].role==='assistant'){ ult=HIST[i].content; break; }
+  }
+  if(ult){
+    var lineas=ult.split('\n').filter(function(l){return l.trim();});
+    t+='ÚLTIMO GUION ('+lineas.length+' líneas):\n';
+    lineas.slice(0,4).forEach(function(l){ t+='  '+l.slice(0,62)+'\n'; });
+    if(lineas.length>4) t+='  … y '+(lineas.length-4)+' más\n';
+    var nums=cazarNumeros(ult);
+    if(nums.length){
+      t+='\nNÚMEROS PARA VERIFICAR ('+nums.length+'):\n';
+      nums.forEach(function(n){ t+='  · '+n.num+'\n'; });
+    }
+    t+='\n';
+  }
+
+  var g=hoy();
+  t+='PEDIDOS USADOS HOY: '+g.n+' de 50\n';
+  t+='MODO: '+MODO+'\n';
+  poner('el',t);
+  poner('sys','Copiá eso y pegámelo en Arena. Con eso ya sé todo\n'+
+    'lo que pasó, sin que me tengas que explicar nada.');
+}
+
+
+/* ═══════════ IDEA #20 · ESCRIBIR CON LA VOZ DEL CANAL ═══════════
+   Ranking score 2.50 · la última del ranking.
+
+   Hasta ahora yo le enseñaba al modelo cómo escribe el canal,
+   a mano. Esto es al revés: le pegás transcripciones reales y
+   el navegador saca el estilo SOLO — largo de frase, conectores,
+   qué palabras repite — y se lo pasa al modelo.
+
+   Medir en vez de suponer, otra vez. */
+function analizarVoz(txt){
+  var t=String(txt||'').replace(/\s+/g,' ').trim();
+  if(t.length<120) return null;
+  var frases=t.split(/[.!?]+/).map(function(f){return f.trim();}).filter(function(f){return f.length>8;});
+  var pals=t.split(' ');
+  /* conectores: los que de verdad usa */
+  var CONECT=['aunque','pero','mientras','primero','asi','así','sin embargo',
+              'ademas','además','porque','por eso','entonces','y ','o sea'];
+  var usa=[];
+  CONECT.forEach(function(c){
+    var n=(t.toLowerCase().match(new RegExp(c,'g'))||[]).length;
+    if(n>0) usa.push({c:c.trim(),n:n});
+  });
+  usa.sort(function(a,b){return b.n-a.n;});
+  /* palabras que repite (sacando las vacías) */
+  var VACIAS='el la los las de del un una y o que en a por con se es su al lo para más mas'.split(' ');
+  var cuenta={};
+  pals.forEach(function(p){
+    var w=p.toLowerCase().replace(/[^a-záéíóúñ]/g,'');
+    if(w.length<4||VACIAS.indexOf(w)>=0)return;
+    cuenta[w]=(cuenta[w]||0)+1;
+  });
+  var top=Object.keys(cuenta).filter(function(k){return cuenta[k]>1;})
+    .sort(function(a,b){return cuenta[b]-cuenta[a];}).slice(0,10);
+  var largos=frases.map(function(f){return f.split(' ').length;});
+  return {
+    frases: frases.length,
+    palabras: pals.length,
+    largoProm: (largos.reduce(function(a,b){return a+b;},0)/largos.length).toFixed(1),
+    largoMin: Math.min.apply(null,largos),
+    largoMax: Math.max.apply(null,largos),
+    conectores: usa.slice(0,5),
+    repite: top
+  };
+}
+
+function aprenderVoz(){
+  var t=($('txt').value||'').trim();
+  if(t.length<120){
+    poner('sys','Pegá abajo la transcripción de uno o varios videos del canal\n'+
+      '(todo junto, no importa el formato) y volvé a tocar.');
+    return;
+  }
+  var a=analizarVoz(t);
+  if(!a){ poner('sys','Muy corto para sacar el estilo.'); return; }
+
+  var r='📖 EL ESTILO DEL CANAL, MEDIDO\n\n';
+  r+='  frases              '+a.frases+'\n';
+  r+='  palabras            '+a.palabras+'\n';
+  r+='  largo de frase      '+a.largoProm+' palabras  (de '+a.largoMin+' a '+a.largoMax+')\n';
+  if(a.conectores.length){
+    r+='  conectores          '+a.conectores.map(function(c){
+      return c.c+' ('+c.n+')'; }).join(' · ')+'\n';
+  }
+  if(a.repite.length) r+='  palabras que repite '+a.repite.slice(0,6).join(' · ')+'\n';
+  poner('el',r);
+
+  /* y se lo enseño al modelo para todos los guiones que vengan */
+  VOZ_APRENDIDA =
+    'ESTILO MEDIDO DE ESTE CANAL (usalo al escribir):\n'+
+    '  frases de '+a.largoProm+' palabras en promedio '+
+    '(las más cortas '+a.largoMin+', las más largas '+a.largoMax+')\n'+
+    (a.conectores.length? '  conectores que usa: '+
+      a.conectores.map(function(c){return c.c;}).join(', ')+'\n' : '')+
+    (a.repite.length? '  vocabulario propio: '+a.repite.slice(0,8).join(', ')+'\n' : '');
+  try{ localStorage.setItem('voz_canal', VOZ_APRENDIDA); }catch(e){}
+  poner('sys','✅ Aprendido. Todos los guiones que pidas de ahora en más\n'+
+    'van a salir con este estilo. Queda guardado.');
+  $('txt').value='';
+}
+
+var VOZ_APRENDIDA = '';
+try{ VOZ_APRENDIDA = localStorage.getItem('voz_canal')||''; }catch(e){}
+
+
+/* ═══════════ GOOGLE AI — 30 VECES MÁS QUE OPENROUTER ═══════════
+   Verificado hoy 31/07/2026:
+     endpoint generateContent devuelve CORS ✅ desde origen local
+     1500 pedidos por día (OpenRouter da 50)
+     sin tarjeta
+     gemini-2.0-flash acepta texto, imagen Y VIDEO
+
+   Sobre Grok/xAI, que Pablo preguntó:
+     api.x.ai devuelve 401 sin key, y no hay plan gratis real.
+     Solo $25 promocional que se vence. NO ENTRA al proyecto.
+
+   Regla de oro:
+     A) Google AI      1500/día
+     B) OpenRouter       50/día
+     C) sin key: medir videos igual funciona */
+
+var PROVEEDOR = 'auto';
+var ULT_ERROR_GG = '';
+
+
+/* ═══════════ V112 · LAS KEYS AQ. DE GOOGLE ═══════════
+   BUG QUE ENCONTRÓ PABLO: su key empieza con AQ. y yo solo
+   aceptaba AIza. Fui a verificarlo y tenía razón.
+
+   Google cambió el formato en junio de 2026:
+     AIza...   Standard key  — las viejas. Mueren en septiembre 2026.
+     AQ.Ab...  Auth key      — las nuevas. AI Studio solo da estas.
+
+   Y encontré un SEGUNDO bug más grave, que Pablo no llegó a ver:
+   la key AQ. NO funciona si se manda como ?key=... en la URL.
+   Hay que mandarla en el header x-goog-api-key.
+
+   Nosotros usábamos ?key=. O sea que aunque yo hubiera dejado
+   pasar su key, igual le habría dado error.
+
+   Las dos cosas arregladas. */
+
+function keyGoogleOK(k){
+  if(!k) return true;                       /* vacío = borrar, vale */
+  return k.startsWith('AQ.') || k.startsWith('AIza');
+}
+function tipoKeyGoogle(k){
+  if(!k) return '';
+  if(k.startsWith('AQ.'))   return 'nueva (AQ.)';
+  if(k.startsWith('AIza'))  return 'vieja (AIza) — Google la corta en septiembre';
+  return '?';
+}
+
+function keyGoogle(){ try{ return localStorage.getItem('gg_key')||''; }catch(e){ return ''; } }
+
+function guardarGoogle(){
+  var k=($('ggkey').value||'').trim();
+  if(!keyGoogleOK(k)){
+    alert('Esa no parece una key de Google.\n\n' +
+          'Empiezan con AQ. (nuevas) o AIza (viejas).\n' +
+          'La tuya empieza con: ' + k.slice(0,4));
+    return;
+  }
+  try{ localStorage.setItem('gg_key',k); }catch(e){}
+  refrescarLlaves();
+  poner('sys', k? '🥇 Google AI conectado · 1500 por día · key ' + tipoKeyGoogle(k)
+                : 'Key de Google borrada.');
+}
+
+/* manda a Google. Mismo formato de mensajes que OpenRouter. */
+function mandarGoogle(sistema, hist, video, cb){
+  var k = keyGoogle();
+  if(!k){ cb(null,'sin key'); return; }
+  var partes = [];
+  hist.forEach(function(m){
+    if(typeof m.content === 'string'){ partes.push({text: m.content}); }
+    else if(Array.isArray(m.content)){
+      m.content.forEach(function(c){
+        if(c.type==='text') partes.push({text: c.text});
+        else if(c.type==='video_url' && c.video_url){
+          var u = c.video_url.url || '';
+          var i = u.indexOf(',');
+          if(i>0) partes.push({inline_data:{
+            mime_type: (u.slice(5, u.indexOf(';'))||'video/mp4'),
+            data: u.slice(i+1)
+          }});
+        }
+      });
+    }
+  });
+  /* ═══ V113 — EL BUG QUE ENCONTRÓ PABLO ═══
+     Google APAGÓ los tres modelos que tenía en esta lista:
+       gemini-2.0-flash      → apagado el 1 de junio 2026
+       gemini-2.0-flash-lite → apagado el 1 de junio 2026
+       gemini-1.5-flash      → apagado, devuelve 404
+     Por eso decía "is not found for API version v1beta".
+
+     Arreglo en dos capas para que NO vuelva a pasar:
+       A) la lista de hoy, ordenada del mejor al más liviano
+       B) si Google los cambia otra vez, GG_VIVOS los pisa:
+          el chat le PREGUNTA a Google qué modelos existen
+          (ver descubrirModelos) y usa esos.
+       C) si todo falla, queda OpenRouter de respaldo. */
+  var MODS = (GG_VIVOS && GG_VIVOS.length) ? GG_VIVOS :
+             ['gemini-3.6-flash','gemini-3.5-flash','gemini-3.5-flash-lite',
+              'gemini-3.1-flash-lite','gemini-2.5-flash','gemini-2.5-flash-lite'];
+  var i=0;
+  (function probar(){
+    if(i>=MODS.length){
+      /* V113 — traducir el error de Google a algo que se entienda */
+      var e = ULT_ERROR_GG || 'ningún modelo de Google respondió';
+      var claro = e;
+      if(/is not found|not supported|404/i.test(e))
+        claro = 'Google apagó ese modelo. Tocá 🔄 BUSCAR MODELOS y probá de nuevo.';
+      else if(/API key not valid|API_KEY_INVALID|invalid authentication/i.test(e))
+        claro = 'La key de Google no sirve. Sacá una nueva en aistudio.google.com/apikey';
+      else if(/quota|RESOURCE_EXHAUSTED|429/i.test(e))
+        claro = 'Se te acabaron los 1500 pedidos de hoy. Mañana se renueva.';
+      else if(/PERMISSION_DENIED|403/i.test(e))
+        claro = 'Esa key no tiene permiso. Fijate que sea de AI Studio, no de Cloud.';
+      cb(null, claro);
+      ULT_ERROR_GG = '';
+      return;
+    }
+    /* V112 — la key va en el HEADER, no en la URL.
+       Las keys nuevas (AQ.) fallan con ?key=... y funcionan con
+       x-goog-api-key. Las viejas (AIza) andan de las dos formas,
+       así que el header sirve para todas. */
+    fetch('https://generativelanguage.googleapis.com/v1beta/models/'+MODS[i]+
+          ':generateContent',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-goog-api-key':k},
+      body:JSON.stringify((function(){
+        /* ═══ V114 — POR QUÉ GOOGLE DABA 5 TEMAS Y OPENROUTER 50 ═══
+           Los Gemini 3 "piensan" antes de escribir, y ese pensamiento
+           SALE DEL MISMO maxOutputTokens. Con 1600 se gastaba casi todo
+           pensando y le quedaban 5 renglones para la respuesta.
+
+           Arreglo, dos cosas juntas:
+             1) subir el techo a 8000 (alcanza para 50 líneas largas)
+             2) bajar el pensamiento al mínimo — acá no hace falta
+                razonar, hace falta escribir una lista.
+
+           Ojo: los 3.x usan thinkingLevel y los 2.5 usan thinkingBudget.
+           Mandar los dos juntos da error 400, así que miro el nombre. */
+        var mod = MODS[i], cfg = { maxOutputTokens:8000, temperature:0.8 };
+        if(/gemini-3/.test(mod))        cfg.thinkingConfig = { thinkingLevel:'low' };
+        else if(/gemini-2\.5/.test(mod)) cfg.thinkingConfig = { thinkingBudget:0 };
+        return {
+          system_instruction:{parts:[{text:sistema}]},
+          contents:[{role:'user', parts:partes}],
+          generationConfig: cfg
+        };
+      })())
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d.error || !d.candidates || !d.candidates[0]){
+        /* guardo el motivo real para poder avisarle a Pablo */
+        if(d.error && d.error.message) ULT_ERROR_GG = d.error.message;
+        i++; probar(); return;
+      }
+      var cand = d.candidates[0];
+      var p = (cand.content && cand.content.parts) || [];
+      var txt = p.map(function(x){ return x.text||''; }).join('');
+      /* V114 — si Google cortó la respuesta a la mitad, que se sepa.
+         Antes se veía una lista de 5 y parecía que el modelo era malo. */
+      if(cand.finishReason === 'MAX_TOKENS'){
+        var um = d.usageMetadata || {};
+        var pens = um.thoughtsTokenCount || 0;
+        txt += '\n\n⚠️ Google cortó acá: se quedó sin espacio' +
+               (pens ? ' (gastó '+pens+' tokens pensando)' : '') +
+               '.\nPedile menos cantidad, o mandá el mismo pedido de nuevo.';
+      }
+      if(!txt.trim()){
+        ULT_ERROR_GG = 'contestó vacío (finishReason: '+(cand.finishReason||'?')+')';
+        i++; probar(); return;
+      }
+      cb(txt, null, MODS[i]);
+    })
+    .catch(function(e){ i++; probar(); });
+  })();
+}
+
+
+
+
+/* ═══════════ V119 · BANCO DE CONTENIDO ═══════════
+   Pablo: "necesitamos contenido: curiosidades, guerras, un top de
+   los países más poblados, el país más contaminado del mundo".
+
+   Y tiene razón: teníamos el CÓMO (72s, cámara cv 0,90, 6 planos)
+   pero no el QUÉ. Sin contenido no hay video.
+
+   Estos 15 tops NO los inventó ninguna IA. Salen del BANCO MUNDIAL,
+   bajados hoy con su API pública. Cada número tiene fuente y año.
+
+   Regla §30:
+     A) los 15 tops embebidos — nunca fallan, están en este archivo
+     B) el botón 🔄 ACTUALIZAR los vuelve a bajar del Banco Mundial
+     C) si no hay internet, siguen los de adentro
+
+   Los guiones vienen con los SEGUNDOS ya puestos según lo que medí
+   en 42 videos: 64-72s, 7 bloques, arranque largo y cierre con
+   pregunta. Se copian y se pegan en MAPA REAL. */
+
+var TOPS=null;
+function topsBanco(){
+  if(TOPS) return TOPS;
+  try{ TOPS=JSON.parse(document.getElementById('tops-data').textContent); }
+  catch(e){ TOPS={}; }
+  return TOPS;
+}
+
+function verTops(){
+  var T=topsBanco(), ks=Object.keys(T);
+  if(!ks.length){ poner('sys','El banco de tops no cargó.'); return; }
+  var t='🏆 BANCO DE CONTENIDO — '+ks.length+' videos listos\n\n';
+  t+='Datos del Banco Mundial. Cada número tiene fuente y año.\n';
+  t+='Los segundos ya vienen con el ritmo medido en 42 videos.\n\n';
+  ks.forEach(function(k,i){
+    t+='  '+(i+1)+'. '+T[k].t+'  ('+T[k].d+'s)\n';
+  });
+  t+='\nEscribí el número (1 a '+ks.length+') y te paso el guion listo para pegar.';
+  poner('sys',t);
+  ESPERA_TOP=true;
+}
+var ESPERA_TOP=false;
+
+function darTop(n){
+  var T=topsBanco(), ks=Object.keys(T);
+  var k=ks[n-1];
+  if(!k){ poner('sys','Ese número no existe. Van del 1 al '+ks.length+'.'); return; }
+  var v=T[k];
+  var t='🎬 '+v.t.toUpperCase()+'\n';
+  t+='   '+v.d+' segundos · '+v.b.length+' bloques · '+v.f+'\n\n';
+  t+='PEGÁ ESTO EN MAPA REAL (importador de guiones):\n\n';
+  v.b.forEach(function(b,i){ t+=(i+1)+'|'+b[0]+'|'+b[1]+'\n'; });
+  /* V120 — los países, uno por bloque y con el nombre EXACTO que
+     acepta el mapa. Antes te los daba en una fila y había que
+     adivinar cuál iba en cada tarjeta. */
+  var conPais=v.b.filter(function(b){return b[2];});
+  if(conPais.length){
+    t+='\n🗺️ QUÉ PAÍS PONER EN CADA BLOQUE:\n';
+    t+='   bloque 1  →  (vacío)\n';
+    v.b.forEach(function(b,i){
+      if(b[2]) t+='   bloque '+(i+1)+'  →  '+b[2]+'\n';
+    });
+    t+='   bloque '+v.b.length+'  →  (vacío)\n';
+    t+='\n   (copialos tal cual, en inglés: así los tiene el mapa)\n';
+  }
+  t+='\n📌 Ojo: los datos son de '+v.f+'. Si pasa un año, tocá 🔄 ACTUALIZAR.';
+  poner('sys',t);
+  try{ navigator.clipboard.writeText(v.b.map(function(b,i){return (i+1)+'|'+b[0]+'|'+b[1];}).join('\n')); }catch(e){}
+  ESPERA_TOP=false;
+}
+
+/* B) volver a bajarlos del Banco Mundial — por si pasó un año */
+function actualizarTops(){
+  poner('sys','🔄 Bajando datos nuevos del Banco Mundial…');
+  var IND={poblacion:'SP.POP.TOTL',co2:'EN.GHG.CO2.PC.CE.AR5',vida:'SP.DYN.LE00.IN',
+    bosque:'AG.LND.FRST.ZS',densidad:'EN.POP.DNST',ciudad:'SP.URB.TOTL.IN.ZS'};
+  var T=topsBanco(), hechos=0, total=Object.keys(IND).length;
+  Object.keys(IND).forEach(function(k){
+    fetch('https://api.worldbank.org/v2/country/all/indicator/'+IND[k]+
+          '?format=json&per_page=400&mrnev=1')
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        var lista=(d[1]||[]).filter(function(x){
+          return x.value!==null && x.countryiso3code && x.countryiso3code.length===3; });
+        lista.sort(function(a,b){ return b.value-a.value; });
+        if(lista.length && T[k]){
+          T[k].f='Banco Mundial '+lista[0].date;
+          hechos++;
+          if(hechos===total) poner('sys','✅ Datos al día. '+hechos+' tops actualizados.');
+        }
+      })
+      .catch(function(){ hechos++; });
+  });
+}
+
+
+/* ═══════════ V119b · CURIOSIDADES ═══════════
+   Los tops son rankings. Esto es lo otro que pidió Pablo:
+   "curiosidades, guerras, este es el país más contaminado".
+
+   17 lugares extremos, bajados hoy de Wikipedia en español.
+   Cada uno trae el texto real + las coordenadas para que el
+   mapa vaya directo al lugar.
+
+   Los segundos ya vienen con el ritmo del género (72s, 6 bloques). */
+var CUR=null;
+function curBanco(){
+  if(CUR) return CUR;
+  try{ CUR=JSON.parse(document.getElementById('cur-data').textContent); }
+  catch(e){ CUR={}; }
+  return CUR;
+}
+function verCuriosidades(){
+  var C=curBanco(), ks=Object.keys(C);
+  if(!ks.length){ poner('sys','El banco de curiosidades no cargó.'); return; }
+  var t='🌍 CURIOSIDADES — '+ks.length+' videos listos\n\n';
+  t+='Lugares extremos, con el texto real de Wikipedia.\n';
+  t+='Los que tienen 📍 traen las coordenadas para el mapa.\n\n';
+  ks.forEach(function(k,i){
+    t+='  C'+(i+1)+'. '+C[k].t+(C[k].lat?' 📍':'')+'  ('+C[k].d+'s)\n';
+  });
+  t+='\nEscribí C y el número (ej: C3) y te paso el guion.';
+  poner('sys',t);
+  ESPERA_CUR=true;
+}
+var ESPERA_CUR=false;
+function darCur(n){
+  var C=curBanco(), ks=Object.keys(C), k=ks[n-1];
+  if(!k){ poner('sys','Ese número no existe. Van del C1 al C'+ks.length+'.'); return; }
+  var v=C[k];
+  var t='🎬 '+v.t.toUpperCase()+'\n';
+  t+='   '+v.d+'s · '+v.b.length+' bloques · '+v.f+'\n\n';
+  t+='PEGÁ ESTO EN MAPA REAL:\n\n';
+  v.b.forEach(function(b,i){ t+=(i+1)+'|'+b[0]+'|'+b[1]+'\n'; });
+  t+='\nPAÍS/ZONA: '+v.p;
+  if(v.lat) t+='\n📍 COORDENADAS: '+v.lat.toFixed(4)+', '+v.lon.toFixed(4)+
+               '  (pegalas en el campo Centro del mapa)';
+  t+='\n\n⚠️ El texto sale de Wikipedia tal cual. Leelo antes de grabar:\n'+
+     '   a veces una frase arranca cortada y hay que arreglarla a mano.';
+  poner('sys',t);
+  try{ navigator.clipboard.writeText(v.b.map(function(b,i){return (i+1)+'|'+b[0]+'|'+b[1];}).join('\n')); }catch(e){}
+  ESPERA_CUR=false;
+}
+
+/* ═══════════ V113 · PREGUNTARLE A GOOGLE QUÉ MODELOS EXISTEN ═══════════
+   Google apaga modelos cada pocos meses. En vez de que se rompa el chat
+   y Pablo tenga que avisarme, el chat pregunta solo.
+
+   Verificado hoy contra Google:
+     GET generativelanguage.googleapis.com/v1beta/models
+     header x-goog-api-key  →  CORS: access-control-allow-headers: x-goog-api-key ✅
+
+   Corre UNA vez cuando pegás la key. Si falla, no pasa nada:
+   sigue con la lista de siempre. */
+var GG_VIVOS = [];
+try{ GG_VIVOS = JSON.parse(localStorage.getItem('gg_vivos')||'[]'); }catch(e){ GG_VIVOS=[]; }
+/* al abrir el chat, si ya hay key, refresco la lista en silencio */
+setTimeout(function(){ if(typeof keyGoogle==='function' && keyGoogle()) descubrirModelos(null); }, 1200);
+
+function descubrirModelos(cb){
+  var k = keyGoogle();
+  if(!k){ if(cb) cb(0); return; }
+  fetch('https://generativelanguage.googleapis.com/v1beta/models',{
+    headers:{'x-goog-api-key':k}
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    if(!d.models){ if(cb) cb(0); return; }
+    /* me quedo con los flash que sirven para escribir, del más nuevo al más viejo */
+    var buenos = d.models.filter(function(m){
+      var n=(m.name||'').replace('models/','');
+      var sirve=(m.supportedGenerationMethods||[]).indexOf('generateContent')>=0;
+      return sirve && /^gemini-[0-9.]+-flash/.test(n) &&
+             !/tts|live|image|audio|embedding|thinking/.test(n);
+    }).map(function(m){ return m.name.replace('models/',''); });
+    /* ordenar: número de versión más alto primero, y -lite al final */
+    buenos.sort(function(a,b){
+      var va=parseFloat((a.match(/gemini-([0-9.]+)/)||[0,0])[1]);
+      var vb=parseFloat((b.match(/gemini-([0-9.]+)/)||[0,0])[1]);
+      if(va!==vb) return vb-va;
+      return (a.indexOf('lite')>=0?1:0)-(b.indexOf('lite')>=0?1:0);
+    });
+    if(buenos.length){
+      GG_VIVOS = buenos.slice(0,6);
+      try{ localStorage.setItem('gg_vivos', JSON.stringify(GG_VIVOS)); }catch(e){}
+    }
+    if(cb) cb(buenos.length);
+  })
+  .catch(function(e){ if(cb) cb(0); });
+}
+
+/* ═══════════ V111 · LA BARRA DE LLAVES ═══════════
+   BUG QUE ENCONTRÓ PABLO:
+   apenas pegabas UNA key, el panel entero se escondía
+   (className='ok' = display:none) y ya no podías pegar la otra.
+
+   Arreglo: el panel de arranque desaparece, pero queda una barra
+   arriba de todo — plegable — donde siempre podés ver y cambiar
+   las dos llaves. */
+
+/* V113 — el botón: preguntarle a Google qué modelos tiene hoy */
+function buscarModelos(){
+  if(!keyGoogle()){ poner('sys','Primero pegá la key de Google en 🔑 Mis llaves.'); return; }
+  poner('sys','🔎 Preguntándole a Google qué modelos tiene hoy…');
+  descubrirModelos(function(n){
+    if(n) poner('sys','✅ Google tiene '+n+' modelos vivos.\n'+
+                      'Ahora uso: '+GG_VIVOS.slice(0,3).join(' · ')+
+                      '\nProbá de nuevo el botón que falló.');
+    else  poner('sys','No pude preguntarle a Google. Sigo con la lista de siempre: '+
+                      'gemini-3.6-flash y los que vengan atrás.');
+  });
+}
+
+function abrirLlaves(){
+  var c = $('llcuerpo');
+  c.className = c.className === 'abierto' ? '' : 'abierto';
+  if(c.className === 'abierto'){
+    $('ggkey2').value = keyGoogle();
+    $('orkey2').value = key();
+  }
+}
+
+function guardarGoogle2(){
+  var k = ($('ggkey2').value||'').trim();
+  if(!keyGoogleOK(k)){
+    alert('Esa no parece una key de Google.\n\n' +
+          'Las de Google AI Studio empiezan con:\n' +
+          '   AQ.    (las nuevas, desde junio 2026)\n' +
+          '   AIza   (las viejas)\n\n' +
+          'La tuya empieza con: ' + k.slice(0,4));
+    return;
+  }
+  try{ localStorage.setItem('gg_key', k); }catch(e){}
+  refrescarLlaves();
+  poner('sys', k ? '🥇 Google AI conectado · 1500 por día · key ' + tipoKeyGoogle(k)
+                 : 'Key de Google borrada.');
+  /* V113 — apenas pega la key, le pregunto a Google qué modelos tiene hoy.
+     Así cuando Google apague otro modelo, el chat se entera solo. */
+  if(k) descubrirModelos(function(n){
+    if(n) poner('sys','🔎 Google tiene '+n+' modelos vivos hoy · uso '+GG_VIVOS[0]);
+  });
+}
+
+function guardarOR2(){
+  var k = ($('orkey2').value||'').trim();
+  if(k && !k.startsWith('sk-or-')){
+    alert('La key de OpenRouter empieza con sk-or-');
+    return;
+  }
+  try{ localStorage.setItem('or_key', k); }catch(e){}
+  refrescarLlaves();
+  poner('sys', k ? '🥈 OpenRouter conectado · 50 mensajes por día'
+                 : 'Key de OpenRouter borrada.');
+}
+
+/* actualiza los indicadores y el resumen de la barra */
+function refrescarLlaves(){
+  var gg = keyGoogle(), or = key();
+  var eg = $('ggest'), eo = $('orest'), re = $('llres');
+  if(eg){ eg.textContent = gg? '✅ lista' : '—'; eg.className = 'kest ' + (gg?'si':'no'); }
+  if(eo){ eo.textContent = or? '✅ lista' : '—'; eo.className = 'kest ' + (or?'si':'no'); }
+  if(re){
+    re.textContent = (gg && or) ? '✅ las dos — duelo listo'
+                   : gg ? '🥇 solo Google'
+                   : or ? '🥈 solo OpenRouter'
+                        : '⚠️ ninguna — tocá para pegar';
+    re.style.color = (gg||or) ? '#37e0a0' : '#ffb35c';
+  }
+  /* el panel grande de arranque solo estorba una vez que hay key */
+  if(gg || or) $('conf').className = 'ok';
+  estado();
+}
+
+var HIST=[];
+
+/* Si ya medimos videos, el guion usa NUESTROS números, no los fijos.
+   Así el chat aprende del canal en vez de repetir lo que le dije yo. */
+function sistemaDe(m){
+  if(m==='video') return ESTUDIO;
+  if(m==='libre') return LIBRE;
+  var extra = VOZ_APRENDIDA? '\n\n'+VOZ_APRENDIDA : '';
+  var L=libro();
+  if(L.length<3) return SISTEMA+extra;
+  var cpm=L.reduce(function(a,v){return a+v.cpm;},0)/L.length;
+  var dur=L.reduce(function(a,v){return a+v.dur;},0)/L.length;
+  var pl =Math.round(L.reduce(function(a,v){return a+v.planos;},0)/L.length);
+  return SISTEMA+'\n\nOJO: medimos '+L.length+' videos reales de este canal.\n'+
+   'Usá ESTOS números en vez de los de arriba:\n'+
+   '  duración objetivo: '+dur.toFixed(0)+' segundos\n'+
+   '  cantidad de bloques: '+pl+'\n'+
+   '  cortes por minuto: '+cpm.toFixed(1)+extra;
+}
+var MODO='guion';
+function cambiarModo(m){
+  MODO=m;
+  ['mg','mv','ml'].forEach(function(id,k){
+    var mm=['guion','video','libre'][k];
+    document.getElementById(id).className='chip'+(m===mm?' on':'');
+  });
+  document.getElementById('chg').style.display = m==='guion'?'flex':'none';
+  document.getElementById('zonavid').style.display = m==='video'?'block':'none';
+  poner('sys', m==='guion'
+    ? 'MODO GUION — sabe la forma del canal y contesta en formato importable.'
+    : m==='video'
+    ? 'MODO ESTUDIAR VIDEO — arrastrá un TikTok y lo desarma: cortes, cámara, colores, gráficos.'
+    : 'MODO LIBRE — preguntale lo que quieras, como a cualquier chat.');
+}
+
+function $(i){return document.getElementById(i);}
+function key(){ try{return localStorage.getItem('or_key')||'';}catch(e){return '';} }
+
+function hoy(){
+  var d=new Date().toISOString().slice(0,10);
+  try{
+    var g=JSON.parse(localStorage.getItem('or_uso')||'{}');
+    if(g.dia!==d){ g={dia:d,n:0}; localStorage.setItem('or_uso',JSON.stringify(g)); }
+    return g;
+  }catch(e){ return {dia:d,n:0}; }
+}
+function sumar(){
+  var g=hoy(); g.n++;
+  try{ localStorage.setItem('or_uso',JSON.stringify(g)); }catch(e){}
+  estado();
+}
+function estado(){
+  var gg=keyGoogle();
+  if(gg){
+    var g2=hoy();
+    $('est').innerHTML='<b style="color:#37e0a0">Google AI</b> · '+(1500-g2.n)+
+      ' de 1500 hoy'+(key()? ' · OpenRouter de respaldo':'');
+    $('conf').className='ok';
+    return;
+  }
+  if(!key()){
+    if($('conf').className==='ok'){
+      var L=libro();
+      $('est').innerHTML='<b>modo medir</b> · '+L.length+' videos en el libro · gratis';
+    } else { $('est').textContent='sin conectar'; $('conf').className=''; }
+    return;
+  }
+  var g=hoy(), q=50-g.n;
+  $('est').innerHTML='conectado · te quedan <b>'+q+'</b> de 50 mensajes hoy';
+  $('conf').className='ok';
+}
+function saltar(){
+  MODO='video';
+  $('conf').className='ok';
+  refrescarLlaves();
+  $('est').innerHTML='<b>modo medir</b> · sin key · gratis e ilimitado';
+  cambiarModo('video');
+  poner('sys','Listo. Arrastrá videos del canal acá abajo.\n\n'+
+    'Cada uno se mide y se guarda solo. No gastás nada.\n'+
+    'Cuando tengas 3 o más, tocá 📚 LIBRO.');
+}
+function guardar(){
+  var k=($('key').value||'').trim();
+  if(!k.startsWith('sk-or-')){ alert('La key tiene que empezar con sk-or-'); return; }
+  try{ localStorage.setItem('or_key',k); }catch(e){}
+  estado();
+  poner('sys','Conectado. Probá con un botón de abajo o escribí lo que quieras.');
+}
+
+function poner(tipo,texto){
+  var d=document.createElement('div');
+  d.className='m '+tipo;
+  d.textContent=texto;
+  if(tipo==='el'){
+    var c=document.createElement('span');
+    c.className='cp'; c.textContent='📋 copiar';
+    c.onclick=function(){
+      if(navigator.clipboard) navigator.clipboard.writeText(texto);
+      c.textContent='✅ copiado — pegalo en MAPA REAL';
+      setTimeout(function(){c.textContent='📋 copiar';},2500);
+    };
+    d.appendChild(c);
+  }
+  $('msgs').appendChild(d);
+  $('msgs').scrollTop=$('msgs').scrollHeight;
+  return d;
+}
+
+function plantilla(q){
+  /* Los prompts los escribo YO, largos y precisos, para que UN pedido
+     rinda al máximo. Ranking: son las ideas #1, #2, #3, #5, #6, #7, #8. */
+  var t={
+   /* #1 · 50 TEMAS DE UNA SENTADA — score 15.75, el más alto de los 20 */
+   temas:'Dame 50 temas de videos de geografía que casi nadie contó.\n'+
+     'Formato: una línea cada uno, así:\n'+
+     'PAÍS | el dato que sorprende en 8 palabras\n'+
+     'Nada de introducción ni de cierre, solo las 50 líneas.\n'+
+     'Que sean lugares REALES y datos que se puedan verificar.\n'+
+     'Evitá los obvios (Everest, Amazonas, Sahara).',
+
+   /* #2 · EL HOOK A/B — score 11.25 */
+   hooks:'Dame 5 versiones distintas del primer bloque (los primeros 2 segundos)\n'+
+     'para este video. Cada una con un ángulo diferente:\n'+
+     '1) el dato puro y duro\n2) la contradicción\n3) la pregunta\n'+
+     '4) el número grande\n5) lo que nadie se imagina\n'+
+     'Máximo 14 palabras cada una. Una por línea, sin explicar.\n\n'+
+     'TEMA: ',
+
+   /* #3 · MITO CONTRA REALIDAD — score 10 */
+   mito:'Hacé un guion de "mito contra realidad".\n'+
+     'Arrancá afirmando el mito como si fuera verdad, y a los 20 segundos\n'+
+     'lo desarmás con el dato real. Formato n|segundos|texto.\n\n'+
+     'EL MITO: ',
+
+   /* #5 · TÍTULO Y PORTADA — score 8.75 */
+   titulo:'Del guion de arriba sacame:\n'+
+     '1. TÍTULO de TikTok (máximo 60 caracteres, sin hashtags)\n'+
+     '2. TEXTO GRANDE de la portada (3 a 5 palabras, en mayúsculas)\n'+
+     '3. TEXTO CHICO de la portada (2 palabras)\n'+
+     '4. Los 5 hashtags\n'+
+     'Nada más que eso.',
+
+   /* #6 · FÁBRICA DE GUIONES EN SERIE — score 8.75 */
+   fabrica:'Escribí 3 guiones completos, uno atrás del otro, sobre estos temas.\n'+
+     'Separalos con una línea que diga ---\n'+
+     'Cada uno en formato n|segundos|texto con la forma del canal.\n\n'+
+     'TEMAS (uno por línea):\n',
+
+   /* #7 · CALENDARIO DE 30 DÍAS — score 7.5 */
+   calendario:'Armame un calendario de 30 días de publicación.\n'+
+     'Una línea por día así:  DÍA 1 | tema | por qué va ese día\n'+
+     'Alterná: dato curioso, mito, comparación, lugar extremo.\n'+
+     'Que los más fuertes caigan lunes, miércoles y viernes.\n'+
+     'Solo las 30 líneas.',
+
+   /* #8 · EL CIERRE QUE ENGANCHA — score 7.5 */
+   cierre:'Dame 3 versiones del ÚLTIMO bloque de este video:\n'+
+     '1) que cierre con un dato humano (como hace el canal en Atacama)\n'+
+     '2) que cierre preguntando "¿vos qué creés?" (como en el de Japón)\n'+
+     '3) que enganche con una parte 2\n'+
+     'Máximo 20 palabras cada una.\n\n'+
+     'EL VIDEO ES SOBRE: ',
+
+   /* #12 · LA SERIE — score 6.00 */
+   serie:'Armame una serie de 5 videos encadenados sobre este tema.\n'+
+     'Cada uno tiene que cerrar enganchando con el siguiente.\n'+
+     'Formato, una línea por video:\n'+
+     'VIDEO n | título | el gancho con el que cierra\n'+
+     'Solo las 5 líneas.\n\n'+
+     'TEMA GENERAL: ',
+
+   /* #13 · TRADUCTOR DE CUENTAS — score 6.00 */
+   traducir:'Tomá el guion de arriba y pasalo a otro nicho, manteniendo\n'+
+     'EXACTAMENTE la misma estructura y las mismas duraciones.\n'+
+     'Cambia el tema, no la forma. Formato n|segundos|texto.\n\n'+
+     'NICHO NUEVO (biología / historia / deportes / curiosidades / niños): ',
+
+   /* #16 · EL NICHO NUEVO — score 5.25 */
+   nicho:'Voy a abrir una cuenta nueva de este nicho. Dame:\n'+
+     '1. Los 5 tipos de video que mejor funcionan ahí\n'+
+     '2. Qué se ve en pantalla en cada uno (una línea)\n'+
+     '3. 20 temas concretos, uno por línea\n'+
+     '4. El molde del hook que más se repite en ese nicho\n'+
+     'Nada de introducción.\n\n'+
+     'NICHO: ',
+
+   /* #18 · EL GUION DESDE LA FOTO — score 3.12 */
+   foto:'Mirá esta foto y decime:\n'+
+     '1. Qué lugar parece y por qué\n'+
+     '2. Tres datos que valgan un video sobre ese tipo de lugar\n'+
+     '3. El hook de 12 palabras que usarías\n'+
+     'Si no reconocés el lugar, decilo. No inventes.',
+
+   guion:'Escribime un guion sobre: ',
+   ideas:'Dame 10 ideas de videos de geografía que casi nadie haya contado. Una línea cada una.',
+   mejor:'Mejorá este primer bloque para que enganche más en los primeros 2 segundos:\n\n'
+  }[q];
+  $('txt').value=t;
+  $('txt').focus();
+  var l=t.length;
+  $('txt').setSelectionRange(l,l);
+}
+
+function limpiar(){
+  HIST=[]; $('msgs').innerHTML='';
+  poner('sys','Conversación borrada. El chat arranca de cero.');
+}
+
+
+/* ═══════════ MODO DUELO ═══════════
+   Idea de Pablo: que las dos IA contesten LO MISMO y él elija.
+
+   Por qué sirve de verdad:
+     · los modelos gratis son irregulares. A veces Google clava
+       el guion y a veces OpenRouter lo hace mejor.
+     · viendo las dos al lado se nota cuál entendió el pedido.
+     · y como Pablo marca la ganadora, el marcador va aprendiendo
+       cuál conviene para cada tipo de pedido.
+
+   Cuesta 1 pedido de cada lado. Con Google en 1500 por día,
+   el que se acaba primero es OpenRouter (50).
+   Por eso el duelo viene APAGADO: se prende cuando hace falta. */
+
+var DUELO = false;
+
+function toggleDuelo(){
+  if(!DUELO && !(keyGoogle() && key())){
+    var falta = !keyGoogle() ? 'Google AI' : 'OpenRouter';
+    var link  = !keyGoogle() ? 'aistudio.google.com/apikey' : 'openrouter.ai/keys';
+    poner('sys','Para el duelo faltan las dos keys.\n\n'+
+      'Te falta: '+falta+'\n'+
+      'Sacala en: '+link+'\n\n'+
+      'Pegala en la barra 🔑 Mis llaves, arriba de todo.');
+    $('llcuerpo').className='abierto';
+    $('ggkey2').value=keyGoogle(); $('orkey2').value=key();
+    return;
+  }
+  DUELO = !DUELO;
+  $('mduelo').textContent = '⚔️ DUELO: ' + (DUELO?'ON':'off');
+  $('mduelo').className = 'chip' + (DUELO?' on':'');
+  poner('sys', DUELO
+    ? 'DUELO ENCENDIDO. Cada pregunta va a las dos IA y elegís la mejor.\n'+
+      'Gasta 1 pedido de cada una.'
+    : 'Duelo apagado. Vuelve a contestar una sola.');
+}
+
+/* el marcador: quién viene ganando */
+function marcador(){
+  try{ return JSON.parse(localStorage.getItem('duelo_score')||'{"gg":0,"or":0,"h":[]}'); }
+  catch(e){ return {gg:0,or:0,h:[]}; }
+}
+function anotarGanador(quien, modo){
+  var m = marcador();
+  m[quien] = (m[quien]||0) + 1;
+  m.h = (m.h||[]).concat([{q:quien,m:modo}]).slice(-40);
+  try{ localStorage.setItem('duelo_score', JSON.stringify(m)); }catch(e){}
+  return m;
+}
+function verMarcador(){
+  var m = marcador(), tot = m.gg + m.or;
+  if(!tot){ poner('sys','Todavía no elegiste ninguna ganadora.'); return; }
+  var t = '⚔️ MARCADOR — ' + tot + ' duelos\n\n';
+  t += '  Google AI    ' + m.gg + '   ' + '█'.repeat(Math.round(m.gg/tot*22)) + '\n';
+  t += '  OpenRouter   ' + m.or + '   ' + '█'.repeat(Math.round(m.or/tot*22)) + '\n\n';
+  /* por modo: capaz una es mejor para guiones y otra para ideas */
+  var porModo = {};
+  (m.h||[]).forEach(function(x){
+    porModo[x.m] = porModo[x.m] || {gg:0,or:0};
+    porModo[x.m][x.q]++;
+  });
+  var hay = Object.keys(porModo);
+  if(hay.length > 1){
+    t += 'POR TIPO DE PEDIDO\n';
+    hay.forEach(function(k){
+      var p = porModo[k];
+      var mejor = p.gg > p.or ? 'Google' : p.or > p.gg ? 'OpenRouter' : 'empate';
+      t += '  ' + k.padEnd(8,' ') + ' → ' + mejor + '  (' + p.gg + '-' + p.or + ')\n';
+    });
+    t += '\n';
+  }
+  t += m.gg > m.or ? 'Google viene ganando.' :
+       m.or > m.gg ? 'OpenRouter viene ganando.' : 'Van empatados.';
+  poner('sys', t);
+}
+
+/* la caja con las dos respuestas lado a lado */
+function cajaDuelo(){
+  var d = document.createElement('div');
+  d.className = 'duelo';
+  d.innerHTML =
+    '<div class="gg"><div class="dh"><span class="n">🥇 Google AI</span>'+
+      '<span class="t" id="dtg">pensando…</span></div>'+
+      '<div class="dt" id="dxg">…</div>'+
+      '<div class="db"><button id="dbg" disabled>Esta es mejor</button></div></div>'+
+    '<div class="or"><div class="dh"><span class="n">🥈 OpenRouter</span>'+
+      '<span class="t" id="dto">pensando…</span></div>'+
+      '<div class="dt" id="dxo">…</div>'+
+      '<div class="db"><button id="dbo" disabled>Esta es mejor</button></div></div>';
+  $('msgs').appendChild(d);
+  $('msgs').scrollTop = $('msgs').scrollHeight;
+  return d;
+}
+
+/* V114 — cuántas líneas útiles entregó cada IA.
+   Sirve para el duelo: si una da 5 renglones y la otra 50,
+   no hace falta leerlas para saber cuál cumplió. */
+function contarLineas(txt){
+  if(!txt) return '0 líneas';
+  var n = txt.split('\n').filter(function(l){
+    l = l.trim();
+    return l.length > 3 && l.indexOf('⚠️') !== 0;
+  }).length;
+  return n + (n === 1 ? ' línea' : ' líneas');
+}
+
+function correrDuelo(sistema){
+  var caja = cajaDuelo();
+  var t0 = Date.now();
+  var res = {gg:null, or:null};
+
+  function elegir(quien){
+    var txt = res[quien];
+    if(!txt) return;
+    caja.querySelector(quien==='gg'?'.gg':'.or').classList.add('gana');
+    caja.querySelector(quien==='gg'?'.dbg':'.dbo');
+    $(quien==='gg'?'dbg':'dbo').className = 'el';
+    $(quien==='gg'?'dbg':'dbo').textContent = '✅ elegida';
+    $(quien==='gg'?'dbo':'dbg').disabled = true;
+    $('dbg').disabled = true; $('dbo').disabled = true;
+    /* la ganadora entra en la conversación; la otra se descarta */
+    HIST.push({role:'assistant', content: txt});
+    var m = anotarGanador(quien, MODO);
+    if(navigator.clipboard) navigator.clipboard.writeText(txt);
+    poner('sys','✅ Copiada al portapapeles. Marcador: Google '+m.gg+' · OpenRouter '+m.or);
+    if(/\[VERIFICAR\]/.test(txt))
+      poner('sys','⚠️ Marcó datos con [VERIFICAR]. Pasámelos a Arena.');
+  }
+
+  /* GOOGLE */
+  mandarGoogle(sistema, HIST, null, function(txt, err, mod){
+    var seg = ((Date.now()-t0)/1000).toFixed(1);
+    if(txt){
+      res.gg = txt;
+      $('dxg').textContent = txt;
+      $('dtg').textContent = seg + 's · ' + (mod||'').replace('gemini-','') + ' · ' + contarLineas(txt);
+      $('dbg').disabled = false;
+      $('dbg').onclick = function(){ elegir('gg'); };
+      sumar();
+    } else {
+      $('dxg').textContent = 'no contestó: ' + (err||'?');
+      $('dtg').textContent = 'falló';
+    }
+  });
+
+  /* OPENROUTER */
+  var k = key(), i = 0;
+  (function probar(){
+    if(i >= MODELOS.length){
+      $('dxo').textContent = 'no contestó ninguno';
+      $('dto').textContent = 'falló';
+      return;
+    }
+    fetch('https://openrouter.ai/api/v1/chat/completions',{
+      method:'POST',
+      headers:{'Authorization':'Bearer '+k,'Content-Type':'application/json'},
+      body:JSON.stringify({model:MODELOS[i], max_tokens:1200,
+        messages:[{role:'system',content:sistema}].concat(HIST)})
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d.error || !d.choices || !d.choices[0]){ i++; probar(); return; }
+      var txt = d.choices[0].message.content || '';
+      var seg = ((Date.now()-t0)/1000).toFixed(1);
+      res.or = txt;
+      $('dxo').textContent = txt;
+      $('dto').textContent = seg + 's · ' + MODELOS[i].split('/')[1].split(':')[0].slice(0,14) + ' · ' + contarLineas(txt);
+      $('dbo').disabled = false;
+      $('dbo').onclick = function(){ elegir('or'); };
+      sumar();
+    })
+    .catch(function(e){ i++; probar(); });
+  })();
+
+  $('btn').disabled = false;
+}
+
+function mandar(){
+  /* V119 — si acabás de tocar 🏆 TOPS y escribís un número,
+     te doy el guion sin gastar un pedido de IA. */
+  var pre=($('txt').value||'').trim();
+  if(ESPERA_CUR && /^[cC]\s?\d{1,2}$/.test(pre)){
+    $('txt').value=''; poner('yo',pre);
+    darCur(parseInt(pre.replace(/[cC]\s?/,''),10));
+    return;
+  }
+  if(ESPERA_TOP && /^\d{1,2}$/.test(pre)){
+    $('txt').value='';
+    poner('yo',pre);
+    darTop(parseInt(pre,10));
+    return;
+  }
+  var gg=keyGoogle();
+  var k=key();
+  if(!gg && !k){
+    poner('sys','Estás en modo medir (sin key). Podés arrastrar todos los videos '+
+      'que quieras y ver el 📚 LIBRO.\n\nPara que ADEMÁS te escriba guiones, '+
+      'sacá una key gratis en openrouter.ai/keys y recargá esta página.');
+    return;
+  }
+  var t=($('txt').value||'').trim();
+  if(!t) return;
+  var g=hoy();
+  if(g.n>=50){ poner('sys','Se acabaron los 50 mensajes de hoy. Mañana se renueva solo.'); return; }
+
+  poner('yo', t + (VIDEO_B64?'\n🎬 (con el video adjunto)':''));
+  $('txt').value='';
+  /* V115 — si el video era pesado no hay base64, pero las MEDIDAS sí están.
+     Aviso una sola vez para que Pablo sepa qué pasó. */
+  if(MODO==='video' && !VIDEO_B64 && VIDEO_PESADO && VIDEO_MED){
+    poner('sys','El video pesa más de 8 MB, así que no se lo puedo mandar entero a la IA.\n'+
+                'Pero YA LO MEDÍ: '+VIDEO_MED.dur+'s · '+VIDEO_MED.planos+' planos · '+
+                VIDEO_MED.cpm+' cortes/min — eso va igual y quedó en el 📚 LIBRO.');
+    VIDEO_PESADO=false;
+  }
+
+  /* si hay video, va con el mensaje y le paso las medidas que ya saqué */
+  if(MODO==='video' && !VIDEO_B64 && VIDEO_MED){
+    /* V115 — sin el video, pero con las medidas: la IA igual puede opinar */
+    t='Medí este video con el navegador:\n'+
+      'duración '+VIDEO_MED.dur+'s · '+VIDEO_MED.planos+' planos · '+
+      VIDEO_MED.cpm+' cortes/min\nforma: '+VIDEO_MED.forma+'\n\n'+t;
+  }
+  if(MODO==='video' && VIDEO_B64){
+    var pre=t;
+    if(VIDEO_MED) pre='YA MEDÍ ESTO CON EL NAVEGADOR, usalo y no lo recalcules:\n'+
+      'duración: '+VIDEO_MED.dur+'s · '+VIDEO_MED.planos+' planos · '+
+      VIDEO_MED.cpm+' cortes por minuto\n'+
+      'duración de cada plano: '+VIDEO_MED.forma+'\n\n'+t;
+    HIST.push({role:'user',content:[
+      {type:'text',text:pre},
+      {type:'video_url',video_url:{url:VIDEO_B64}}
+    ]});
+  } else {
+    HIST.push({role:'user',content:t});
+  }
+  /* solo los últimos 6 turnos: la conversación entera gastaría de más */
+  if(HIST.length>6) HIST=HIST.slice(-6);
+  /* un video pesa mucho: si hay uno, mando solo ese turno */
+  if(MODO==='video' && VIDEO_B64) HIST=HIST.slice(-1);
+
+  /* si el duelo está encendido, van las dos */
+  if(DUELO && gg && k){ correrDuelo(sistemaDe(MODO)); return; }
+
+  var burbuja=poner('el','escribiendo…');
+  $('btn').disabled=true;
+
+  /* V110 — primero Google (1500/día), si no OpenRouter (50/día) */
+  if(gg){
+    mandarGoogle(sistemaDe(MODO), HIST, null, function(txt, err, mod){
+      if(txt){
+        burbuja.textContent=txt;
+        var cp=document.createElement('span');
+        cp.className='cp'; cp.textContent='📋 copiar';
+        cp.onclick=function(){
+          if(navigator.clipboard) navigator.clipboard.writeText(txt);
+          cp.textContent='✅ copiado — pegalo en MAPA REAL';
+          setTimeout(function(){cp.textContent='📋 copiar';},2500);
+        };
+        burbuja.appendChild(cp);
+        HIST.push({role:'assistant',content:txt});
+        sumar(); $('btn').disabled=false;
+        log2 && log2(mod);
+        $('msgs').scrollTop=$('msgs').scrollHeight;
+        if(VIDEO_B64){ VIDEO_B64=null; $('vidinfo').textContent='';
+          poner('sys','Video procesado. Para otro, arrastralo de nuevo.'); }
+        if(/\[VERIFICAR\]/.test(txt))
+          poner('sys','⚠️ Marcó datos con [VERIFICAR]. Pasámelos a Arena.');
+        return;
+      }
+      if(!k){
+        burbuja.textContent='Google no contestó: '+(err||'?')+
+          '\n\nProbá en un rato, o agregá una key de OpenRouter como respaldo.';
+        $('btn').disabled=false; return;
+      }
+      burbuja.textContent='Google falló, probando OpenRouter…';
+      seguirOpenRouter();
+    });
+    return;
+  }
+  seguirOpenRouter();
+
+  function seguirOpenRouter(){
+  var i=0;
+  (function probar(){
+    if(i>=MODELOS.length){
+      burbuja.textContent='No contestó ninguno. Los gratis a veces se saturan — probá en 5 minutos.';
+      $('btn').disabled=false; return;
+    }
+    fetch('https://openrouter.ai/api/v1/chat/completions',{
+      method:'POST',
+      headers:{'Authorization':'Bearer '+k,'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:MODELOS[i], max_tokens:1200,
+        messages:[{role:'system',content:sistemaDe(MODO)}].concat(HIST)
+      })
+    })
+    .then(function(r){return r.json();})
+    .then(function(d){
+      if(d.error||!d.choices||!d.choices[0]){
+        i++; burbuja.textContent='probando otro modelo…'; probar(); return;
+      }
+      var txt=d.choices[0].message.content||'';
+      burbuja.textContent=txt;
+      var c=document.createElement('span');
+      c.className='cp'; c.textContent='📋 copiar';
+      c.onclick=function(){
+        if(navigator.clipboard) navigator.clipboard.writeText(txt);
+        c.textContent='✅ copiado — pegalo en MAPA REAL';
+        setTimeout(function(){c.textContent='📋 copiar';},2500);
+      };
+      burbuja.appendChild(c);
+      HIST.push({role:'assistant',content:txt});
+      sumar();
+      if(VIDEO_B64){
+        VIDEO_B64=null;
+        $('vidinfo').textContent='';
+        poner('sys','Video procesado. Para estudiar otro, arrastralo de nuevo.');
+      }
+      $('btn').disabled=false;
+      $('msgs').scrollTop=$('msgs').scrollHeight;
+      if(/\[VERIFICAR\]/.test(txt))
+        poner('sys','⚠️ Marcó datos con [VERIFICAR]. Pasámelos a mí en Arena antes de publicar.');
+    })
+    .catch(function(e){ i++; probar(); });
+  })();
+  }
+}
+
+/* arrastrar el video a la ventana */
+['dragover','drop'].forEach(function(ev){
+  document.addEventListener(ev,function(e){
+    e.preventDefault();
+    if(ev==='drop'){
+      var fs2=e.dataTransfer.files;
+      if(!fs2||!fs2.length)return;
+      var vids=[];
+      for(var q=0;q<fs2.length;q++) if(/video/.test(fs2[q].type)) vids.push(fs2[q]);
+      if(!vids.length)return;
+      if(MODO!=='video') cambiarModo('video');
+      if(vids.length===1) tomarVideo(vids[0]);
+      else colaVideos(vids);
+    }
+  });
+});
+
+/* arranque */
+var k=key();
+if(k) $('key').value=k;
+refrescarLlaves();
+estado();
+if(!k){
+  poner('sys','Pegá tu key arriba para empezar. Es gratis y no pide tarjeta.');
+} else {
+  poner('sys','Listo. Tocá un botón de abajo o escribí lo que quieras.');
+}
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2448f2dde29f4a8',t:'MTc4NTU4NDMzNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

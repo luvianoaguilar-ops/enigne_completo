@@ -1,0 +1,30 @@
+# VIRAL INTELLIGENCE — Unified Requirements
+# Fusión Viral DNA v3.0 (A) + Video Intelligence v1.0 (B)
+
+# === Core (A+B) ===
+yt-dlp>=2024.1.0
+opencv-python>=4.8.0
+scenedetect[opencv]>=0.6.2
+numpy>=1.24.0
+librosa>=0.10.1
+soundfile>=0.12.1
+
+# === OCR & Vision (B) ===
+pytesseract>=0.3.10
+pillow>=10.0.0
+imagehash>=4.3
+
+# === ML & AI (B) ===
+scikit-learn>=1.3.0
+openai-whisper>=20231117
+torch>=2.0
+mediapipe>=0.10
+
+# === Data & Viz (B) ===
+pandas>=2.0
+matplotlib>=3.7.0
+rich>=13.0
+
+# === Network (A) ===
+requests>=2.31.0
+beautifulsoup4>=4.12.0

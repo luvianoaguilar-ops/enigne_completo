@@ -1,0 +1,35 @@
+{
+  "titulo": "Ejemplo: Organizar una mochila",
+  "escenas": [
+    {
+      "texto": "¿Tu mochila parece un agujero negro?",
+      "idea_visual": "Mochila abierta con objetos desordenados",
+      "duracion": 2
+    },
+    {
+      "texto": "Primero separa lo que usas todos los días",
+      "idea_visual": "Manos creando tres grupos de objetos",
+      "duracion": 4
+    },
+    {
+      "texto": "Pon lo pesado cerca de tu espalda",
+      "idea_visual": "Plano detalle colocando objetos pesados",
+      "duracion": 4
+    },
+    {
+      "texto": "Deja lo urgente arriba para encontrarlo rápido",
+      "idea_visual": "Llaves y auriculares en bolsillo superior",
+      "duracion": 4
+    },
+    {
+      "texto": "Mochila ordenada en menos de un minuto",
+      "idea_visual": "Reveal final de mochila limpia y cerrada",
+      "duracion": 4
+    },
+    {
+      "texto": "¿Qué objeto siempre pierdes? Déjalo en comentarios",
+      "idea_visual": "Persona señalando CTA en pantalla",
+      "duracion": 3
+    }
+  ]
+}

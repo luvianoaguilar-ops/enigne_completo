@@ -1,0 +1,384 @@
+═══════════════════════════════════════════════════════
+  32 VIDEOS LISTOS PARA GRABAR
+  uno por día · alternando top y curiosidad
+═══════════════════════════════════════════════════════
+
+Todos con los segundos ya puestos según lo medido
+en 42 videos de 7 canales: 72s, 6 bloques.
+
+Los datos NO los inventó ninguna IA:
+   los tops        → API del Banco Mundial
+   las curiosidades → Wikipedia en español
+
+───────────────────────────────────────────────────────
+
+DÍA  1 · TOP  (64.5s)
+   Los 5 países con más gente del mundo
+   fuente: Banco Mundial 2025
+      1|11.0|De cada 100 personas en el mundo, 36 viven en solo dos países.
+      2|6.0|Número 5: Pakistán. 255 millones habitantes.
+      3|7.5|Número 4: Indonesia. 286 millones habitantes.
+      4|8.0|Número 3: Estados Unidos. 342 millones habitantes.
+      5|9.0|Número 2: China. 1,4 mil millones habitantes.
+      6|14.0|Número 1: India. 1,5 mil millones habitantes.
+      7|9.0|¿Cuál te sorprendió más? Contame abajo.
+   PINTAR: Pakistán · Indonesia · Estados Unidos · China · India
+
+DÍA  2 · CURIOSIDAD  (72.0s)
+   El lugar más lejano de tierra firme del planeta
+   fuente: Wikipedia · Punto Nemo
+      1|11.0|El lugar más lejano de tierra firme del planeta.
+      2|9.5|El polo de inaccesibilidad del Pacífico o Punto Nemo es el lugar del océano más alejado de cualquier tierra firme y se encuentra en el sur del océano Pacífico.
+      3|13.0|aproximadamente a 2722 kilómetros de la Antártida y de varias pequeñas islas oceánicas.
+      4|12.5|También es el lugar donde se halla el cementerio de naves espaciales debido a su lejanía, aislamiento.
+      5|14.0|que es casi inhabitable y que se considera territorio de alta mar.
+      6|12.0|¿Sabías esto? Contame abajo.
+   PINTAR: Océano Pacífico
+   CENTRO: -49.0273, -123.4345
+
+DÍA  3 · TOP  (64.5s)
+   Los 5 países que más contaminan por persona
+   fuente: Banco Mundial 2024
+      1|11.0|Este país de 18 mil habitantes contamina más que China por persona.
+      2|6.0|Número 5: Brunéi. 20,2 toneladas de CO2 por persona.
+      3|7.5|Número 4: Kuwait. 23,7 toneladas de CO2 por persona.
+      4|8.0|Número 3: Baréin. 23,9 toneladas de CO2 por persona.
+      5|9.0|Número 2: Catar. 47,3 toneladas de CO2 por persona.
+      6|14.0|Número 1: Palaos. 82,8 toneladas de CO2 por persona.
+      7|9.0|¿Cuál te sorprendió más? Contame abajo.
+   PINTAR: Brunéi · Kuwait · Baréin · Catar · Palaos
+
+DÍA  4 · CURIOSIDAD  (72.0s)
+   La isla más aislada del mundo
+   fuente: Wikipedia · Isla Bouvet
+      1|11.0|La isla más aislada del mundo.
+      2|9.5|La isla Bouvet es una isla subantártica, volcánica, casi completamente cubierta por glaciares y deshabitada.
+      3|13.0|Se encuentra localizada en el océano Atlántico Sur.
+      4|12.5|unos 1750 km al norte de la Antártida, 1900 km al este de las islas Sandwich del Sur y 2520 km al suroeste del cabo de Buena Esperanza.
+      5|14.0|por lo que se la considera la isla deshabitada más remota del planeta.
+      6|12.0|¿Sabías esto? Contame abajo.
+   PINTAR: Isla Bouvet
+   CENTRO: -54.4200, 3.3600
+
+DÍA  5 · TOP  (64.5s)
+   Los 5 países donde más se vive
+   fuente: Banco Mundial 2024
+      1|11.0|Acá la gente vive 30 años más que del otro lado del mapa.
+      2|6.0|Número 5: Suiza. 84,4 años de vida.
+      3|7.5|Número 4: Kuwait. 84,6 años de vida.
+      4|8.0|Número 3: Hong Kong. 85,4 años de vida.
+      5|9.0|Número 2: San Marino. 85,8 años de vida.
+      6|14.0|Número 1: Mónaco. 86,5 años de vida.
+      7|9.0|¿Cuál te sorprendió más? Contame abajo.
+   PINTAR: Suiza · Kuwait · Hong Kong · San Marino · Mónaco
+
+DÍA  6 · CURIOSIDAD  (58.0s)
+   El pueblo habitado más frío de la Tierra
+   fuente: Wikipedia · Oymyakon
+      1|11.0|El pueblo habitado más frío de la Tierra.
+      2|9.5|Oimiakón u Oymyakon es un pueblo ruso, perteneciente al distrito homónimo, situado al noreste de Sajá, al este de Siberia oriental.
+      3|13.0|Ubicado junto al río Indigirka.
+      4|12.5|Debido al frío extremo durante la mayor parte del año, el suelo del lugar se halla permanentemente congelado, formando permafrost.
+      5|12.0|¿Sabías esto? Contame abajo.
+   PINTAR: Rusia
+   CENTRO: 63.4629, 142.7870
+
+DÍA  7 · TOP  (64.5s)
+   Los 5 países donde menos se vive
+   fuente: Banco Mundial 2024
+      1|11.0|En este país, la mitad de la gente no llega a los 55.
+      2|6.0|Número 5: Lesoto. 57,8 años de vida.
+      3|7.5|Número 4: Sudán del Sur. 57,7 años de vida.
+      4|8.0|Número 3: Rep. Centroafricana. 57,7 años de vida.
+      5|9.0|Número 2: Chad. 55,2 años de vida.
+      6|14.0|Número 1: Nigeria. 54,6 años de vida.
+      7|9.0|¿Cuál te sorprendió más? Contame abajo.
+   PINTAR: Lesoto · Sudán del Sur · Rep. Centroafricana · Chad · Nigeria
+
+DÍA  8 · CURIOSIDAD  (65.9s)
+   El lugar más caluroso donde vive gente
+   fuente: Wikipedia · Depresión de Danakil
+      1|17.8|El lugar más caluroso donde vive gente.
+      2|16.3|La depresión de Danakil es la parte norte del Triángulo de Afar o depresión de Afar en Etiopía.
+      3|19.8|una depresión geológica que ha resultado de la divergencia de tres placas tectónicas en el Cuerno de África.
+      4|12.0|¿Sabías esto? Contame abajo.
+   PINTAR: Etiopía
+   CENTRO: 14.2417, 40.3000
+
+DÍA  9 · TOP  (64.5s)
+   Los 5 países con más bosque
+   fuente: Banco Mundial 2023
+      1|11.0|El 94% de este país es selva. Casi nadie vive ahí.
+      2|6.0|Número 5: Islas Salomón. 90,1 % del territorio.
+      3|7.5|Número 4: Palaos. 90,5 % del territorio.
+      4|8.0|Número 3: Gabón. 91,2 % del territorio.
+      5|9.0|Número 2: Micronesia. 92,2 % del territorio.
+      6|14.0|Número 1: Surinam. 94,4 % del territorio.
+      7|9.0|¿Cuál te sorprendió más? Contame abajo.
+   PINTAR: Islas Salomón · Palaos · Gabón · Micronesia · Surinam
+
+DÍA 10 · CURIOSIDAD  (58.0s)
+   La frontera más armada del mundo
+   fuente: Wikipedia · Zona desmilitarizada de Corea
+      1|11.0|La frontera más armada del mundo.
+      2|9.5|La Zona desmilitarizada de Corea, también conocida como frontera intercoreana.
+      3|13.0|es una franja de seguridad que protege el límite territorial de tregua entre la República Popular Democrática de Corea y la República de Corea.
+      4|12.5|Establecida en 1953, mide 4 km de ancho y 238 km de longitud.
+      5|12.0|¿Sabías esto? Contame abajo.
+   PINTAR: Corea del Norte
+   CENTRO: 38.3200, 127.2000
+
+DÍA 11 · TOP  (64.5s)
+   Los 5 países más apretados
+   fuente: Banco Mundial 2023
+      1|11.0|Acá entran 20 mil personas en un solo kilómetro cuadrado.
+      2|6.0|Número 5: Gibraltar. 3.847 personas por km2.
+      3|7.5|Número 4: Hong Kong. 7.177 personas por km2.
+      4|8.0|Número 3: Singapur. 8.242 personas por km2.
+      5|9.0|Número 2: Mónaco. 18.693 personas por km2.
+      6|14.0|Número 1: Macao SAR, China. 20.570 personas por km2.
+      7|9.0|¿Cuál te sorprendió más? Contame abajo.
+   PINTAR: Gibraltar · Hong Kong · Singapur · Mónaco · Macao SAR, China
+
+DÍA 12 · CURIOSIDAD  (72.0s)
+   El pueblo partido en 22 pedazos
+   fuente: Wikipedia · Baarle-Hertog
+      1|11.0|El pueblo partido en 22 pedazos.
+      2|9.5|Baarle-Hertog es un municipio localizado en la provincia belga de Amberes.
+      3|13.0|La municipalidad comprende la ciudad de Baarle-Hertog.
+      4|12.5|Al 1 de enero de 2018, la ciudad tenía una población de 2760 habitantes.
+      5|14.0|El área total es de 7,48 km² con una densidad de población de 368,99 habitantes por km².
+      6|12.0|¿Sabías esto? Contame abajo.
+   PINTAR: Bélgica
+   CENTRO: 51.4383, 4.9317
+
+DÍA 13 · TOP  (64.5s)
+   Los 5 países más urbanos
+   fuente: Banco Mundial 2025
+      1|11.0|En este país NO existe el campo. Cero. Todos viven en ciudad.
+      2|6.0|Número 5: Hong Kong. 100 % vive en ciudad.
+      3|7.5|Número 4: Gibraltar. 100 % vive en ciudad.
+      4|8.0|Número 3: Cayman Islands. 100 % vive en ciudad.
+      5|9.0|Número 2: Bermuda. 100 % vive en ciudad.
+      6|14.0|Número 1: Baréin. 100 % vive en ciudad.
+      7|9.0|¿Cuál te sorprendió más? Contame abajo.
+   PINTAR: Hong Kong · Gibraltar · Cayman Islands · Bermuda · Baréin
+
+DÍA 14 · CURIOSIDAD  (72.0s)
+   El desierto más árido del mundo
+   fuente: Wikipedia · Desierto de Atacama
+      1|11.0|El desierto más árido del mundo.
+      2|9.5|El desierto de Atacama se extiende por las regiones naturales del Norte Grande y el Norte chico de Chile.
+      3|13.0|abarcando las regiones de Arica y Parinacota, Tarapacá, Antofagasta, Atacama y el norte de Coquimbo.
+      4|12.5|Tiene una superficie aproximada de 105 000 km², una longitud de casi 1600 km y un ancho máximo de 180 km.
+      5|14.0|Está delimitado por el océano Pacífico al oeste y por la cordillera de los Andes al este.
+      6|12.0|¿Sabías esto? Contame abajo.
+   PINTAR: Chile
+   CENTRO: -24.5000, -69.2500
+
+DÍA 15 · TOP  (64.5s)
+   Los 5 países más rurales
+   fuente: Banco Mundial 2025
+      1|11.0|El país más rico de Europa es también el más rural.
+      2|6.0|Número 5: Níger. 81,6 % vive en el campo.
+      3|7.5|Número 4: Malaui. 82,4 % vive en el campo.
+      4|8.0|Número 3: Samoa. 82,5 % vive en el campo.
+      5|9.0|Número 2: Papúa Nueva Guinea. 84,2 % vive en el campo.
+      6|14.0|Número 1: Liechtenstein. 85,4 % vive en el campo.
+      7|9.0|¿Cuál te sorprendió más? Contame abajo.
+   PINTAR: Níger · Malaui · Samoa · Papúa Nueva Guinea · Liechtenstein
+
+DÍA 16 · CURIOSIDAD  (72.0s)
+   ¿Es un mar o es un lago? Nadie se pone de acuerdo
+   fuente: Wikipedia · Mar Caspio
+      1|11.0|¿Es un mar o es un lago? Nadie se pone de acuerdo.
+      2|9.5|El mar Caspio es el cuerpo de agua interior más grande del mundo, a menudo descrito como el lago más grande del mundo y, a veces.
+      3|13.0|se hace referencia a él como un mar en toda regla.
+      4|12.5|Es una cuenca endorreica, se encuentra entre Europa y Asia: al este del Cáucaso, al oeste de la amplia estepa de Asia Central.
+      5|14.0|al sur de las fértiles llanuras del sur de Rusia en Europa Oriental y al norte de la montañosa meseta iraní.
+      6|12.0|¿Sabías esto? Contame abajo.
+   PINTAR: Kazajistán
+   CENTRO: 42.0000, 50.5000
+
+DÍA 17 · TOP  (64.5s)
+   Los 5 países con menos agua potable
+   fuente: Banco Mundial 2024
+      1|11.0|Dos de cada tres personas de este país no tienen agua potable.
+      2|6.0|Número 5: Eritrea. 51,8 % con agua potable.
+      3|7.5|Número 4: Burkina Faso. 50,0 % con agua potable.
+      4|8.0|Número 3: Sudán del Sur. 39,7 % con agua potable.
+      5|9.0|Número 2: Rep. Centroafricana. 36,5 % con agua potable.
+      6|14.0|Número 1: Rep. Dem. del Congo. 35,7 % con agua potable.
+      7|9.0|¿Cuál te sorprendió más? Contame abajo.
+   PINTAR: Eritrea · Burkina Faso · Sudán del Sur · Rep. Centroafricana · Rep. Dem. del Congo
+
+DÍA 18 · CURIOSIDAD  (72.0s)
+   El punto más profundo del planeta
+   fuente: Wikipedia · Fosa de las Marianas
+      1|11.0|El punto más profundo del planeta.
+      2|9.5|La fosa de las Marianas es una depresión del fondo marino que se encuentra en el océano Pacífico occidental.
+      3|13.0|a unos 200 km al este de las islas Marianas, y es el área más profunda conocida de la Tierra.
+      4|12.5|Tiene forma de media luna y mide unos 2550 km de largo por unos 70 km de ancho.
+      5|14.0|La máxima profundidad de esta fosa oceánica es de casi 11 000 metros en el extremo sur de un pequeño valle en su fondo, conocido como Abi
+      6|12.0|¿Sabías esto? Contame abajo.
+   PINTAR: Filipinas
+   CENTRO: 11.3500, 142.2000
+
+DÍA 19 · TOP  (64.5s)
+   Los 5 países donde nacen más chicos
+   fuente: Banco Mundial 2024
+      1|11.0|Acá cada mujer tiene 6 hijos. En el otro extremo, medio hijo.
+      2|6.0|Número 5: Níger. 5,9 hijos por mujer.
+      3|7.5|Número 4: Rep. Centroafricana. 6,0 hijos por mujer.
+      4|8.0|Número 3: Rep. Dem. del Congo. 6,0 hijos por mujer.
+      5|9.0|Número 2: Somalia, Fed. Rep.. 6,0 hijos por mujer.
+      6|14.0|Número 1: Chad. 6,0 hijos por mujer.
+      7|9.0|¿Cuál te sorprendió más? Contame abajo.
+   PINTAR: Níger · Rep. Centroafricana · Rep. Dem. del Congo · Somalia, Fed. Rep. · Chad
+
+DÍA 20 · CURIOSIDAD  (58.0s)
+   La montaña más alta del mundo (no es el Everest)
+   fuente: Wikipedia · Chimborazo
+      1|11.0|La montaña más alta del mundo (no es el Everest).
+      2|9.5|Chimborazo es un topónimo, que puede referirse a:Chimborazo, una ciudad de la parroquia de Saint Joseph.
+      3|13.0|en Barbados; la provincia de Chimborazo del Ecuador; el volcán Chimborazo, la montaña más alta del Ecuador y actualmente inactivo; Cerro Chimborazo.
+      4|12.5|en el parque nacional Henri Pittier, Venezuela.
+      5|12.0|¿Sabías esto? Contame abajo.
+   PINTAR: Ecuador
+
+DÍA 21 · TOP  (64.5s)
+   Los 5 países donde nacen menos chicos
+   fuente: Banco Mundial 2024
+      1|11.0|Este lugar se está quedando sin gente y nadie lo frena.
+      2|6.0|Número 5: Singapur. 1,0 hijos por mujer.
+      3|7.5|Número 4: Puerto Rico (US). 0,9 hijos por mujer.
+      4|8.0|Número 3: Hong Kong. 0,8 hijos por mujer.
+      5|9.0|Número 2: Corea del Sur. 0,7 hijos por mujer.
+      6|14.0|Número 1: Macao SAR, China. 0,6 hijos por mujer.
+      7|9.0|¿Cuál te sorprendió más? Contame abajo.
+   PINTAR: Singapur · Puerto Rico (US) · Hong Kong · Corea del Sur · Macao SAR, China
+
+DÍA 22 · CURIOSIDAD  (65.9s)
+   El país que tiene tres días distintos a la vez
+   fuente: Wikipedia · Kiribati
+      1|17.8|El país que tiene tres días distintos a la vez.
+      2|16.3|Kiribati, oficialmente la República de Kiribati, es un archipiélago y país insular ubicado en la zona central oeste del océano Pacífico, al noreste de Australia.
+      3|19.8|Su capital y ciudad más poblada es Tarawa Sur.
+      4|12.0|¿Sabías esto? Contame abajo.
+   PINTAR: Kiribati
+
+DÍA 23 · TOP  (64.5s)
+   Los 5 países con más energía limpia
+   fuente: Banco Mundial 2021
+      1|11.0|Este país usa 96% energía limpia. Y no es por ecologismo.
+      2|6.0|Número 5: Rep. Centroafricana. 90,9 % energía renovable.
+      3|7.5|Número 4: Gabón. 91,3 % energía renovable.
+      4|8.0|Número 3: Liberia. 92,8 % energía renovable.
+      5|9.0|Número 2: Somalia, Fed. Rep.. 95,4 % energía renovable.
+      6|14.0|Número 1: Rep. Dem. del Congo. 96,3 % energía renovable.
+      7|9.0|¿Cuál te sorprendió más? Contame abajo.
+   PINTAR: Rep. Centroafricana · Gabón · Liberia · Somalia, Fed. Rep. · Rep. Dem. del Congo
+
+DÍA 24 · CURIOSIDAD  (72.0s)
+   El país entero está a más de 1.000 metros de altura
+   fuente: Wikipedia · Lesoto
+      1|11.0|El país entero está a más de 1.000 metros de altura.
+      2|9.5|Lesoto o Lesotho oficialmente denominado Reino de Lesoto o Reino de Lesotho, es un país sin salida al mar, del sur de África.
+      3|13.0|geográfica y políticamente enclavado dentro de Sudáfrica.
+      4|12.5|Popularmente a este país se le conoce como el "Reino en el Cielo" debido a que es el único Estado independiente del mundo que se encuentra totalmente por encima de los 1000 m de altitud.
+      5|14.0|según la Enciclopedia Británica.
+      6|12.0|¿Sabías esto? Contame abajo.
+   PINTAR: Lesoto
+
+DÍA 25 · TOP  (64.5s)
+   Los 5 países que más gastan en armas
+   fuente: Banco Mundial 2024
+      1|11.0|Este país gasta un tercio de todo lo que produce en armas.
+      2|6.0|Número 5: Arabia Saudita. 7,3 % del PBI en defensa.
+      3|7.5|Número 4: Argelia. 8,0 % del PBI en defensa.
+      4|8.0|Número 3: Israel. 8,8 % del PBI en defensa.
+      5|9.0|Número 2: Eritrea. 20,9 % del PBI en defensa.
+      6|14.0|Número 1: Ucrania. 34,5 % del PBI en defensa.
+      7|9.0|¿Cuál te sorprendió más? Contame abajo.
+   PINTAR: Arabia Saudita · Argelia · Israel · Eritrea · Ucrania
+
+DÍA 26 · CURIOSIDAD  (72.0s)
+   El país más chico del mundo
+   fuente: Wikipedia · Ciudad del Vaticano
+      1|11.0|El país más chico del mundo.
+      2|9.5|La Ciudad del Vaticano, oficialmente Estado de la Ciudad del Vaticano, o simplemente el Vaticano.
+      3|13.0|es un micro-Estado soberano cuyo territorio es un enclave dentro de la ciudad de Roma, en Italia.
+      4|12.5|Es el país más pequeño del mundo en extensión y población.
+      5|14.0|Su forma de gobierno, de acuerdo con la clasificación internacional, es la de una teocracia organizada como una monarquía electiva.
+      6|12.0|¿Sabías esto? Contame abajo.
+   PINTAR: Italia
+
+DÍA 27 · TOP  (64.5s)
+   Los 5 países más viejos
+   fuente: Banco Mundial 2025
+      1|11.0|Uno de cada tres habitantes de este país tiene más de 65 años.
+      2|6.0|Número 5: Portugal. 24,9 % mayores de 65.
+      3|7.5|Número 4: Italia. 25,1 % mayores de 65.
+      4|8.0|Número 3: Puerto Rico (US). 25,3 % mayores de 65.
+      5|9.0|Número 2: Japón. 30,0 % mayores de 65.
+      6|14.0|Número 1: Mónaco. 36,0 % mayores de 65.
+      7|9.0|¿Cuál te sorprendió más? Contame abajo.
+   PINTAR: Portugal · Italia · Puerto Rico (US) · Japón · Mónaco
+
+DÍA 28 · CURIOSIDAD  (72.0s)
+   La isla más grande, y casi nadie vive ahí
+   fuente: Wikipedia · Groenlandia
+      1|11.0|La isla más grande, y casi nadie vive ahí.
+      2|9.5|Groenlandia es una isla situada en el hemisferio Norte, entre los océanos Atlántico y Glacial Ártico.
+      3|13.0|que políticamente es una nación constituyente del Reino de Dinamarca.
+      4|12.5|Con un total de 2 166 086 km², se considera la isla más grande del mundo, tomando la definición de Australia como masa continental.
+      5|14.0|Su capital y ciudad más poblada es Nuuk.
+      6|12.0|¿Sabías esto? Contame abajo.
+   PINTAR: Groenlandia
+   CENTRO: 72.0000, -40.0000
+
+DÍA 29 · TOP  (64.5s)
+   Los 5 países más jóvenes
+   fuente: Banco Mundial 2025
+      1|11.0|La mitad de este país tiene menos de 14 años.
+      2|6.0|Número 5: Rep. Dem. del Congo. 45,9 % menores de 14.
+      3|7.5|Número 4: Chad. 46,0 % menores de 14.
+      4|8.0|Número 3: Níger. 46,2 % menores de 14.
+      5|9.0|Número 2: Somalia, Fed. Rep.. 46,6 % menores de 14.
+      6|14.0|Número 1: Rep. Centroafricana. 48,7 % menores de 14.
+      7|9.0|¿Cuál te sorprendió más? Contame abajo.
+   PINTAR: Rep. Dem. del Congo · Chad · Níger · Somalia, Fed. Rep. · Rep. Centroafricana
+
+DÍA 30 · CURIOSIDAD  (72.0s)
+   Era verde hace 6.000 años
+   fuente: Wikipedia · Desierto del Sahara
+      1|11.0|Era verde hace 6.000 años.
+      2|9.5|El Sahara o Sáhara es el desierto cálido más grande del mundo y el tercero más grande después de la Antártida y el Ártico.
+      3|13.0|Con más de 9 400 000 km² de superficie.
+      4|12.5|abarca la mayor parte del norte de África ocupando un tercio del total del continente y una extensión casi tan grande como la de China o Estados Unidos.
+      5|14.0|El Sahara se extiende desde el mar Rojo, incluyendo partes de la costa del mar Mediterráneo, hasta el oc
+      6|12.0|¿Sabías esto? Contame abajo.
+   PINTAR: Argelia
+   CENTRO: 23.0797, 12.6122
+
+DÍA 31 · CURIOSIDAD  (72.0s)
+   Se parte en dos, 2 centímetros por año
+   fuente: Wikipedia · Islandia
+      1|11.0|Se parte en dos, 2 centímetros por año.
+      2|9.5|Islandia es un país insular europeo, cuyo territorio abarca la isla homónima y algunas pequeñas islas e islotes adyacentes en el océano Atlántico.
+      3|13.0|Cuenta con una población de cerca de 366 425 habitantes y un área de 103 000 km².
+      4|12.5|A causa de su localización en la dorsal mesoatlántica, es un país con gran actividad volcánica y geológica.
+      5|14.0|factor que afecta en gran medida al paisaje del territorio.
+      6|12.0|¿Sabías esto? Contame abajo.
+   PINTAR: Islandia
+
+DÍA 32 · CURIOSIDAD  (58.0s)
+   Una isla que nació en 1963 y nadie puede pisar
+   fuente: Wikipedia · Surtsey
+      1|11.0|Una isla que nació en 1963 y nadie puede pisar.
+      2|9.5|Surtsey es una isla volcánica situada a aproximadamente 32 kilómetros de la costa meridional de Islandia, cerca del archipiélago de Vestmannaeyjar.
+      3|13.0|Constituye el punto más austral del país y se formó a partir de una erupción volcánica que se inició a 130 m por debajo del nivel del mar y emergió a la superficie el 14 de noviembre de 1963.
+      4|12.5|La erupción duró hasta el 5 de junio de 1967, momento en el que la isla alcanzó
+      5|12.0|¿Sabías esto? Contame abajo.
+   PINTAR: Islandia
+   CENTRO: 63.3040, -20.6047

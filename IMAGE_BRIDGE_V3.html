@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>&#129516; IMAGE BRIDGE V3 &mdash; Multicuentas Engine &mdash; 0$ sin API key</title>
+<style>
+html,body{margin:0;padding:0}
+body{
+  background:radial-gradient(1200px 700px at 15% -10%,#1a2340 0%,transparent 55%),
+             radial-gradient(900px 600px at 110% 5%,#2a1240 0%,transparent 50%),#0b0d14;
+  min-height:100vh;
+}
+</style>
+
+<style id="v78-css">
+/* ---- V37078 IMAGE GENERATOR BRIDGE ---- */
+.v78-win{
+  display:flex !important;position:relative;width:100%;max-width:1180px;
+  margin:0 auto;min-height:100vh;
+  background:transparent;border:none;border-radius:0;box-shadow:none;overflow:visible;
+  flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,'Inter',system-ui,sans-serif;
+  color:#e8ecf5;
+}
+.v78-win.open{display:flex}
+.v78-bar{
+  display:flex;align-items:center;gap:11px;padding:12px 15px;cursor:default;
+  background:rgba(0,0,0,.5);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.09);flex-shrink:0;
+  position:sticky;top:0;z-index:500;border-radius:0 0 14px 14px;
+}
+.v78-lights{display:flex;gap:7px}
+.v78-lg{width:12px;height:12px;border-radius:50%;cursor:pointer;display:block}
+.v78-r{background:#ff5f57}.v78-y{background:#febc2e}.v78-g{background:#28c840}
+.v78-title{font-size:12.5px;font-weight:800}
+.v78-chip{background:rgba(0,255,136,.14);border:1px solid rgba(0,255,136,.35);
+  color:#00ff88;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:800}
+.v78-x{cursor:pointer;font-size:15px;color:#8b93a7;padding:0 5px}
+.v78-x:hover{color:#ff3b5c}
+.v78-body{flex:1;overflow:visible;padding:16px 15px 70px}
+.v78-hero{
+  background:linear-gradient(135deg,rgba(0,255,136,.11),rgba(168,85,247,.11));
+  border:1px solid rgba(0,255,136,.26);border-radius:13px;padding:14px;
+  font-size:13px;line-height:1.6;margin-bottom:14px;
+}
+.v78-hero b{color:#00ff88;font-size:14.5px}
+.v78-sec{background:#171b28;border:1px solid rgba(255,255,255,.09);
+  border-radius:13px;padding:15px;margin-bottom:13px}
+.v78-h{display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:850;
+  margin-bottom:9px;flex-wrap:wrap}
+.v78-tag{background:rgba(0,212,255,.13);color:#00d4ff;font-size:10px;
+  font-weight:800;padding:3px 9px;border-radius:20px}
+.v78-lb{display:block;font-size:10.5px;font-weight:800;color:#8b93a7;
+  text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px}
+.v78-in,.v78-ta{
+  width:100%;background:#0b0d14;border:1px solid rgba(255,255,255,.11);
+  border-radius:10px;color:#e8ecf5;padding:11px 12px;font-size:13px;
+  font-family:inherit;outline:none;min-height:44px;
+}
+.v78-ta{min-height:auto;resize:vertical;font-size:12px;line-height:1.5}
+.v78-in:focus,.v78-ta:focus{border-color:#00ff88;box-shadow:0 0 0 3px rgba(0,255,136,.12)}
+.v78-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:11px}
+.v78-row{display:flex;gap:8px;flex-wrap:wrap}
+.v78-b{
+  border:none;border-radius:11px;padding:12px 16px;font-size:13px;font-weight:850;
+  cursor:pointer;font-family:inherit;min-height:46px;
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  transition:transform .12s,filter .15s;
+}
+.v78-b:active{transform:scale(.97)}
+.v78-b:hover{filter:brightness(1.11)}
+.v78-b:disabled{opacity:.45;cursor:not-allowed}
+.v78-main{background:linear-gradient(135deg,#00ff88,#00c96f);color:#00140a;
+  width:100%;font-size:15.5px;padding:17px;margin-top:13px;
+  box-shadow:0 8px 28px rgba(0,255,136,.26)}
+.v78-blue{background:linear-gradient(135deg,#00d4ff,#0090ff);color:#001622}
+.v78-pur{background:linear-gradient(135deg,#a855f7,#7c3aed);color:#fff}
+.v78-yel{background:linear-gradient(135deg,#ffd400,#ff8a00);color:#1a1200}
+.v78-gh{background:#1e2333;border:1px solid rgba(255,255,255,.11);color:#e8ecf5}
+.v78-sm{padding:8px 12px;font-size:11.5px;min-height:38px;border-radius:9px}
+.v78-frames{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));
+  gap:13px;margin-top:12px}
+.v78-fc{background:#1e2333;border:1px solid rgba(255,255,255,.09);
+  border-radius:13px;overflow:hidden}
+.v78-fc.done{border-color:rgba(0,255,136,.45)}
+.v78-fc.gen{border-color:rgba(255,212,0,.5)}
+.v78-fc.err{border-color:rgba(255,59,92,.5)}
+.v78-fh{padding:8px 11px;background:rgba(0,0,0,.3);display:flex;
+  justify-content:space-between;align-items:center;font-size:11px;font-weight:900}
+.v78-fn{color:#00d4ff}
+.v78-fs{font-size:10px;padding:2px 8px;border-radius:20px;
+  background:rgba(255,255,255,.07);color:#8b93a7}
+.v78-fs.ok{background:rgba(0,255,136,.16);color:#00ff88}
+.v78-fs.load{background:rgba(255,212,0,.16);color:#ffd400}
+.v78-fs.bad{background:rgba(255,59,92,.18);color:#ff3b5c}
+.v78-cv{position:relative;width:100%;aspect-ratio:9/16;background:#05070c;
+  display:flex;align-items:center;justify-content:center;overflow:hidden}
+.v78-cv canvas{width:100%;height:100%;object-fit:cover;display:block}
+.v78-ph{color:#3d4560;font-size:34px}
+.v78-spin{position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:9px;background:rgba(5,7,12,.87)}
+.v78-sp{width:30px;height:30px;border:3px solid rgba(255,212,0,.2);
+  border-top-color:#ffd400;border-radius:50%;animation:v78sp .8s linear infinite}
+@keyframes v78sp{to{transform:rotate(360deg)}}
+.v78-spin span{font-size:10.5px;color:#ffd400;font-weight:800;text-align:center;padding:0 8px}
+.v78-fb{padding:10px 11px}
+.v78-fcap{width:100%;background:#0b0d14;border:1px solid rgba(255,255,255,.11);
+  border-radius:8px;color:#ffd400;padding:8px 10px;font-size:12px;font-weight:900;
+  text-transform:uppercase;margin-bottom:7px;outline:none;font-family:inherit;min-height:38px}
+.v78-fpr{width:100%;background:#0b0d14;border:1px solid rgba(255,255,255,.11);
+  border-radius:8px;color:#8b93a7;padding:8px 10px;font-size:10.5px;line-height:1.45;
+  min-height:66px;resize:vertical;outline:none;font-family:inherit;margin-bottom:8px}
+.v78-fa{display:flex;gap:6px}
+.v78-fa .v78-b{flex:1;padding:8px 6px;font-size:11px;min-height:36px;border-radius:8px}
+.v78-pbar{height:8px;background:rgba(255,255,255,.07);border-radius:20px;
+  overflow:hidden;margin-top:13px}
+.v78-pfill{height:100%;width:0%;background:linear-gradient(90deg,#00ff88,#00d4ff);
+  border-radius:20px;transition:width .35s}
+.v78-pinfo{display:flex;justify-content:space-between;font-size:11.5px;
+  color:#8b93a7;margin-top:7px;font-weight:700}
+.v78-log{background:#05070c;border:1px solid rgba(255,255,255,.09);border-radius:11px;
+  padding:12px;font-family:'SF Mono',ui-monospace,Menlo,monospace;font-size:11px;
+  line-height:1.7;max-height:190px;overflow-y:auto;margin-top:12px}
+.v78-log .ok{color:#00ff88}.v78-log .in{color:#00d4ff}
+.v78-log .wr{color:#ffd400}.v78-log .er{color:#ff3b5c}.v78-log .dm{color:#8b93a7}
+.v78-note{background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.22);
+  border-radius:11px;padding:12px;font-size:11.8px;line-height:1.6;
+  color:#b8d8e8;margin-top:11px}
+.v78-note b{color:#00d4ff}
+.v78-steps{display:grid;gap:8px;margin-top:10px}
+.v78-st{background:#1e2333;border:1px solid rgba(255,255,255,.09);
+  border-radius:10px;padding:11px;font-size:12.3px;line-height:1.6}
+.v78-st b{color:#00ff88}
+.v78-win code{background:rgba(0,255,136,.11);color:#00ff88;padding:2px 6px;
+  border-radius:5px;font-family:'SF Mono',ui-monospace,Menlo,monospace;
+  font-size:11px;word-break:break-all}
+
+@media(max-width:640px){
+  .v78-win{width:100%;min-height:100vh}
+  .v78-frames{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+}
+</style>
+
+</head>
+<body>
+
+<!-- V37078_IMAGE_GENERATOR_BRIDGE -->
+<div id="v78-win" class="v78-win open">
+  <div class="v78-bar" id="v78-bar">
+    <div class="v78-lights">
+      <span class="v78-lg v78-r"></span>
+      <span class="v78-lg v78-y"></span>
+      <span class="v78-lg v78-g"></span>
+    </div>
+    <div class="v78-title">🧬 IMAGE BRIDGE V3 — MULTICUENTAS ENGINE — 0$ SIN API KEY</div>
+    <div style="flex:1"></div>
+    <span class="v78-chip" id="v78-count">0/7</span>
+  </div>
+
+  <div class="v78-body">
+
+    <div class="v78-hero">
+      <b>🧬 Generá tus imágenes IA acá — sin instalar nada</b><br>
+      Doble click y listo. Sin API key, sin GPU, sin Terminal, 0$.
+      Sirve para cualquier nicho: mapas, deportes, niños, biología, terror 3AM, stickman, thumbnails.
+      <div style="margin-top:9px;font-size:12px;color:#8b93a7">
+        Guardalo en <code>~/Desktop/MULTICUENTAS_ENGINE/</code> al lado de tu ENGINE.html.
+        Es una app más de tu suite, solo que abre en su propia pestaña.
+      </div>
+    </div>
+
+
+
+    <!-- CEREBRO GROQ -->
+    <div class="v78-sec" style="border-color:rgba(168,85,247,.32);background:linear-gradient(135deg,rgba(168,85,247,.07),rgba(0,212,255,.05))">
+      <div class="v78-h">🧠 Cerebro IA <span class="v78-tag" id="v78-groq-st">apagado</span>
+        <span style="flex:1"></span>
+        <span class="v78-tag" style="background:rgba(0,255,136,.13);color:#00ff88">4 motores + plantillas</span>
+      </div>
+      <label class="v78-lb">Motor de IA (si uno cae, cambiás a otro y listo)</label>
+      <select id="v78-prov" class="v78-in" onchange="v78ProvChange()">
+        <option value="groq">Groq — Llama 3.3 70B — gratis sin tarjeta</option>
+        <option value="cerebras">Cerebras — Llama 3.3 70B — gratis sin tarjeta</option>
+        <option value="google">Google AI Studio — Gemini Flash — gratis</option>
+        <option value="openrouter">OpenRouter — varios modelos gratis</option>
+        <option value="off">Ninguno — usar plantillas locales (0 dependencia)</option>
+      </select>
+      <div id="v78-prov-info" style="font-size:11.5px;color:#8b93a7;margin-top:7px;line-height:1.55"></div>
+      <div style="font-size:12.5px;color:#8b93a7;line-height:1.62;margin-bottom:11px">
+        <b style="color:#c98cff">Opcional y reemplazable.</b> Si una empresa corta el servicio,
+        elegís otro motor de la lista y seguís igual. Y si caen los cuatro,
+        la app sigue andando con plantillas locales que <b>nunca</b> dependen de internet.
+        <br>Todos son gratis. Cada uno te dice abajo dónde sacar la clave.
+      </div>
+      <label class="v78-lb" id="v78-key-lb">Tu clave</label>
+      <input type="password" id="v78-groq" class="v78-in" placeholder="gsk_..." autocomplete="off">
+      <div style="font-size:11px;color:#8b93a7;margin-top:7px;line-height:1.5">
+        🔒 Se guarda solo en tu Mac. No se manda a ningún lado más que a Groq.
+      </div>
+      <div class="v78-row" style="margin-top:11px">
+        <button class="v78-b v78-pur" onclick="v78TestGroq()">🔌 Probar conexión</button>
+        <button class="v78-b v78-gh" onclick="v78ClearGroq()">🗑 Borrar clave</button>
+        <button class="v78-b v78-gh" onclick="v78Diag()">🩺 Diagnóstico</button>
+      </div>
+    </div>
+
+    <!-- TEMA RAPIDO -->
+    <div class="v78-sec" style="border-color:rgba(255,212,0,.3);background:linear-gradient(135deg,rgba(255,212,0,.06),rgba(255,138,0,.05))">
+      <div class="v78-h">⚡ Modo rápido <span class="v78-tag">escribí en español y listo</span></div>
+      <div style="font-size:12.5px;color:#8b93a7;line-height:1.6;margin-bottom:11px">
+        No sabés inglés ni querés escribir prompts. Poné el tema y cuántos frames, y te arma todo solo.
+      </div>
+      <div class="v78-grid">
+        <div style="grid-column:1/-1">
+          <label class="v78-lb">Tema del video</label>
+          <input type="text" id="v78-tema" class="v78-in" placeholder="ej: historia de las islas Malvinas">
+        </div>
+        <div>
+          <label class="v78-lb">Cuántos frames</label>
+          <select id="v78-nf" class="v78-in">
+            <option value="5">5 frames</option>
+            <option value="7" selected>7 frames</option>
+            <option value="10">10 frames</option>
+          </select>
+        </div>
+        <div>
+          <label class="v78-lb">Tipo de video</label>
+          <select id="v78-tipo" class="v78-in">
+            <option value="satelital">🛰️ Mapa satelital</option>
+            <option value="historico">🏛️ Histórico</option>
+            <option value="kids">🧒 Kids explica</option>
+            <option value="terror">😱 Terror 3AM</option>
+            <option value="deportes">⚽ Deportes</option>
+            <option value="biologia">🧬 Biología</option>
+            <option value="novelas">📚 Novelas</option>
+            <option value="curiosidades">🤯 Curiosidades</option>
+            <option value="dibujo">✏️ Dibujo</option>
+            <option value="stickman">🕴️ Stickman</option>
+          </select>
+        </div>
+      </div>
+      <button class="v78-b v78-yel" id="v78-btn-tema" style="width:100%;margin-top:12px;font-size:15px;padding:16px"
+              onclick="v78Tema()">✨ ARMAR LOS FRAMES DE ESTE TEMA</button>
+      <div style="font-size:11.5px;color:#8b93a7;margin-top:9px;line-height:1.55">
+        Después revisá los frames abajo y tocá el botón verde para generar las imágenes.
+      </div>
+    </div>
+
+    <!-- ESTILO -->
+    <div class="v78-sec">
+      <div class="v78-h">🧬 Style DNA <span class="v78-tag">se pega a TODOS los prompts</span></div>
+      <textarea id="v78-dna" class="v78-ta" rows="3"></textarea>
+      <div class="v78-h" style="margin-top:10px">✨ Detalle destacado</div>
+      <textarea id="v78-hi" class="v78-ta" rows="2"></textarea>
+      <div class="v78-row" style="margin-top:10px">
+        <button class="v78-b v78-gh" onclick="v78Preset('satelital')">🛰️ Satelital</button>
+        <button class="v78-b v78-gh" onclick="v78Preset('dibujo')">✏️ Dibujo</button>
+        <button class="v78-b v78-gh" onclick="v78Preset('historico')">🏛️ Histórico</button>
+        <button class="v78-b v78-gh" onclick="v78Preset('kids')">🧒 Kids</button>
+        <button class="v78-b v78-gh" onclick="v78Preset('terror')">😱 Terror 3AM</button>
+        <button class="v78-b v78-gh" onclick="v78Preset('stickman')">🕴️ Stickman</button>
+        <button class="v78-b v78-gh" onclick="v78Preset('deportes')">⚽ Deportes</button>
+        <button class="v78-b v78-gh" onclick="v78Preset('novelas')">📚 Novelas</button>
+        <button class="v78-b v78-gh" onclick="v78Preset('curiosidades')">🤯 Curiosidades</button>
+        <button class="v78-b v78-gh" onclick="v78Preset('limpio')">🧼 Sin estilo</button>
+      </div>
+    </div>
+
+    <!-- CONFIG -->
+    <div class="v78-sec">
+      <div class="v78-h">⚙️ Configuración</div>
+      <div class="v78-grid">
+        <div><label class="v78-lb">Seed (consistencia)</label>
+          <input type="number" id="v78-seed" class="v78-in" value="37078"></div>
+        <div><label class="v78-lb">Ancho</label>
+          <input type="number" id="v78-w" class="v78-in" value="768" step="64"></div>
+        <div><label class="v78-lb">Alto (9:16)</label>
+          <input type="number" id="v78-h2" class="v78-in" value="1344" step="64"></div>
+        <div><label class="v78-lb">Export final</label>
+          <select id="v78-exp" class="v78-in">
+            <option value="1080x1920">1080×1920 TikTok PRO</option>
+            <option value="720x1280">720×1280 liviano</option>
+            <option value="1920x1080">1920×1080 horizontal</option>
+            <option value="1280x720">1280×720 thumbnail</option>
+            <option value="native">Nativo</option>
+          </select></div>
+        <div><label class="v78-lb">Subtítulo quemado</label>
+          <select id="v78-cap" class="v78-in">
+            <option value="on">✅ SÍ estilo TikTok</option>
+            <option value="off">❌ NO imagen limpia</option>
+          </select></div>
+        <div><label class="v78-lb">Posición</label>
+          <select id="v78-pos" class="v78-in">
+            <option value="center">Centro</option><option value="top">Arriba</option>
+            <option value="bottom">Abajo</option>
+          </select></div>
+        <div><label class="v78-lb">🔧 FIX1 · Enhance IA</label>
+          <select id="v78-enh" class="v78-in">
+            <option value="off">❌ OFF — respeta tu prompt (recomendado)</option>
+            <option value="on">✅ ON — la IA reescribe y adorna</option>
+          </select></div>
+        <div><label class="v78-lb">🔧 FIX2 · Pausa anti-429</label>
+          <select id="v78-delay" class="v78-in">
+            <option value="9000">9s — seguro (recomendado)</option>
+            <option value="6000">6s — rápido</option>
+            <option value="13000">13s — ultra seguro</option>
+            <option value="2000">2s — riesgo 429</option>
+          </select></div>
+      </div>
+      <div class="v78-note">
+        <b>FIX 1:</b> <code>enhance</code> hacía que la IA reescriba tu prompt → salían lindas
+        pero distintas a lo pedido. Ahora viene <b>OFF</b>.<br>
+        <b>FIX 2:</b> pedir muchas seguidas daba <code>HTTP 429</code> → ahora hay pausa + 3 reintentos.
+      </div>
+    </div>
+
+    <!-- FRAMES -->
+    <div class="v78-sec">
+      <div class="v78-h">🎬 Frames
+        <span style="flex:1"></span>
+        <button class="v78-b v78-gh v78-sm" onclick="v78Add()">+ Frame</button>
+        <button class="v78-b v78-gh v78-sm" onclick="v78Reset()">↺ Malvinas</button>
+        <button class="v78-b v78-gh v78-sm" onclick="v78Clear()">🗑 Vaciar</button>
+      </div>
+      <div class="v78-frames" id="v78-frames"></div>
+
+      <div class="v78-pbar"><div class="v78-pfill" id="v78-pfill"></div></div>
+      <div class="v78-pinfo"><span id="v78-ptxt">Listo</span><span id="v78-ppct">0%</span></div>
+
+      <button class="v78-b v78-main" id="v78-all" onclick="v78GenAll()">
+        🚀 GENERAR TODAS LAS IMÁGENES IA — 0$ — SIN API KEY
+      </button>
+
+      <div class="v78-row" style="margin-top:10px">
+        <button class="v78-b v78-blue" onclick="v78DlAll()">⬇️ DESCARGAR TODAS</button>
+        <button class="v78-b v78-pur" onclick="v78CopyAll()">📋 Copiar prompts</button>
+        <button class="v78-b v78-yel" onclick="v78Reroll()">🎲 Re-roll serie</button>
+        <button class="v78-b v78-gh" onclick="v78ExportJSON()">📤 Export JSON</button>
+      </div>
+      <div class="v78-log" id="v78-log"></div>
+    </div>
+
+
+    <!-- MOTOR DE VIDEO -->
+    <div class="v78-sec" style="border-color:rgba(255,59,92,.3);background:linear-gradient(135deg,rgba(255,59,92,.06),rgba(255,138,0,.05))">
+      <div class="v78-h">🎬 Video animado <span class="v78-tag" style="background:rgba(255,59,92,.15);color:#ff8a8a">movimiento de cámara</span></div>
+      <div style="font-size:12.5px;color:#8b93a7;line-height:1.62;margin-bottom:12px">
+        Convierte tus imágenes en un video con <b>movimiento de cámara real</b> (no corte seco).
+        La imagen no cambia nunca, se mueve la cámara encima — igual que los canales grandes.
+        Todo en el navegador, sin instalar nada.
+      </div>
+      <div class="v78-grid">
+        <div>
+          <label class="v78-lb">Movimiento</label>
+          <select id="v78-mov" class="v78-in">
+            <option value="auto">🎲 Automático (recomendado)</option>
+            <option value="zin">🔍 Zoom in lento</option>
+            <option value="zout">🔎 Zoom out</option>
+            <option value="panR">➡️ Paneo derecha</option>
+            <option value="panL">⬅️ Paneo izquierda</option>
+            <option value="panU">⬆️ Paneo arriba</option>
+            <option value="panD">⬇️ Paneo abajo</option>
+            <option value="zinPanR">✨ Zoom in + paneo der</option>
+            <option value="zinPanL">✨ Zoom in + paneo izq</option>
+            <option value="zoutRot">🌀 Zoom out + rotación</option>
+            <option value="rotSuave">🔄 Rotación suave</option>
+            <option value="acento">⚡ Acento rápido</option>
+          </select>
+        </div>
+        <div>
+          <label class="v78-lb">Segundos por frame</label>
+          <select id="v78-dur" class="v78-in">
+            <option value="2">2s — ágil</option>
+            <option value="3" selected>3s — normal</option>
+            <option value="4">4s — documental</option>
+            <option value="5">5s — lento</option>
+          </select>
+        </div>
+        <div>
+          <label class="v78-lb">Transición</label>
+          <select id="v78-tra" class="v78-in">
+            <option value="fade">Fundido (suave)</option>
+            <option value="dissolve">Disolvencia</option>
+            <option value="slide">Deslizamiento</option>
+            <option value="cut">Corte seco</option>
+          </select>
+        </div>
+        <div>
+          <label class="v78-lb">Calidad</label>
+          <select id="v78-cal" class="v78-in">
+            <option value="720">720×1280 — rápido</option>
+            <option value="1080" selected>1080×1920 — TikTok PRO</option>
+          </select>
+        </div>
+        <div>
+          <label class="v78-lb">Fluidez</label>
+          <select id="v78-fps" class="v78-in">
+            <option value="24">24 fps — cine</option>
+            <option value="30" selected>30 fps — normal</option>
+          </select>
+        </div>
+        <div>
+          <label class="v78-lb">Intensidad</label>
+          <select id="v78-int" class="v78-in">
+            <option value="0.14">Sutil — elegante</option>
+            <option value="0.22" selected>Normal</option>
+            <option value="0.34">Fuerte — dramático</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start">
+        <div style="flex:0 0 auto">
+          <label class="v78-lb">Vista previa</label>
+          <canvas id="v78-prev" width="180" height="320"
+            style="width:180px;height:320px;border-radius:11px;background:#05070c;border:1px solid rgba(255,255,255,.1);display:block"></canvas>
+        </div>
+        <div style="flex:1;min-width:190px">
+          <button class="v78-b v78-gh" style="width:100%" onclick="v78Preview()">▶️ Ver cómo se mueve</button>
+          <button class="v78-b v78-yel" style="width:100%;margin-top:9px;font-size:15px;padding:15px" onclick="v78MakeVideo()">
+            🎬 CREAR VIDEO ANIMADO
+          </button>
+          <div style="font-size:11.5px;color:#8b93a7;margin-top:9px;line-height:1.55">
+            Primero generá las imágenes con el botón verde. Después tocá acá.
+            El video se descarga solo cuando termina.
+          </div>
+        </div>
+      </div>
+
+      <div class="v78-pbar" style="margin-top:12px"><div class="v78-pfill" id="v78-vfill" style="background:linear-gradient(90deg,#ff3b5c,#ff8a00)"></div></div>
+      <div class="v78-pinfo"><span id="v78-vtxt">Listo</span><span id="v78-vpct">0%</span></div>
+    </div>
+
+    <!-- JSON -->
+    <div class="v78-sec">
+      <div class="v78-h">🔗 Importar JSON <span class="v78-tag">Visual Prompt PRO · Low VRAM Hub · Asset PRO</span></div>
+      <textarea id="v78-json" class="v78-ta" rows="3" placeholder='Pegá el JSON de Visual Prompt PRO V37075 / Low VRAM Hub V37077 / PACK_PRODUCCION.json'></textarea>
+      <div class="v78-row" style="margin-top:9px">
+        <button class="v78-b v78-blue" onclick="v78ImportJSON()">📥 IMPORTAR → FRAMES</button>
+      </div>
+    </div>
+
+    <!-- PIPELINE -->
+    <div class="v78-sec">
+      <div class="v78-h">📦 Cómo sigue hasta el MP4</div>
+      <div class="v78-steps">
+        <div class="v78-st"><b>1.</b> Generá acá arriba (botón verde)</div>
+        <div class="v78-st"><b>2.</b> Descargar todas → <code>ai_frame_01.png … ai_frame_07.png</code></div>
+        <div class="v78-st"><b>3.</b> Terminal:<br><code>mkdir -p ~/Desktop/IMAGE_PACK_MALVINAS && mv ~/Downloads/ai_frame_*.png ~/Desktop/IMAGE_PACK_MALVINAS/</code></div>
+        <div class="v78-st"><b>4.</b> Corré <code>IMAGE_PACK_IMPORTER_MAC.py</code> → MP4 con voz Jorge MX + SRT</div>
+        <div class="v78-st"><b>5.</b> Export x4: YT Shorts + TikTok + Reels + Kwai</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script id="v78-js">
+/* ==========================================================================
+   V37078 IMAGE GENERATOR BRIDGE  —  Multicuentas Engine — Pablo
+   El Engine genera sus propias imagenes IA. Sin API key. Sin GPU. 0$.
+   FIX1: enhance OFF por default (respeta tu prompt)
+   FIX2: pausa + 3 reintentos anti HTTP 429
+   ========================================================================== */
+(function(){
+"use strict";
+
+var EP = 'https://image.pollinations.ai/prompt/';
+
+var BASE = [
+ {c:'MALVINAS',       p:'satellite view of South America zooming toward the South Atlantic Ocean, the Falkland Islands archipelago visible and glowing'},
+ {c:'ATLÁNTICO SUR',  p:'aerial satellite pan from Patagonia coast of Argentina across the cold South Atlantic sea toward two main islands'},
+ {c:'HISTORIA LARGA', p:'satellite map of the Falkland islands with a subtle glowing timeline arc of light crossing over the ocean'},
+ {c:'1833',           p:'satellite view of the Falkland islands with a single dramatic red glowing pin marker planted on the eastern island, historic mood'},
+ {c:'1982',           p:'wide satellite view of the South Atlantic with small simple ship silhouettes approaching the islands, tense cinematic atmosphere, no violence'},
+ {c:'DISPUTA',        p:'split satellite composition of the Falkland islands with two faint glowing arrows arriving from opposite directions over the ocean'},
+ {c:'¿QUÉ PASA HOY?', p:'present day satellite view of the Falkland islands at dusk, small settlement lights glowing, vast dark ocean around, open question mood'}
+];
+
+var PRESETS = {
+ satelital:{d:'vertical 9:16 cinematic satellite geography short, Google Earth style aerial flyover, ultra realistic terrain relief with dramatic shadows, deep dark blue ocean, highly detailed coastline, atmospheric haze, golden hour rim light, high contrast documentary color grade, 8k detail, no text no watermark',
+            h:'territory outlined and filled with intense glowing yellow highlight, bright yellow-green neon border glow around the island landmass, clearly separated from the ocean'},
+ dibujo:{d:'vertical 9:16 hand drawn illustrated map style, clean vector illustration, warm paper texture background, bold simple shapes, educational childrens atlas aesthetic, soft shadows, flat colors, no text no watermark',
+         h:'territory painted bright yellow with a thick hand drawn outline standing out from the blue sea'},
+ historico:{d:'vertical 9:16 vintage antique cartography, aged parchment paper, sepia and ochre tones, hand engraved coastline detail, old nautical chart style, weathered edges, cinematic documentary lighting, no text no watermark',
+            h:'territory highlighted with warm golden ink glow and bold engraved border'},
+ kids:{d:'vertical 9:16 cute 3D cartoon toy world, playful claymation style, bright saturated colors, soft studio lighting, chunky rounded shapes, kids educational show aesthetic, adorable miniature diorama, no text no watermark',
+       h:'main subject glowing softly like a bright yellow toy piece, clearly separated from the background'},
+ terror:{d:'vertical 9:16 analog horror found footage aesthetic, VHS grain and scanlines, deep crushed blacks, single flickering fluorescent light source, unsettling empty space, 3am liminal atmosphere, cold desaturated color, no text no watermark',
+         h:'one small detail lit in eerie warm light drawing the eye, everything else swallowed by shadow'},
+ stickman:{d:'vertical 9:16 minimal white stickman figure on pure black background, analog horror style, heavy VHS glitch distortion, chromatic aberration, film grain, stark high contrast, simple geometric shapes only, no text no watermark',
+           h:'the white stickman figure glowing faintly against total darkness'},
+ deportes:{d:'vertical 9:16 dramatic sports photography, low angle, packed floodlit stadium at night, athlete frozen mid action, intense cinematic color grade, shallow depth of field, 8k, no text no watermark',
+           h:'the athlete frozen mid action lit by a strong rim light'},
+ biologia:{d:'vertical 9:16 hyper detailed scientific illustration, medical documentary aesthetic, dark background, dramatic rim lighting, translucent glowing detail, ultra sharp macro focus, 8k, no text no watermark',h:'the main subject softly glowing with bioluminescent blue light, clearly separated from the dark background'},
+ novelas:{d:'vertical 9:16 cinematic romantic drama film still, warm amber practical lighting, shallow depth of field, 35mm anamorphic look, film grain, muted earth tones, no text no watermark',h:'the main subject softly backlit with warm rim light, everything else falling into gentle shadow'},
+ curiosidades:{d:'vertical 9:16 striking documentary photograph, dramatic single source lighting, ultra sharp macro detail, dark uncluttered background, high contrast, museum quality, no text no watermark',h:'the main subject isolated and lit hard from one side against deep black'},
+ limpio:{d:'vertical 9:16, ultra detailed, high quality, no text no watermark', h:''}
+};
+
+var F = [], busy = false;
+
+/* ---------- helpers ---------- */
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function log(m,c){
+  var e=$('v78-log'); if(!e)return;
+  var d=document.createElement('div'); d.className=c||'dm';
+  d.textContent='['+new Date().toLocaleTimeString('es-AR',{hour12:false})+'] '+m;
+  e.appendChild(d); e.scrollTop=e.scrollHeight;
+}
+function count(){
+  var c=$('v78-count'); if(!c)return;
+  c.textContent=F.filter(function(f){return f.done;}).length+'/'+F.length;
+}
+function sleep(ms){return new Promise(function(r){setTimeout(r,ms);});}
+
+/* ---------- render ---------- */
+function render(){
+  var g=$('v78-frames'); if(!g)return;
+  g.innerHTML=F.map(function(f,i){
+    return '<div class="v78-fc'+(f.done?' done':'')+(f.err?' err':'')+'" id="v78fc'+i+'">'+
+      '<div class="v78-fh"><span class="v78-fn">FRAME '+(i+1<10?'0':'')+(i+1)+'</span>'+
+      '<span class="v78-fs'+(f.done?' ok':'')+'" id="v78st'+i+'">'+(f.done?'✅':'○')+'</span></div>'+
+      '<div class="v78-cv" id="v78cv'+i+'">'+(f.done?'':'<div class="v78-ph">🖼️</div>')+'</div>'+
+      '<div class="v78-fb">'+
+      '<input class="v78-fcap" id="v78cap'+i+'" value="'+esc(f.c)+'" placeholder="SUBTÍTULO" '+
+        'oninput="window.v78setc('+i+',this.value)">'+
+      '<textarea class="v78-fpr" id="v78pr'+i+'" placeholder="prompt en inglés..." '+
+        'oninput="window.v78setp('+i+',this.value)">'+esc(f.p)+'</textarea>'+
+      '<div class="v78-fa">'+
+      '<button class="v78-b v78-blue" onclick="window.v78gen('+i+')">⚡</button>'+
+      '<button class="v78-b v78-gh" onclick="window.v78dl('+i+')">⬇️</button>'+
+      '<button class="v78-b v78-gh" onclick="window.v78del('+i+')">✕</button>'+
+      '</div></div></div>';
+  }).join('');
+  F.forEach(function(f,i){
+    if(f.cv){var w=$('v78cv'+i); if(w){w.innerHTML='';w.appendChild(f.cv);}}
+  });
+  count(); save();
+}
+
+function buildPrompt(i){
+  var d=($('v78-dna')||{}).value||'', h=($('v78-hi')||{}).value||'';
+  return [d.trim(),h.trim(),F[i].p.trim()].filter(Boolean).join(', ');
+}
+
+/* ---------- subtitulo TikTok quemado ---------- */
+function burn(x,W,H,text){
+  if(!text||!text.trim())return;
+  var pos=($('v78-pos')||{}).value||'center';
+  var size=Math.round(W*0.112);
+  x.textAlign='center'; x.textBaseline='middle';
+  var words=text.toUpperCase().split(/\s+/), maxW=W*0.88;
+  function wrap(){
+    x.font='900 '+size+'px Impact,"Arial Black",sans-serif';
+    var L=[],cur='';
+    words.forEach(function(wd){
+      var t=cur?cur+' '+wd:wd;
+      if(x.measureText(t).width>maxW&&cur){L.push(cur);cur=wd;}else cur=t;
+    });
+    if(cur)L.push(cur); return L;
+  }
+  var lines=wrap();
+  while(lines.length>3&&size>W*0.055){size=Math.round(size*0.88);lines=wrap();}
+  var lh=size*1.16, y0;
+  if(pos==='top')y0=H*0.15; else if(pos==='bottom')y0=H*0.81; else y0=H*0.50;
+  y0-=(lines.length-1)*lh/2;
+  lines.forEach(function(ln,k){
+    var y=y0+k*lh;
+    x.shadowColor='rgba(0,0,0,.95)'; x.shadowBlur=size*0.3;
+    x.shadowOffsetX=0; x.shadowOffsetY=size*0.055;
+    x.lineWidth=size*0.155; x.strokeStyle='#000'; x.lineJoin='round';
+    x.strokeText(ln,W/2,y);
+    x.shadowColor='transparent'; x.fillStyle='#fff';
+    x.fillText(ln,W/2,y);
+  });
+}
+
+/* ---------- generar 1 (con FIX1 y FIX2) ---------- */
+function genOne(i,tries){
+  tries = tries || 0;
+  var f=F[i];
+  var W=parseInt(($('v78-w')||{}).value)||768;
+  var H=parseInt(($('v78-h2')||{}).value)||1344;
+  var bs=parseInt(($('v78-seed')||{}).value)||37078;
+  var seed=(f.seed!==undefined)?f.seed:(bs+i*13);
+  f.seed=seed;
+  var enh=(($('v78-enh')||{}).value==='on');   /* FIX 1 */
+
+  var url=EP+encodeURIComponent(buildPrompt(i))+
+    '?width='+W+'&height='+H+'&seed='+seed+'&nologo=true'+(enh?'&enhance=true':'');
+
+  var card=$('v78fc'+i), wr=$('v78cv'+i), st=$('v78st'+i);
+  if(card){card.classList.add('gen');card.classList.remove('err','done');}
+  if(st){st.className='v78-fs load';st.textContent='⏳';}
+  if(wr)wr.innerHTML='<div class="v78-spin"><div class="v78-sp"></div><span>'+
+    (tries?'reintento '+tries+'/3':'IA trabajando…')+'</span></div>';
+  log('Frame '+(i+1)+' → seed '+seed+(enh?' (enhance ON)':'')+(tries?' · reintento '+tries:''),'in');
+
+  return new Promise(function(res){
+    var img=new Image(); img.crossOrigin='anonymous';
+    var to=setTimeout(function(){fin(false,'timeout');},90000);
+    function fin(good,why){
+      clearTimeout(to);
+      if(good)return res(true);
+      /* FIX 2: reintento automatico anti 429 */
+      if(tries<3){
+        log('Frame '+(i+1)+' falló ('+why+') → reintento en 12s…','wr');
+        setTimeout(function(){ genOne(i,tries+1).then(res); },12000);
+        return;
+      }
+      if(card){card.classList.remove('gen');card.classList.add('err');}
+      if(st){st.className='v78-fs bad';st.textContent='✕';}
+      if(wr)wr.innerHTML='<div class="v78-ph">⚠️</div>';
+      f.err=true; f.done=false;
+      log('Frame '+(i+1)+' FALLÓ definitivo ('+why+'). Subí la pausa anti-429.','er');
+      count(); res(false);
+    }
+    img.onerror=function(){fin(false,'red/429');};
+    img.onload=function(){
+      try{
+        var exp=($('v78-exp')||{}).value||'1080x1920', CW,CH;
+        if(exp==='native'){CW=img.naturalWidth;CH=img.naturalHeight;}
+        else{var p=exp.split('x');CW=parseInt(p[0]);CH=parseInt(p[1]);}
+        var c=document.createElement('canvas');c.width=CW;c.height=CH;
+        var x=c.getContext('2d');
+        var ir=img.naturalWidth/img.naturalHeight, cr=CW/CH, dw,dh,dx,dy;
+        if(ir>cr){dh=CH;dw=CH*ir;dx=(CW-dw)/2;dy=0;}
+        else{dw=CW;dh=CW/ir;dx=0;dy=(CH-dh)/2;}
+        x.drawImage(img,dx,dy,dw,dh);
+        if((($('v78-cap')||{}).value||'on')==='on') burn(x,CW,CH,f.c);
+        f.cv=c; f.done=true; f.err=false;
+        if(wr){wr.innerHTML='';wr.appendChild(c);}
+        if(card){card.classList.remove('gen');card.classList.add('done');}
+        if(st){st.className='v78-fs ok';st.textContent='✅';}
+        log('Frame '+(i+1)+' ✅ '+CW+'×'+CH+' — "'+f.c+'"','ok');
+        count(); clearTimeout(to); res(true);
+      }catch(e){fin(false,'canvas');}
+    };
+    img.src=url;
+  });
+}
+
+/* ---------- generar todas ---------- */
+async function genAll(){
+  if(busy)return; busy=true;
+  var b=$('v78-all'); if(b){b.disabled=true;b.textContent='⏳ GENERANDO… no cierres';}
+  var dl=parseInt(($('v78-delay')||{}).value)||9000;
+  log('=== GENERANDO '+F.length+' IMÁGENES — pausa '+(dl/1000)+'s anti-429 ===','wr');
+  var ok=0;
+  for(var i=0;i<F.length;i++){
+    var pc=Math.round(i/F.length*100);
+    if($('v78-ptxt'))$('v78-ptxt').textContent='Frame '+(i+1)+' de '+F.length+'…';
+    if($('v78-pfill'))$('v78-pfill').style.width=pc+'%';
+    if($('v78-ppct'))$('v78-ppct').textContent=pc+'%';
+    var r=await genOne(i); if(r)ok++;
+    if(i<F.length-1) await sleep(dl);
+  }
+  if($('v78-pfill'))$('v78-pfill').style.width='100%';
+  if($('v78-ppct'))$('v78-ppct').textContent='100%';
+  if($('v78-ptxt'))$('v78-ptxt').textContent='✅ '+ok+'/'+F.length+' listas';
+  log('=== LISTO '+ok+'/'+F.length+' ===',ok===F.length?'ok':'wr');
+  if(ok>0)log('Ahora: DESCARGAR TODAS → mové a ~/Desktop/IMAGE_PACK_MALVINAS','in');
+  if(b){b.disabled=false;b.textContent='🚀 GENERAR TODAS LAS IMÁGENES IA — 0$ — SIN API KEY';}
+  busy=false; save();
+}
+
+/* ---------- descargas ---------- */
+function dl(i){
+  var f=F[i];
+  if(!f||!f.cv){alert('Ese frame todavía no está generado. Tocá ⚡ primero.');return;}
+  f.cv.toBlob(function(b){
+    var a=document.createElement('a'); a.href=URL.createObjectURL(b);
+    a.download='ai_frame_'+(i+1<10?'0':'')+(i+1)+'.png'; a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);},1500);
+    log('⬇️ ai_frame_'+(i+1<10?'0':'')+(i+1)+'.png','ok');
+  },'image/png');
+}
+async function dlAll(){
+  var n=F.filter(function(f){return f.cv;}).length;
+  if(!n){alert('Todavía no hay imágenes generadas.');return;}
+  log('Descargando '+n+' imágenes…','in');
+  for(var i=0;i<F.length;i++){ if(F[i].cv){dl(i); await sleep(340);} }
+  log('✅ Listo. mkdir -p ~/Desktop/IMAGE_PACK_MALVINAS && mv ~/Downloads/ai_frame_*.png ~/Desktop/IMAGE_PACK_MALVINAS/','ok');
+}
+
+/* ---------- acciones ---------- */
+function preset(k){
+  var p=PRESETS[k]; if(!p)return;
+  if($('v78-dna'))$('v78-dna').value=p.d;
+  if($('v78-hi'))$('v78-hi').value=p.h;
+  log('Estilo → '+k.toUpperCase()+'. Regenerá para verlo.','wr'); save();
+}
+function reroll(){
+  var n=Math.floor(Math.random()*900000)+1000;
+  if($('v78-seed'))$('v78-seed').value=n;
+  F.forEach(function(f){delete f.seed;f.done=false;f.cv=null;});
+  render(); log('🎲 Nuevo seed '+n,'wr');
+}
+function add(){F.push({c:'NUEVO',p:'describe the scene in english',done:false});render();}
+function del(i){F.splice(i,1);render();}
+function reset(){F=BASE.map(function(f){return{c:f.c,p:f.p,done:false,cv:null};});render();
+  log('Frames Malvinas restaurados','wr');}
+function clr(){F=[{c:'',p:'',done:false}];render();log('Vaciado — escribí tu propio prompt','wr');}
+function copyAll(){
+  var t=F.map(function(f,i){return '--- FRAME '+(i+1)+' | '+f.c+' ---\n'+buildPrompt(i);}).join('\n\n');
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(t).then(function(){
+      log('📋 '+F.length+' prompts copiados','ok');
+      alert('✅ '+F.length+' prompts copiados.\nSirven para Leonardo, ComfyUI, Wan2GP o pasármelos a mí.');
+    });
+  } else { prompt('Copiá esto:',t); }
+}
+function exportJSON(){
+  var o={version:'V37078_IMAGE_GENERATOR_BRIDGE',fecha:new Date().toISOString(),
+    style_dna:($('v78-dna')||{}).value,style_highlight:($('v78-hi')||{}).value,
+    seed:($('v78-seed')||{}).value,
+    frames:F.map(function(f,i){return{n:i+1,caption:f.c,prompt:f.p,full_prompt:buildPrompt(i),seed:f.seed};})};
+  var b=new Blob([JSON.stringify(o,null,2)],{type:'application/json'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(b);
+  a.download='V37078_IMAGE_BRIDGE_PACK.json';a.click();
+  log('📤 JSON exportado','ok');
+}
+function importJSON(){
+  var raw=(($('v78-json')||{}).value||'').trim();
+  if(!raw){alert('Pegá un JSON primero.');return;}
+  try{
+    var j=JSON.parse(raw);
+    var arr=j.frames||j.prompts_frame_por_frame||j.prompts||j.plan_edicion||j.escenas||[];
+    if(!Array.isArray(arr)||!arr.length){alert('No encontré array de frames en ese JSON.');return;}
+    F=arr.map(function(it,i){
+      if(typeof it==='string')return{c:'FRAME '+(i+1),p:it,done:false};
+      return{c:it.caption||it.overlay||it.texto||it.cap||it.title||('FRAME '+(i+1)),
+             p:it.prompt||it.full_prompt||it.descripcion||it.desc||it.visual||'',done:false};
+    });
+    if(j.style_dna&&$('v78-dna'))$('v78-dna').value=j.style_dna;
+    if(j.style_highlight&&$('v78-hi'))$('v78-hi').value=j.style_highlight;
+    render();
+    log('📥 '+F.length+' frames importados '+(j.version||''),'ok');
+    alert('✅ '+F.length+' frames importados. Tocá el botón verde.');
+  }catch(e){alert('JSON inválido: '+e.message);log('Error JSON: '+e.message,'er');}
+}
+
+/* ---------- persistencia ---------- */
+function save(){
+  try{localStorage.setItem('v37078',JSON.stringify({
+    d:($('v78-dna')||{}).value,h:($('v78-hi')||{}).value,s:($('v78-seed')||{}).value,
+    f:F.map(function(x){return{c:x.c,p:x.p};})}));}catch(e){}
+}
+function load(){
+  try{
+    var d=JSON.parse(localStorage.getItem('v37078')||'null');
+    if(d&&d.f&&d.f.length){
+      F=d.f.map(function(x){return{c:x.c,p:x.p,done:false,cv:null};});
+      if(d.d&&$('v78-dna'))$('v78-dna').value=d.d;
+      if(d.h&&$('v78-hi'))$('v78-hi').value=d.h;
+      if(d.s&&$('v78-seed'))$('v78-seed').value=d.s;
+      return true;
+    }
+  }catch(e){}
+  return false;
+}
+
+/* ---------- ventana: en V3 la pagina ES la app ---------- */
+function open_(){ var w=$('v78-win'); if(w){w.classList.add('open');} window.scrollTo(0,0); }
+function close_(){ /* no aplica en V3 */ }
+function drag(){ /* no aplica en V3 */ }
+
+
+
+
+/* ============ MULTI-PROVEEDOR — blindaje anti-caida ============ */
+var PROV = {
+  groq:{
+    nombre:'Groq',
+    url:'https://api.groq.com/openai/v1/chat/completions',
+    modelo:'llama-3.3-70b-versatile',
+    tipo:'openai',
+    keyurl:'console.groq.com/keys',
+    pref:'gsk_',
+    nota:'Llama 3.3 70B · ~1.000 pedidos/día · sin tarjeta · muy rápido'
+  },
+  cerebras:{
+    nombre:'Cerebras',
+    url:'https://api.cerebras.ai/v1/chat/completions',
+    modelo:'llama-3.3-70b',
+    tipo:'openai',
+    keyurl:'cloud.cerebras.ai',
+    pref:'csk-',
+    nota:'Llama 3.3 70B · ~1.000 pedidos/día · sin tarjeta · el más rápido'
+  },
+  google:{
+    nombre:'Google AI Studio',
+    url:'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
+    modelo:'gemini-2.0-flash',
+    tipo:'gemini',
+    keyurl:'aistudio.google.com/apikey',
+    pref:'AIza',
+    nota:'Gemini Flash · ~1.500 pedidos/día · sin tarjeta'
+  },
+  openrouter:{
+    nombre:'OpenRouter',
+    url:'https://openrouter.ai/api/v1/chat/completions',
+    modelo:'meta-llama/llama-3.3-70b-instruct:free',
+    tipo:'openai',
+    keyurl:'openrouter.ai/keys',
+    pref:'sk-or-',
+    nota:'Muchos modelos gratis · si uno se cae cambiás de modelo'
+  }
+};
+
+function provId(){var e=document.getElementById('v78-prov');return e?e.value:'groq';}
+function prov(){return PROV[provId()]||PROV.groq;}
+
+function v78ProvChange(){
+  var id=provId();
+  var lb=document.getElementById('v78-key-lb');
+  var inp=document.getElementById('v78-groq');
+  var info=document.getElementById('v78-prov-info');
+  if(id==='off'){
+    if(lb)lb.textContent='Sin motor — plantillas locales';
+    if(inp){inp.value='';inp.placeholder='no hace falta clave';inp.disabled=true;}
+    if(info)info.innerHTML='<b style="color:#00ff88">Modo a prueba de todo.</b> No depende de ninguna empresa. Los guiones salen de las plantillas que están adentro del archivo.';
+    gSt('plantillas','ok');
+  }else{
+    var p=PROV[id];
+    if(lb)lb.textContent='Tu clave de '+p.nombre+' (empieza con '+p.pref+')';
+    if(inp){inp.disabled=false;inp.placeholder=p.pref+'...';inp.value=gLoadFor(id);}
+    if(info)info.innerHTML=p.nota+'<br>Clave gratis en <b style="color:#00d4ff">'+p.keyurl+'</b>';
+    gSt(gLoadFor(id)?'clave guardada':'sin clave', gLoadFor(id)?'ok':'');
+  }
+  try{localStorage.setItem('v78_prov',id);}catch(e){}
+}
+
+function gKey(){
+  if(provId()==='off')return '';
+  return ((document.getElementById('v78-groq')||{}).value||'').trim();
+}
+function gSave(){try{localStorage.setItem('v78_key_'+provId(),gKey());
+  localStorage.setItem('v78_prov',provId());}catch(e){}}
+function gLoadFor(id){try{return localStorage.getItem('v78_key_'+id)||'';}catch(e){return '';}}
+function gLoad(){
+  try{
+    var pid=localStorage.getItem('v78_prov')||'groq';
+    var sel=document.getElementById('v78-prov'); if(sel)sel.value=pid;
+    v78ProvChange();
+  }catch(e){}
+}
+function v78ClearGroq(){
+  var inp=document.getElementById('v78-groq'); if(inp)inp.value='';
+  try{localStorage.removeItem('v78_key_'+provId());}catch(e){}
+  gSt('sin clave','');log('Clave borrada. Sigo con plantillas.','wr');
+}
+
+/* llamada generica que se adapta al proveedor */
+function gCall(msgs,maxTok){
+  var p=prov(), key=gKey();
+  if(!key)return Promise.reject(new Error('no hay clave'));
+
+  var url=p.url, headers={'Content-Type':'application/json'}, body;
+
+  if(p.tipo==='gemini'){
+    url=p.url+'?key='+encodeURIComponent(key);
+    var sys=msgs.filter(function(m){return m.role==='system';})
+                .map(function(m){return m.content;}).join('\n');
+    var usr=msgs.filter(function(m){return m.role!=='system';})
+                .map(function(m){return m.content;}).join('\n');
+    body=JSON.stringify({contents:[{parts:[{text:(sys?sys+'\n\n':'')+usr}]}],
+      generationConfig:{temperature:0.85,maxOutputTokens:maxTok||2600}});
+  }else{
+    headers['Authorization']='Bearer '+key;
+    if(provId()==='openrouter'){headers['HTTP-Referer']='http://localhost';headers['X-Title']='Multicuentas Engine';}
+    body=JSON.stringify({model:p.modelo,messages:msgs,temperature:0.85,max_tokens:maxTok||2600});
+  }
+
+  return fetch(url,{method:'POST',headers:headers,body:body}).then(function(r){
+    if(r.status===401||r.status===403)throw new Error('clave inválida o sin permiso');
+    if(r.status===429)throw new Error('llegaste al límite diario de '+p.nombre);
+    if(r.status>=500)throw new Error(p.nombre+' está caído (HTTP '+r.status+')');
+    if(!r.ok)return r.text().then(function(t){throw new Error('HTTP '+r.status+' '+t.slice(0,90));});
+    return r.json();
+  }).then(function(j){
+    if(p.tipo==='gemini'){
+      var c=j.candidates&&j.candidates[0];
+      if(!c||!c.content||!c.content.parts||!c.content.parts[0])throw new Error('respuesta vacía');
+      return c.content.parts[0].text;
+    }
+    if(!j.choices||!j.choices[0])throw new Error('respuesta vacía');
+    return j.choices[0].message.content;
+  });
+}
+
+function v78TestGroq(){
+  if(provId()==='off'){alert('Estás en modo plantillas locales.\nNo necesitás clave ni conexión.');return;}
+  var p=prov();
+  if(!gKey()){alert('Pegá tu clave de '+p.nombre+' primero.\n\nEs gratis, la sacás en:\n'+p.keyurl);return;}
+  gSave();gSt('probando…','load');log('Probando '+p.nombre+'…','in');
+  gCall([{role:'user',content:'Responde unicamente: LISTO'}],20)
+  .then(function(r){
+    gSt(p.nombre+' ✓','ok');
+    log('✅ '+p.nombre+' conectado ('+p.modelo+')','ok');
+    alert('✅ '+p.nombre+' conectado.\n\nYa podés armar guiones con IA de verdad.');
+  })
+  .catch(function(e){
+    gSt('error','bad');log(p.nombre+' error: '+e.message,'er');
+    alert('No se pudo conectar con '+p.nombre+'.\n\n'+e.message+
+      '\n\nProbá con otro motor de la lista.\nLa app igual funciona con plantillas.');
+  });
+}
+
+/* diagnostico: prueba todos los motores que tengan clave */
+function v78Diag(){
+  log('=== DIAGNÓSTICO DE MOTORES ===','wr');
+  log('Plantillas locales ............ ✅ siempre disponibles','ok');
+  log('Generador de imágenes ......... probando…','in');
+  var im=new Image();
+  im.onload=function(){log('Generador de imágenes ......... ✅ funcionando','ok');};
+  im.onerror=function(){log('Generador de imágenes ......... ❌ no responde','er');};
+  im.src='https://image.pollinations.ai/prompt/test?width=64&height=64&nologo=true&seed=1';
+
+  var ids=Object.keys(PROV), i=0;
+  (function next(){
+    if(i>=ids.length){log('=== FIN DEL DIAGNÓSTICO ===','wr');return;}
+    var id=ids[i++], p=PROV[id], k=gLoadFor(id);
+    if(!k){log(p.nombre+' — sin clave cargada','dm');return next();}
+    var save=document.getElementById('v78-prov').value;
+    document.getElementById('v78-prov').value=id;
+    document.getElementById('v78-groq').value=k;
+    gCall([{role:'user',content:'di OK'}],10)
+      .then(function(){log(p.nombre+' ............ ✅ funcionando','ok');})
+      .catch(function(e){log(p.nombre+' ............ ❌ '+e.message,'er');})
+      .then(function(){document.getElementById('v78-prov').value=save;v78ProvChange();next();});
+  })();
+}
+
+var SYS_GUION =
+"Sos guionista experto en videos virales verticales (TikTok / YouTube Shorts) en español rioplatense.\n"+
+"Devolves UNICAMENTE JSON valido. Sin markdown, sin ```, sin explicaciones, sin texto antes ni despues.\n\n"+
+"Formato exacto:\n"+
+'{"titulo":"...","frames":[{"caption":"...","prompt":"...","narracion":"..."}],"hashtags":"..."}\n\n'+
+"Reglas de cada campo:\n"+
+"- caption: ESPAÑOL, MAYUSCULAS, maximo 3 palabras. Es el texto que se quema sobre la imagen.\n"+
+"- prompt: INGLES. Descripcion visual concreta y cinematografica de la imagen. NUNCA pidas texto ni letras dentro de la imagen.\n"+
+"- narracion: español rioplatense, 1 o 2 frases cortas para voz en off. Los numeros escribilos en palabras (mil novecientos ochenta y dos).\n"+
+"- titulo: titulo del video, con gancho.\n"+
+"- hashtags: 8 hashtags separados por espacio.\n\n"+
+"Reglas de estructura:\n"+
+"- El frame 1 es el HOOK: tiene que enganchar en los primeros 3 segundos.\n"+
+"- Los frames del medio cuentan la historia con datos REALES cuando el tema lo permita.\n"+
+"- El ultimo frame cierra con una pregunta abierta que invite a comentar.\n"+
+"- Nada de violencia grafica ni contenido sensible.";
+
+var ESTILOS_TXT = {
+ satelital:'documental de mapas satelitales, vista aerea tipo Google Earth, territorio resaltado en amarillo brillante',
+ historico:'documental historico, escenas de epoca, iluminacion dramatica de cine',
+ kids:'dibujos animados 3D estilo plastilina, colores brillantes, para chicos',
+ terror:'terror analogico, estetica VHS, 3 de la madrugada, sombras profundas',
+ deportes:'fotografia deportiva dramatica, estadio iluminado de noche, movimiento',
+ dibujo:'ilustracion dibujada a mano, mapa ilustrado, formas simples y colores planos',
+ biologia:'divulgacion cientifica, ilustracion medica hiperdetallada, fondo oscuro, brillo bioluminiscente',
+ novelas:'drama romantico cinematografico, luz calida, profundidad de campo corta, grano de pelicula',
+ curiosidades:'documental impactante, luz dura de una sola fuente, macro ultra detallado, fondo negro',
+ stickman:'stickman blanco sobre fondo negro, glitch VHS, minimalista, terror analogico'
+};
+
+function temaGroq(t,n,tipo){
+  var est=ESTILOS_TXT[tipo]||ESTILOS_TXT.satelital;
+  var user='Tema del video: "'+t+'"\n'+
+    'Cantidad de frames: '+n+' (exactamente '+n+')\n'+
+    'Estilo visual: '+est+'\n'+
+    'Todos los prompts en ingles tienen que compartir ese mismo estilo visual para que las imagenes sean coherentes entre si.';
+  log('🧠 '+prov().nombre+' escribiendo el guion…','in');
+  return gCall([{role:'system',content:SYS_GUION},{role:'user',content:user}],2600)
+    .then(function(raw){
+      var j=gJSON(raw);
+      if(!j.frames||!j.frames.length)throw new Error('no vinieron frames');
+      F=j.frames.slice(0,n).map(function(fr,i){
+        return {c:(fr.caption||('FRAME '+(i+1))).toUpperCase(),
+                p:fr.prompt||'',
+                nar:fr.narracion||'',
+                done:false,cv:null};
+      });
+      preset(tipo);render();
+      log('✅ Guion listo — '+F.length+' frames por '+prov().nombre,'ok');
+      if(j.titulo)log('📺 Título: '+j.titulo,'wr');
+      if(j.hashtags)log('#️⃣ '+j.hashtags,'dm');
+      var nar=F.map(function(x,i){return (i+1)+'. '+(x.nar||'');}).filter(function(s){return s.length>3;});
+      if(nar.length){log('🎙️ NARRACIÓN (para Voice Lab):','wr');nar.forEach(function(s){log('   '+s,'dm');});}
+      window.V78_LAST={titulo:j.titulo||t,hashtags:j.hashtags||'',
+                       narracion:F.map(function(x){return x.nar||'';})};
+      var el=document.getElementById('v78-frames');
+      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+}
+
+
+/* ================= MOTOR DE VIDEO ANIMADO =================
+   12 movimientos de Groq + 3 arreglos de Arena:
+   1) EASING  -> sin esto el zoom se ve barato
+   2) OVERSCAN -> evita bordes negros al rotar/panear
+   3) sin movimientos que marean en vertical
+   ========================================================== */
+
+/* ---- easing: acelera y frena suave, como el cine ---- */
+function ez(t){ return t<0.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
+function ezOut(t){ return 1-Math.pow(1-t,3); }
+
+/* ---- catalogo de movimientos ----
+   cada uno devuelve {z, dx, dy, rot} segun el avance p (0 a 1) */
+var MOVS = {
+ zin:      function(p,k){ return {z:1+k*ez(p),      dx:0,               dy:0, rot:0}; },
+ zout:     function(p,k){ return {z:1+k*(1-ez(p)),  dx:0,               dy:0, rot:0}; },
+ panR:     function(p,k){ return {z:1+k*0.55,       dx: k*ez(p),        dy:0, rot:0}; },
+ panL:     function(p,k){ return {z:1+k*0.55,       dx:-k*ez(p),        dy:0, rot:0}; },
+ panU:     function(p,k){ return {z:1+k*0.55,       dx:0,   dy:-k*ez(p),      rot:0}; },
+ panD:     function(p,k){ return {z:1+k*0.55,       dx:0,   dy: k*ez(p),      rot:0}; },
+ zinPanR:  function(p,k){ return {z:1+k*ez(p),      dx: k*0.55*ez(p),   dy:0, rot:0}; },
+ zinPanL:  function(p,k){ return {z:1+k*ez(p),      dx:-k*0.55*ez(p),   dy:0, rot:0}; },
+ zoutRot:  function(p,k){ return {z:1+k*(1-ezOut(p)),dx:0,              dy:0, rot:(1-ezOut(p))*k*9}; },
+ rotSuave: function(p,k){ return {z:1+k*0.45,       dx:0,               dy:0, rot:(ez(p)-0.5)*k*11}; },
+ acento:   function(p,k){ var q=ezOut(Math.min(1,p*2.4));
+                          return {z:1+k*0.75*q,     dx:k*0.3*q,         dy:0, rot:0}; }
+};
+var MOV_KEYS=['zin','zout','panR','panL','panU','panD','zinPanR','zinPanL','zoutRot','rotSuave'];
+
+/* secuencia recomendada por Groq, adaptada: abre, desarrolla, cierra */
+var SECUENCIA=['zin','zinPanR','panL','zoutRot','zinPanL','panR','zout'];
+
+function movPara(i,total){
+  var sel=($('v78-mov')||{}).value||'auto';
+  if(sel!=='auto')return sel;
+  if(i===0)return 'zin';
+  if(i===total-1)return 'zout';
+  return SECUENCIA[i % SECUENCIA.length];
+}
+
+/* ---- dibuja UN cuadro con la camara aplicada ---- */
+function pintar(x,W,H,img,p,mov,k,alpha){
+  var f=(MOVS[mov]||MOVS.zin)(p,k);
+  /* OVERSCAN: agrandamos un poco de base asi el paneo y la rotacion
+     nunca dejan ver el borde negro */
+  var over=1.14+Math.abs(f.rot)/100;
+  var z=f.z*over;
+  var iw=img.width||img.naturalWidth, ih=img.height||img.naturalHeight;
+  var esc=Math.max(W/iw,H/ih)*z;
+  var dw=iw*esc, dh=ih*esc;
+  var maxX=Math.max(0,(dw-W)/2), maxY=Math.max(0,(dh-H)/2);
+  var ox=f.dx*maxX, oy=f.dy*maxY;
+  x.save();
+  if(alpha!==undefined)x.globalAlpha=alpha;
+  x.translate(W/2,H/2);
+  if(f.rot)x.rotate(f.rot*Math.PI/180);
+  x.drawImage(img,-dw/2+ox,-dh/2+oy,dw,dh);
+  x.restore();
+}
+
+/* ---- vista previa animada ---- */
+var previewId=null;
+function v78Preview(){
+  var listos=F.filter(function(f){return f.cv;});
+  if(!listos.length){alert('Primero generá las imágenes con el botón verde.');return;}
+  if(previewId){cancelAnimationFrame(previewId);previewId=null;}
+  var c=$('v78-prev'), x=c.getContext('2d');
+  var W=c.width,H=c.height;
+  var k=parseFloat(($('v78-int')||{}).value)||0.22;
+  var dur=(parseFloat(($('v78-dur')||{}).value)||3)*1000;
+  var i=0,t0=performance.now();
+  (function loop(now){
+    var p=Math.min(1,(now-t0)/dur);
+    var mov=movPara(i,listos.length);
+    x.fillStyle='#05070c';x.fillRect(0,0,W,H);
+    pintar(x,W,H,listos[i].cv,p,mov,k);
+    if(p>=1){ i=(i+1)%listos.length; t0=now; }
+    previewId=requestAnimationFrame(loop);
+  })(performance.now());
+  log('▶️ Vista previa andando — tocá otra vez para cambiar','in');
+}
+
+/* ---- crear el video ---- */
+async function v78MakeVideo(){
+  var listos=F.filter(function(f){return f.cv;});
+  if(!listos.length){alert('Primero generá las imágenes con el botón verde.');return;}
+  if(typeof MediaRecorder==='undefined'){
+    alert('Tu navegador no puede grabar video.\nProbá con Chrome.');return;
+  }
+  if(previewId){cancelAnimationFrame(previewId);previewId=null;}
+
+  var cal=($('v78-cal')||{}).value||'1080';
+  var W=cal==='720'?720:1080, H=cal==='720'?1280:1920;
+  var fps=parseInt(($('v78-fps')||{}).value)||30;
+  var dur=parseFloat(($('v78-dur')||{}).value)||3;
+  var k=parseFloat(($('v78-int')||{}).value)||0.22;
+  var tra=($('v78-tra')||{}).value||'fade';
+  var traT=tra==='cut'?0:0.55;
+
+  var c=document.createElement('canvas'); c.width=W; c.height=H;
+  var x=c.getContext('2d');
+
+  var mime='';
+  ['video/webm;codecs=vp9','video/webm;codecs=vp8','video/webm','video/mp4'].forEach(function(m){
+    if(!mime&&MediaRecorder.isTypeSupported(m))mime=m;});
+  if(!mime){alert('Tu navegador no soporta grabar video.');return;}
+
+  var stream=c.captureStream(fps);
+  var chunks=[];
+  var rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:cal==='720'?6000000:10000000});
+  rec.ondataavailable=function(e){ if(e.data.size)chunks.push(e.data); };
+
+  var listo=new Promise(function(res){
+    rec.onstop=function(){
+      var b=new Blob(chunks,{type:mime});
+      var ext=mime.indexOf('mp4')>=0?'mp4':'webm';
+      var a=document.createElement('a');
+      a.href=URL.createObjectURL(b);
+      a.download='video_animado_'+Date.now()+'.'+ext;
+      a.click();
+      setTimeout(function(){URL.revokeObjectURL(a.href);},3000);
+      log('✅ Video listo: '+(b.size/1048576).toFixed(1)+' MB — '+ext.toUpperCase(),'ok');
+      res();
+    };
+  });
+
+  var total=listos.length*dur;
+  log('🎬 Grabando '+listos.length+' frames · '+total.toFixed(0)+'s · '+W+'×'+H+' · '+fps+'fps','wr');
+  rec.start();
+
+  var t0=performance.now();
+  var fin=false;
+  await new Promise(function(res){
+    (function loop(now){
+      var el=(now-t0)/1000;
+      if(el>=total){fin=true;res();return;}
+      var idx=Math.min(listos.length-1,Math.floor(el/dur));
+      var p=(el-idx*dur)/dur;
+      var mov=movPara(idx,listos.length);
+
+      x.fillStyle='#000'; x.fillRect(0,0,W,H);
+      pintar(x,W,H,listos[idx].cv,p,mov,k);
+
+      /* transicion con el siguiente */
+      var rest=(1-p)*dur;
+      if(traT>0 && rest<traT && idx<listos.length-1){
+        var q=1-(rest/traT);
+        var sig=listos[idx+1].cv;
+        var movS=movPara(idx+1,listos.length);
+        if(tra==='slide'){
+          x.save(); x.translate(W*(1-q),0);
+          pintar(x,W,H,sig,0,movS,k); x.restore();
+        }else{
+          pintar(x,W,H,sig,0,movS,k, tra==='dissolve'?q*q:q);
+        }
+      }
+
+      var pc=Math.round(el/total*100);
+      if($('v78-vfill'))$('v78-vfill').style.width=pc+'%';
+      if($('v78-vpct'))$('v78-vpct').textContent=pc+'%';
+      if($('v78-vtxt'))$('v78-vtxt').textContent='Grabando frame '+(idx+1)+' de '+listos.length+'…';
+      requestAnimationFrame(loop);
+    })(performance.now());
+  });
+
+  rec.stop();
+  await listo;
+  if($('v78-vfill'))$('v78-vfill').style.width='100%';
+  if($('v78-vpct'))$('v78-vpct').textContent='100%';
+  if($('v78-vtxt'))$('v78-vtxt').textContent='✅ Video descargado';
+  log('Se descargó a tu carpeta Descargas. Subilo a TikTok o YouTube Shorts.','in');
+}
+
+/* ---------- MODO RAPIDO: tema en español -> frames ---------- */
+var ARCOS = {
+  satelital:[
+    ['{T}','wide cinematic satellite view from orbit slowly revealing the region of {E}, dramatic cloud formations, deep blue ocean, curved earth horizon'],
+    ['LA UBICACIÓN','high altitude satellite view showing {E} and the surrounding territory, scale and distance clearly visible, atmospheric haze'],
+    ['LA FORMACIÓN','detailed aerial view of the terrain of {E}, mountain ridges and river valleys carved in sharp relief, hard side lighting'],
+    ['LA EVOLUCIÓN','aerial view of {E} where ancient weathered structures sit beside modern development, contrast between old and new'],
+    ['LA CONEXIÓN','wide satellite view of {E} with visible roads ports and settlements linking it to the surrounding land'],
+    ['LA IMPORTANCIA','orbital view of the curved earth with {E} lit by a single beam of golden sunlight breaking through clouds'],
+    ['¿QUÉ SIGUE?','satellite view of {E} at dusk, small settlement lights glowing warm against the vast dark landscape'],
+    ['EL DETALLE','extreme close satellite detail of one striking geographic feature of {E}, sharp texture, dramatic shadows'],
+    ['LO OCULTO','aerial view of a remote and rarely seen corner of {E}, untouched, mist hanging low'],
+    ['EL FINAL','sunrise seen from orbit over {E}, golden light spreading across the terrain, hopeful cinematic ending']],
+  historico:[
+    ['{T}','wide establishing cinematic shot of a historic scene connected to {E}, dramatic period lighting, film still quality'],
+    ['EL ORIGEN','the earliest moment of {E}, authentic period details, warm candle and torch light, deep shadows'],
+    ['LA EXPANSIÓN','vast landscape connected to {E} with distant period settlements and figures spread across it, epic scale'],
+    ['EL CONFLICTO','tense dramatic scene related to {E}, storm clouds gathering, silhouetted period figures, no graphic violence'],
+    ['LA GENTE','portrait of weathered faces of the people involved in {E}, natural window light, documentary realism'],
+    ['LA HERENCIA','aged monument or worn artifact connected to {E}, museum lighting, dust in the air'],
+    ['¿QUÉ QUEDÓ?','the same place of {E} in the present day, empty and quiet, melancholic overcast light'],
+    ['LA PRUEBA','old maps documents and objects related to {E} spread across a worn wooden table, overhead view'],
+    ['EL OLVIDO','abandoned overgrown remains connected to {E}, mist, nature reclaiming the stone'],
+    ['EL LEGADO','wide cinematic final shot showing the lasting mark of {E} on the landscape, golden hour']],
+  kids:[
+    ['{T}','cute 3d claymation scene about {E}, bright saturated colors, chunky rounded toy shapes, soft studio lighting, adorable miniature diorama'],
+    ['LA IDEA','adorable clay child character with big curious eyes standing next to a colorful toy model of {E}'],
+    ['EL EXPERIMENTO','clay child character holding a simple colorful toy version of {E} with both hands, playful bright background'],
+    ['LO QUE PASA','cutaway toy model of {E} showing the inside in bright simple colors, clean bright background'],
+    ['LA SORPRESA','clay child character with a wide surprised open mouth expression looking at {E}, confetti and stars around'],
+    ['YA ENTENDÍ','happy confident clay child character standing proudly beside a completed colorful toy build of {E}'],
+    ['¿QUÉ TE PARECE?','friendly clay child character smiling and waving toward the viewer with {E} behind, warm sunset colors'],
+    ['EL TRUCO','clay hands opening a toy version of {E} revealing a hidden colorful mechanism inside'],
+    ['MIRÁ ESTO','oversized toy model of {E} with a tiny clay child character beside it for scale, playful'],
+    ['CHAU','clay child character walking away from the toy scene of {E}, warm golden hour lighting']],
+  terror:[
+    ['{T}','empty dimly lit interior connected to {E} at three in the morning, single flickering fluorescent tube, deep crushed blacks, VHS grain'],
+    ['LA NOCHE','exterior of {E} under a low full moon, cold blue moonlight, long oppressive shadows, thin fog at ground level'],
+    ['EL SILENCIO','narrow empty corridor inside {E}, one distant warm light at the far end, peeling walls, absolute stillness'],
+    ['LAS SOMBRAS','wall inside {E} with one hard elongated human shadow cast across it by an unseen light source, nobody visible'],
+    ['LA APARICIÓN','very dark room in {E} with a faint pale human silhouette barely visible in the far corner, heavy grain, low contrast'],
+    ['LA HUIDA','doorway of {E} seen from inside total darkness, cold light spilling in from outside, sense of escape'],
+    ['¿ESTÁS SEGURO?','final wide shot of {E} swallowed in darkness, one small red light glowing, dread atmosphere'],
+    ['LA PRUEBA','single unsettling worn object connected to {E} lit only by a harsh flashlight beam in total darkness'],
+    ['LA HABITACIÓN','claustrophobic small room inside {E}, single bare bulb, stained walls, disturbing emptiness'],
+    ['NO VUELVAS','exterior of {E} shot from far away at night through trees, one window lit, isolated and wrong']],
+  deportes:[
+    ['{T}','dramatic low angle sports photograph of {E}, packed floodlit stadium at night, athlete frozen at peak action, sweat and dust suspended in the air, hard rim light, deep shadows, saturated cinematic color grade'],
+    ['ACCIÓN INTENSA','extreme low angle shot of {E} at the decisive instant, body fully extended in the air, stadium lights flaring behind, crowd blurred into bokeh, hard directional light'],
+    ['PREPARACIÓN','quiet close shot of the worn equipment and boots of {E} laid out on a bench, empty locker room, single overhead lamp casting a hard pool of light, muted desaturated tones, deep shadows'],
+    ['ESCENARIO','vast wide angle view of the empty stadium of {E} from the highest row, geometric field lines, floodlights blazing against a dark sky'],
+    ['LA HINCHADA','dense sea of fans in the stands during {E}, faces lit by flares, colored smoke drifting, high contrast night photography'],
+    ['EL ERROR','lone figure of {E} kneeling on the ground with head lowered, harsh spotlight from above, everything else swallowed in black'],
+    ['ÉXTASIS','{E} with arms raised high and mouth open shouting, confetti falling through floodlight beams, teammates rushing in from the edges of the frame'],
+    ['EL SILENCIO','empty stadium of {E} after the match, scattered paper on the seats, cold grey dawn light, long shadows across the field'],
+    ['EL DETALLE','extreme macro shot of the worn texture of the ball or gear used in {E}, scratches and grass stains visible, raking side light, shallow depth of field, dark background'],
+    ['PARA SIEMPRE','golden sunrise flooding the empty stadium of {E}, warm light spilling across the pitch, single silhouette in the distance']],
+  dibujo:[
+    ['{T}','clean hand drawn illustration explaining {E}, warm paper texture, bold simple shapes, flat colors'],
+    ['EL MAPA','illustrated map style diagram showing the location and context of {E}'],
+    ['LA HISTORIA','simple illustrated timeline about {E}, educational atlas aesthetic'],
+    ['ASÍ ERA','hand drawn scene showing the origin of {E}, warm nostalgic palette'],
+    ['EL CAMBIO','illustrated before and after comparison related to {E}, clear visual contrast'],
+    ['LOS DATOS','clean infographic illustration with simple icons about {E}'],
+    ['¿Y AHORA?','final illustrated wide scene of {E} today, soft shadows, hopeful colors'],
+    ['EL DETALLE','large illustrated close detail of a key element of {E}, bold clean linework'],
+    ['LA CLAVE','illustrated diagram revealing the core idea of {E}'],
+    ['FIN','simple closing illustration about {E}, minimal, warm']],
+  stickman:[
+    ['{T}','minimal white stickman figure on pure black background representing {E}, heavy VHS glitch'],
+    ['ASÍ EMPEZÓ','white stickman in a simple geometric scene about {E}, stark high contrast, film grain'],
+    ['LO RARO','white stickman facing something unsettling related to {E}, chromatic aberration'],
+    ['EL MOMENTO','white stickman mid action about {E}, distorted glitch frame, black void'],
+    ['LA VERDAD','white stickman revealing a simple shape connected to {E}, static noise'],
+    ['NO ENTIENDO','multiple small white stickman figures around {E} on black, unsettling scale'],
+    ['¿VOS QUÉ HARÍAS?','single white stickman alone facing away into total black darkness about {E}'],
+    ['SE REPITE','white stickman duplicated in a glitch loop pattern about {E}'],
+    ['LA SALIDA','white stickman walking toward a single distant white rectangle of light, {E}'],
+    ['FIN','black frame with a tiny distant white stickman related to {E}, heavy grain']],
+  biologia:[
+    ['{T}','hyper detailed scientific illustration of {E}, glowing against a dark background, dramatic rim light, medical documentary style'],
+    ['LA VIDA','extreme macro view of the microscopic structure of {E}, translucent detail, soft blue and cyan glow'],
+    ['POR DENTRO','detailed anatomical cross section of {E}, layered internal structures, clean scientific rendering'],
+    ['LA ADAPTACIÓN','close detailed view of {E} in its natural environment, textures and colors sharply visible, natural light'],
+    ['LA DIVERSIDAD','clean grid arrangement of many different variations of {E} on a dark seamless background, studio lighting'],
+    ['LO INVISIBLE','microscopic view revealing the hidden fine structure of {E}, electric blue bioluminescent glow in darkness'],
+    ['¿QUÉ MÁS HAY?','single mysterious specimen of {E} floating in dark water, softly backlit, sense of the unknown'],
+    ['EL MECANISMO','detailed close view of the working parts of {E}, sharp focus, dramatic side lighting'],
+    ['LA ESCALA','{E} shown extremely large filling the frame, overwhelming detail, dark background'],
+    ['EL DESCUBRIMIENTO','{E} lit by a single beam of light in a dark laboratory setting, sense of discovery']],
+  novelas:[
+    ['{T}','cinematic romantic drama still about {E}, warm amber practical lighting, shallow depth of field, film grain, 35mm anamorphic look, muted earth tones'],
+    ['AMOR INTENSO','two silhouettes almost touching foreheads in the setting of {E}, backlit by a warm window, dust floating in the light beam'],
+    ['EL SECRETO','half lit face in the setting of {E}, one side in warm light the other in complete shadow, hand hidden behind the back'],
+    ['EL LUGAR','wide establishing shot of the place where {E} happens, empty, soft overcast light, melancholic muted palette'],
+    ['LA PELEA','two figures turned away from each other in the setting of {E}, harsh cold light from a doorway, wide empty space between them'],
+    ['LA ESPERA','single figure sitting alone by a rain streaked window in {E}, blue grey light, reflection blurred in the glass'],
+    ['LA ENCRUCIJADA','empty road forking in two directions in the landscape of {E}, dusk, long shadows, cold blue and orange split tones'],
+    ['LA DESPEDIDA','figure walking away down an empty corridor in {E}, seen from behind, warm light ahead and darkness behind'],
+    ['EL RECUERDO','old photograph and small personal objects from {E} scattered on a worn wooden table, warm lamp light, soft focus edges'],
+    ['EL FINAL','first light of dawn breaking over the setting of {E}, empty and still, warm gold spreading across the frame']],
+  curiosidades:[
+    ['{T}','striking documentary photograph of {E}, dramatic single source lighting from the left, ultra sharp detail, dark uncluttered background, high contrast'],
+    ['EL FENÓMENO','{E} captured in full frame, hard directional light from one side, deep black background, every texture razor sharp'],
+    ['EL DETALLE','extreme macro close up of the surface texture of {E}, fine detail filling the entire frame, raking side light revealing every ridge'],
+    ['LA ESCALA','{E} photographed next to a common everyday object for size comparison, clean seamless grey background, even studio light'],
+    ['EL CONTRASTE','{E} placed in a setting where it clearly does not belong, jarring juxtaposition, hard overhead light, high contrast bold colors, sharp shadows'],
+    ['LO QUE NO VES','unexpected view of {E} shot from directly above or underneath, unfamiliar angle, dark background, single hard light'],
+    ['EL PATRÓN','tight repeating geometric pattern found in {E} filling the entire frame, symmetrical, sharp focus, controlled lighting'],
+    ['POR DENTRO','clean cross section of {E} revealing the internal layers, museum display lighting, dark background'],
+    ['LA COLECCIÓN','many variations of {E} arranged in a precise grid on a dark seamless surface, overhead studio lighting'],
+    ['¿SABÍAS?','single specimen of {E} isolated in a beam of light within total darkness, dramatic mystery, sharp focus']]
+};
+
+function v78Tema(){
+  var t=(($('v78-tema')||{}).value||'').trim();
+  if(!t){alert('Escribí un tema primero.\nEj: historia de las islas Malvinas');return;}
+  var n=parseInt(($('v78-nf')||{}).value)||7;
+  var tipo=($('v78-tipo')||{}).value||'satelital';
+  var btn=document.getElementById('v78-btn-tema');
+  /* si hay cerebro Groq, lo usa; si falla, cae a plantillas */
+  if(gKey()){
+    gSave();
+    if(btn){btn.disabled=true;btn.textContent='🧠 El cerebro está escribiendo…';}
+    var actual=provId();
+    /* cascada: si el motor elegido falla, prueba los otros que tengan clave */
+    var cola=[actual].concat(Object.keys(PROV).filter(function(x){
+      return x!==actual && gLoadFor(x);}));
+    var k=0;
+    (function intento(){
+      if(k>=cola.length){
+        log('Ningún motor respondió → uso plantillas locales','wr');
+        if(btn){btn.disabled=false;btn.textContent='✨ ARMAR LOS FRAMES DE ESTE TEMA';}
+        return temaLocal(t,n,tipo);
+      }
+      var id=cola[k++];
+      document.getElementById('v78-prov').value=id;
+      document.getElementById('v78-groq').value=gLoadFor(id)||gKey();
+      if(k>1)log('Probando con '+PROV[id].nombre+'…','wr');
+      temaGroq(t,n,tipo).then(function(){
+        if(btn){btn.disabled=false;btn.textContent='✨ ARMAR LOS FRAMES DE ESTE TEMA';}
+        document.getElementById('v78-prov').value=actual;v78ProvChange();
+      }).catch(function(e){
+        log(PROV[id].nombre+' falló: '+e.message,'er');
+        intento();
+      });
+    })();
+    return;
+  }
+  temaLocal(t,n,tipo);
+}
+
+function temaLocal(t,n,tipo){
+  var arco=ARCOS[tipo]||ARCOS.satelital;
+  var titulo=t.toUpperCase();
+  if(titulo.length>18){
+    var w=titulo.split(/\s+/).filter(function(x){
+      return ['DE','LA','EL','LOS','LAS','DEL','EN','Y','A','QUE','UN','UNA'].indexOf(x)<0;});
+    titulo=w.slice(0,2).join(' ')||titulo.slice(0,18);
+  }
+  F=[];
+  for(var i=0;i<n;i++){
+    var a=arco[i%arco.length];
+    F.push({c:a[0].replace('{T}',titulo), p:a[1].replace(/\{E\}/g,t), done:false, cv:null});
+  }
+  preset(tipo);
+  render();
+  log('✨ '+n+' frames armados con plantillas: "'+t+'" ('+tipo+')','ok');
+  log('Revisalos y tocá el botón verde para generar las imágenes.','wr');
+  var el=$('v78-frames'); if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+window.v78Tema=v78Tema;
+window.v78Preview=v78Preview;
+window.v78MakeVideo=v78MakeVideo;
+window.v78TestGroq=v78TestGroq;
+window.v78ClearGroq=v78ClearGroq;
+window.v78ProvChange=v78ProvChange;
+window.v78Diag=v78Diag;
+
+/* ---------- API global ---------- */
+window.v78Open=open_; window.v78Close=close_;
+window.v78GenAll=genAll; window.v78gen=function(i){genOne(i);};
+window.v78dl=dl; window.v78DlAll=dlAll; window.v78del=del;
+window.v78Add=add; window.v78Reset=reset; window.v78Clear=clr;
+window.v78Preset=preset; window.v78Reroll=reroll;
+window.v78CopyAll=copyAll; window.v78ExportJSON=exportJSON; window.v78ImportJSON=importJSON;
+window.v78setc=function(i,v){F[i].c=v;save();};
+window.v78setp=function(i,v){F[i].p=v;save();};
+
+/* ---------- init ---------- */
+function init(){
+  if(!$('v78-frames')){setTimeout(init,300);return;}
+  if(!$('v78-dna').value) preset('satelital');
+  if(!load()) F=BASE.map(function(f){return{c:f.c,p:f.p,done:false,cv:null};});
+  render(); drag();
+  log('🧬 IMAGE BRIDGE V3 listo — app suelta, cero instalación','ok');
+  log('Backend sin API key · CORS abierto · 0$','in');
+  log('enhance OFF (respeta tu prompt) · pausa 9s anti-429','dm');
+  log('Sirve para CUALQUIER imagen: cambiá el prompt y listo.','wr');
+  log('Tocá el botón verde gigante para arrancar.','wr');
+  log('🎬 Después podés armar un video animado con movimiento de cámara','dm');
+  gLoad();
+  if(gKey())log('🧠 Motor activo: '+prov().nombre+' — '+prov().modelo,'ok');
+  else log('💡 Sin motor de IA: uso plantillas locales (no depende de nadie)','in');
+  log('🛡️ Blindaje: 4 motores intercambiables + plantillas de respaldo','dm');
+  setInterval(save,5000);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+
+})();
+</script>
+
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a226a30f0fcf5cf2',t:'MTc4NTI3MDU3Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
